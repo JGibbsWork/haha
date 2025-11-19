@@ -1,0 +1,255 @@
+# HARD-CODED, WHOLE-STRIP GOVEE CALLS (no templating)
+# Make sure no other package defines rest_command with these same names.
+
+rest_command:
+  # ======== COMMONS ========
+  # Using your known SKU/device IDs. Change here if hardware changes.
+  # Whole-strip segments for your models (0..6 + 7,8,9,11):
+  # [0,1,2,3,4,5,6,7,8,9,11]
+
+  # ---------- DJ STRIP ----------
+  govee_dj_brightness_100:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":100}}}}
+
+  govee_dj_brightness_75:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":75}}}}
+
+  govee_dj_brightness_50:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":50}}}}
+
+  govee_dj_brightness_25:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":25}}}}
+
+  govee_dj_brightness_0:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":0}}}}
+
+  # Whites as RGB packed ints:
+  # cool = 255,255,255 = 16776954
+  # neutral = 255,244,229 = 16764582
+  # warm = 255,200,160 = 16750167
+  govee_dj_white_cool:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 6000}}}
+
+
+  govee_dj_white_neutral:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 3800}}}
+
+
+  govee_dj_white_warm:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 2700}}}
+
+
+  # ---------- DINING/KITCHEN STRIP ----------
+  govee_dining_strip_brightness_100:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":100}}}}
+
+  govee_dining_strip_brightness_75:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":75}}}}
+
+  govee_dining_strip_brightness_50:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":50}}}}
+
+  govee_dining_strip_brightness_25:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":25}}}}
+
+  govee_dining_strip_brightness_0:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":0}}}}
+
+  govee_dining_strip_white_cool:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 6000}}}
+
+
+  govee_dining_strip_white_neutral:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 3800}}}
+
+
+  govee_dining_strip_white_warm:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 2700}}}
+
+      
+
+  # ---------- LIVING STRIP ----------
+  govee_living_brightness_100:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":100}}}}
+
+  govee_living_brightness_75:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":75}}}}
+
+  govee_living_brightness_50:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":50}}}}
+
+  govee_living_brightness_25:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":25}}}}
+
+  govee_living_brightness_0:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability":{"type":"devices.capabilities.segment_color_setting","instance":"segmentedBrightness",
+      "value":{"segment":[0,1,2,3,4,5,6,7,8,9,11],"brightness":0}}}}
+
+  govee_living_white_cool:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 6000}}}
+
+
+  govee_living_white_neutral:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 3800}}}
+
+
+  govee_living_white_warm:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.color_setting","instance": "colorTemperatureK","value": 2700}}}

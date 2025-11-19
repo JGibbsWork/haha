@@ -1,0 +1,198 @@
+# HARD-CODED, WHOLE-STRIP GOVEE CALLS (no templating)
+# Make sure no other package defines rest_command with these same names.
+
+rest_command:
+  # ---------- Party ----------
+
+  govee_dj_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23525,"id": 14710}}}}
+
+  govee_dining_strip_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23525,"id": 14710}}}}
+  
+  govee_living_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23525,"id": 14710}}}}
+
+  # ---------- Dance Party ----------
+  govee_dj_dance_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 21976,"id": 13329}}}}
+
+  govee_dining_strip_dance_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 21976,"id": 13329}}}}
+  
+  govee_living_dance_party:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 21976,"id": 13329}}}}
+      
+  # ---------- Maillard Style ----------
+  govee_dj_maillard:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23124,"id": 14475}}}}
+
+  govee_dining_strip_maillard:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23124,"id": 14475}}}}
+  
+  govee_living_maillard:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23124,"id": 14475}}}}
+      
+  # ---------- Passion ----------
+  govee_dj_passion:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23559,"id": 14743}}}}
+
+  govee_dining_strip_passion:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23559,"id": 14743}}}}
+  
+  govee_living_passion:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23559,"id": 14743}}}}
+      
+      
+  # ---------- Radiance ----------
+  govee_dj_radiance:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23560,"id": 14744}}}}
+
+  govee_dining_strip_radiance:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23560,"id": 14744}}}}
+  
+  govee_living_radiance:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23560,"id": 14744}}}}
+      
+      
+  # ---------- Rococo Style ----------
+  govee_dj_rococo:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"36:B8:C7:09:BE:1E:9A:3B",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23120,"id": 14471}}}}
+
+  govee_dining_strip_rococo:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"27:0F:C7:09:AE:1E:39:66",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23120,"id": 14471}}}}
+  
+  govee_living_rococo:
+    url: https://openapi.api.govee.com/router/api/v1/device/control
+    method: POST
+    headers: { Content-Type: application/json, Govee-API-Key: !secret govee_api_key }
+    content_type: application/json
+    payload: >
+      {"requestId":1,"payload":{"sku":"H61B9","device":"1F:F4:C7:09:9E:1E:98:77",
+      "capability": {"type": "devices.capabilities.dynamic_scene","instance": "lightScene",
+      "value": {"paramId": 23120,"id": 14471}}}}
+      
+      
+      
+      
+      
+      

@@ -1,0 +1,19 @@
+# Sensitive & large files
+.secrets.yaml
+secrets.yaml
+.storage/
+home-assistant_v2.db
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+zigbee.db
+zigbee.db-shm
+zigbee.db-wal
+tts/
+.cloud/
+deps/
+www/
+node_modules/
+*.log
+*.db
+*.db-*
+__pycache__/

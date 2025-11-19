@@ -1,0 +1,2066 @@
+- id: '1746985284673'
+  name: Evening
+  entities:
+    light.bedroom:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Bed lamp
+      - Bedroom ceiling
+      - Dresser
+      - Closet
+      entity_id:
+      - light.closet
+      - light.dresser
+      - light.bedroom_ceiling
+      - light.bed_lamp
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Bedroom
+      supported_features: 40
+      state: 'on'
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Screen right
+      - Office overhead
+      entity_id:
+      - light.screen_right
+      - light.office_overhead
+      - light.screen_left
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'on'
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 168
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 168
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+  metadata: {}
+- id: '1746985294422'
+  name: Night
+  entities:
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+    light.track_1:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 89
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 1
+      supported_features: 44
+      state: 'on'
+    light.track_2:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 48
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 2
+      supported_features: 44
+      state: 'on'
+    light.track_3:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 48
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 3
+      supported_features: 44
+      state: 'on'
+    light.track_4:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 120
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 4
+      supported_features: 44
+      state: 'on'
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Screen right
+      - Office overhead
+      entity_id:
+      - light.office_overhead
+      - light.screen_left
+      - light.screen_right
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'on'
+    light.kitchen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 55
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Kitchen track 3
+      - Kitchen track 2
+      - Kitchen track 1
+      entity_id:
+      - light.kitchen_track_1
+      - light.kitchen_track_2
+      - light.kitchen_track_3
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen
+      supported_features: 40
+      state: 'on'
+    light.dining:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 117
+      color_temp_kelvin: 2304
+      color_temp: 434
+      hs_color:
+      - 29.444
+      - 80.129
+      rgb_color:
+      - 255
+      - 151
+      - 51
+      xy_color:
+      - 0.567
+      - 0.389
+      mode: normal
+      dynamics: none
+      friendly_name: Dining
+      supported_features: 44
+      state: 'on'
+    light.bed_lamp:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: xy
+      brightness: 112
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      - 21.887
+      - 62.353
+      rgb_color:
+      - 255
+      - 154
+      - 96
+      xy_color:
+      - 0.535
+      - 0.367
+      mode: normal
+      dynamics: none
+      friendly_name: Bed lamp
+      supported_features: 44
+      state: 'on'
+    light.bedroom_ceiling:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 115
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 137
+      - 14
+      xy_color:
+      - 0.598
+      - 0.383
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom ceiling
+      supported_features: 44
+      state: 'on'
+    light.dresser:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 97
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 137
+      - 14
+      xy_color:
+      - 0.598
+      - 0.383
+      mode: normal
+      dynamics: none
+      friendly_name: Dresser
+      supported_features: 44
+      state: 'on'
+    light.closet:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Closet
+      supported_features: 44
+      state: 'on'
+  metadata: {}
+- id: '1746985301773'
+  name: Away
+  entities:
+    light.kitchen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Kitchen track 3
+      - Kitchen track 1
+      - Kitchen track 2
+      entity_id:
+      - light.kitchen_track_3
+      - light.kitchen_track_1
+      - light.kitchen_track_2
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen
+      supported_features: 40
+      state: 'off'
+    light.bedroom:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Closet
+      - Bedroom ceiling
+      - Dresser
+      - Bed lamp
+      entity_id:
+      - light.dresser
+      - light.closet
+      - light.bedroom_ceiling
+      - light.bed_lamp
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Bedroom
+      supported_features: 40
+      state: 'off'
+    light.living_room:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      is_hue_group: true
+      hue_scenes:
+      - New scene
+      - Late chat
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Track 4
+      - Track 1
+      - Track 3
+      - Track 2
+      - TV left
+      - TV Right
+      - Dining
+      entity_id:
+      - light.track_2
+      - light.track_4
+      - light.tv_right
+      - light.tv_left
+      - light.track_3
+      - light.track_1
+      - light.dining
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Living room
+      supported_features: 40
+      state: 'off'
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Screen right
+      - Office overhead
+      entity_id:
+      - light.screen_left
+      - light.screen_right
+      - light.office_overhead
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'off'
+  metadata: {}
+- id: '1747761971390'
+  name: Morning
+  entities:
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 6535
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 255
+      - 251
+      xy_color:
+      - 0.325
+      - 0.333
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Office overhead
+      - Screen right
+      entity_id:
+      - light.screen_right
+      - light.office_overhead
+      - light.screen_left
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'on'
+    light.bedroom:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 6535
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 255
+      - 251
+      xy_color:
+      - 0.325
+      - 0.333
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Bedroom ceiling
+      - Closet
+      - Dresser
+      - Bed lamp
+      entity_id:
+      - light.closet
+      - light.bedroom_ceiling
+      - light.bed_lamp
+      - light.dresser
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Bedroom
+      supported_features: 40
+      state: 'on'
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 6535
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 255
+      - 251
+      xy_color:
+      - 0.325
+      - 0.333
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 6535
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 255
+      - 251
+      xy_color:
+      - 0.325
+      - 0.333
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+  metadata: {}
+- id: '1753156165463'
+  name: Night chill
+  entities:
+    light.bed_lamp:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: xy
+      brightness: 112
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      - 21.887
+      - 62.353
+      rgb_color:
+      - 255
+      - 154
+      - 96
+      xy_color:
+      - 0.535
+      - 0.367
+      mode: normal
+      dynamics: none
+      friendly_name: Bed lamp
+      supported_features: 44
+      state: 'on'
+    light.dresser:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 97
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 137
+      - 14
+      xy_color:
+      - 0.598
+      - 0.383
+      mode: normal
+      dynamics: none
+      friendly_name: Dresser
+      supported_features: 44
+      state: 'on'
+    light.bedroom_ceiling:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 115
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 137
+      - 14
+      xy_color:
+      - 0.598
+      - 0.383
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom ceiling
+      supported_features: 44
+      state: 'on'
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 102
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 102
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+  metadata: {}
+- id: '1758775637148'
+  name: Night hang
+  entities:
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 150
+      color_temp_kelvin: 2444
+      color_temp: 409
+      hs_color:
+      - 29.026
+      - 74.589
+      rgb_color:
+      - 255
+      - 157
+      - 65
+      xy_color:
+      - 0.552
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 150
+      color_temp_kelvin: 2444
+      color_temp: 409
+      hs_color:
+      - 29.026
+      - 74.589
+      rgb_color:
+      - 255
+      - 157
+      - 65
+      xy_color:
+      - 0.552
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+    light.track_1:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 76
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 1
+      supported_features: 44
+      state: 'on'
+    light.track_2:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      mode: normal
+      dynamics: none
+      friendly_name: Track 2
+      supported_features: 44
+      state: 'off'
+    light.track_3:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      mode: normal
+      dynamics: none
+      friendly_name: Track 3
+      supported_features: 44
+      state: 'off'
+    light.track_4:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 76
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Track 4
+      supported_features: 44
+      state: 'on'
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Screen right
+      - Office overhead
+      entity_id:
+      - light.office_overhead
+      - light.screen_left
+      - light.screen_right
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'on'
+    light.kitchen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 55
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Kitchen track 3
+      - Kitchen track 2
+      - Kitchen track 1
+      entity_id:
+      - light.kitchen_track_1
+      - light.kitchen_track_2
+      - light.kitchen_track_3
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen
+      supported_features: 40
+      state: 'on'
+    light.dining:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 150
+      color_temp_kelvin: 2444
+      color_temp: 409
+      hs_color:
+      - 29.026
+      - 74.589
+      rgb_color:
+      - 255
+      - 157
+      - 65
+      xy_color:
+      - 0.552
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: Dining
+      supported_features: 44
+      state: 'on'
+    light.bed_lamp:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: xy
+      brightness: 28
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      - 37.895
+      - 59.608
+      rgb_color:
+      - 255
+      - 199
+      - 103
+      xy_color:
+      - 0.478
+      - 0.415
+      mode: normal
+      dynamics: none
+      friendly_name: Bed lamp
+      supported_features: 44
+      state: 'on'
+    light.bedroom_ceiling:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 38
+      color_temp_kelvin: 3521
+      color_temp: 284
+      hs_color:
+      - 27.152
+      - 44.32
+      rgb_color:
+      - 255
+      - 193
+      - 142
+      xy_color:
+      - 0.452
+      - 0.373
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom ceiling
+      supported_features: 44
+      state: 'on'
+    light.dresser:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 59
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 137
+      - 14
+      xy_color:
+      - 0.598
+      - 0.383
+      mode: normal
+      dynamics: none
+      friendly_name: Dresser
+      supported_features: 44
+      state: 'on'
+    light.closet:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 122
+      color_temp_kelvin: 2173
+      color_temp: 460
+      hs_color:
+      - 29.895
+      - 85.88
+      rgb_color:
+      - 255
+      - 145
+      - 36
+      xy_color:
+      - 0.581
+      - 0.388
+      mode: normal
+      dynamics: none
+      friendly_name: Closet
+      supported_features: 44
+      state: 'on'
+  metadata: {}
+- id: '1758775653164'
+  name: daytime
+  entities:
+    light.tv_left:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 150
+      color_temp_kelvin: 2444
+      color_temp: 409
+      hs_color:
+      - 29.026
+      - 74.589
+      rgb_color:
+      - 255
+      - 157
+      - 65
+      xy_color:
+      - 0.552
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV left
+      supported_features: 44
+      state: 'on'
+    light.tv_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 150
+      color_temp_kelvin: 2444
+      color_temp: 409
+      hs_color:
+      - 29.026
+      - 74.589
+      rgb_color:
+      - 255
+      - 157
+      - 65
+      xy_color:
+      - 0.552
+      - 0.39
+      mode: normal
+      dynamics: none
+      friendly_name: TV Right
+      supported_features: 44
+      state: 'on'
+    light.office:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Screen left
+      - Screen right
+      - Office overhead
+      entity_id:
+      - light.screen_right
+      - light.office_overhead
+      - light.screen_left
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Office
+      supported_features: 40
+      state: 'on'
+    light.kitchen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 163
+      color_temp_kelvin: 2512
+      color_temp: 398
+      hs_color:
+      - 28.843
+      - 72.089
+      rgb_color:
+      - 255
+      - 160
+      - 71
+      xy_color:
+      - 0.545
+      - 0.39
+      is_hue_group: true
+      hue_scenes:
+      - Rolling hills
+      hue_type: room
+      lights:
+      - Kitchen track 3
+      - Kitchen track 2
+      - Kitchen track 1
+      entity_id:
+      - light.kitchen_track_3
+      - light.kitchen_track_2
+      - light.kitchen_track_1
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen
+      supported_features: 40
+      state: 'on'
+    light.bed_lamp:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 122
+      color_temp_kelvin: 2173
+      color_temp: 460
+      hs_color:
+      - 29.895
+      - 85.88
+      rgb_color:
+      - 255
+      - 145
+      - 36
+      xy_color:
+      - 0.581
+      - 0.388
+      mode: normal
+      dynamics: none
+      friendly_name: Bed lamp
+      supported_features: 44
+      state: 'on'
+    light.bedroom_ceiling:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 122
+      color_temp_kelvin: 2173
+      color_temp: 460
+      hs_color:
+      - 29.895
+      - 85.88
+      rgb_color:
+      - 255
+      - 145
+      - 36
+      xy_color:
+      - 0.581
+      - 0.388
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom ceiling
+      supported_features: 44
+      state: 'on'
+    light.dresser:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 122
+      color_temp_kelvin: 2173
+      color_temp: 460
+      hs_color:
+      - 29.895
+      - 85.88
+      rgb_color:
+      - 255
+      - 145
+      - 36
+      xy_color:
+      - 0.581
+      - 0.388
+      mode: normal
+      dynamics: none
+      friendly_name: Dresser
+      supported_features: 44
+      state: 'on'
+    light.closet:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - 'off'
+      - candle
+      - fire
+      - prism
+      - sparkle
+      - opal
+      - glisten
+      - underwater
+      - cosmos
+      - sunbeam
+      - enchant
+      - sunrise
+      - sunset
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect: 'off'
+      color_mode: color_temp
+      brightness: 122
+      color_temp_kelvin: 2173
+      color_temp: 460
+      hs_color:
+      - 29.895
+      - 85.88
+      rgb_color:
+      - 255
+      - 145
+      - 36
+      xy_color:
+      - 0.581
+      - 0.388
+      mode: normal
+      dynamics: none
+      friendly_name: Closet
+      supported_features: 44
+      state: 'on'
+  metadata: {}
