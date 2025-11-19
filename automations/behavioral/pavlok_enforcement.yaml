@@ -1,0 +1,70 @@
+# Behavioral Enforcement Automations
+# Pavlok shock triggers based on zone detection
+
+- id: '1745371361598'
+  alias: Couch Zone Shock - Live
+  description: Shock if person is detected in the 'couch' zone and enforcement is enabled
+  triggers:
+  - topic: frigate/couch/person/active
+    payload: '1'
+    trigger: mqtt
+  conditions:
+  - condition: state
+    entity_id: input_boolean.couch_restricted
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.shocked
+    state: 'off'
+  actions:
+  - action: rest_command.pavlok_couch
+    data: {}
+  - target:
+      entity_id: input_boolean.shocked
+    action: input_boolean.turn_on
+    data: {}
+  - action: counter.increment
+    data: {}
+    target:
+      entity_id: counter.couch_shocks
+  - action: rest_command.habitica_lounge_negative
+    data: {}
+  - delay: 00:01:00
+  - target:
+      entity_id: input_boolean.shocked
+    action: input_boolean.turn_off
+    data: {}
+  mode: single
+
+- id: '1748993940939'
+  alias: Bed Shock (Zone Enforcement - Toggle)
+  description: Shock if person detected in 'bed' zone and enforcement is enabled
+  triggers:
+  - topic: frigate/bed/person/active
+    payload: '1'
+    trigger: mqtt
+  conditions:
+  - condition: state
+    entity_id: input_boolean.bed_restricted
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.shocked
+    state: 'off'
+  actions:
+  - action: rest_command.pavlok_bed
+    data: {}
+  - target:
+      entity_id: input_boolean.shocked
+    action: input_boolean.turn_on
+    data: {}
+  - action: counter.increment
+    data: {}
+    target:
+      entity_id: counter.bed_shocks
+  - action: rest_command.habitica_lounge_negative
+    data: {}
+  - delay: 00:01:00
+  - target:
+      entity_id: input_boolean.shocked
+    action: input_boolean.turn_off
+    data: {}
+  mode: single

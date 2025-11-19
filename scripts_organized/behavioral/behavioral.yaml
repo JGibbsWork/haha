@@ -1,0 +1,71 @@
+morning_shock_loop:
+  alias: Morning Shock Loop
+  mode: restart
+  sequence:
+  - target:
+      entity_id: counter.morning_shock_counter
+    action: counter.reset
+    data: {}
+  - repeat:
+      while:
+      - condition: state
+        entity_id: device_tracker.jamess_iphone
+        state: home
+      - condition: numeric_state
+        entity_id: counter.morning_shock_counter
+        below: 8
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.left_home_today
+          state: 'off'
+      sequence:
+      - variables:
+          shock_intensity: '{% set level = states(''counter.morning_shock_counter'') | int %} {% set base = 50 %} {% set increment = 10 %} {{ [base + (level * increment), 80] | min }}
+
+            '
+      - data:
+          shock_value: '{{ shock_intensity }}'
+        action: rest_command.pavlok_dynamic_shock
+      - target:
+          entity_id: counter.morning_shock_counter
+        action: counter.increment
+        data: {}
+      - action: counter.increment
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.shocks_sent
+      - action: rest_command.habitica_lounge_negative
+        metadata: {}
+        data: {}
+      - delay:
+          minutes: 5
+couch_shock_loop:
+  alias: Couch Shock Loop
+  mode: restart
+  sequence:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.couch_occupied
+        state: 'on'
+      sequence:
+      - action: rest_command.pavlok_couch
+        data: {}
+      - delay:
+          minutes: 1
+  description: ''
+bed_shock_loop:
+  alias: Bed Shock Loop
+  mode: restart
+  sequence:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: binary_sensor.presence_bed
+        state: 'on'
+      sequence:
+      - action: rest_command.pavlok_bed
+      - delay:
+          minutes: 1

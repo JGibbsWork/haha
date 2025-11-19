@@ -1,0 +1,75 @@
+# Pavlok Behavioral Modification Integration
+# REST commands for shock/vibration stimuli
+
+rest_command:
+  pavlok_dynamic_shock:
+    url: "https://api.pavlok.com/api/v5/stimulus/send"
+    method: POST
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRydXN0b2N0b3B1cyIsImlkIjoxMDI3MTgsImVtYWlsIjoianJnaWJ6QGdtYWlsLmNvbSIsImlzX2FwcGxpY2F0aW9uIjpmYWxzZSwiZXhwIjoxNzc2MTk4NTg5LCJzdWIiOiJhY2Nlc3MifQ.Bxw--aN4hcsI8J7MKvveLiArQrkELc3fErzdsMHpdQQ"
+    payload: >
+      {
+        "stimulus": {
+          "stimulusType": "zap",
+          "stimulusValue": {{ shock_value }}
+        }
+      }
+
+  pavlok_vibe:
+    url: "https://api.pavlok.com/api/v5/stimulus/send"
+    method: POST
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRydXN0b2N0b3B1cyIsImlkIjoxMDI3MTgsImVtYWlsIjoianJnaWJ6QGdtYWlsLmNvbSIsImlzX2FwcGxpY2F0aW9uIjpmYWxzZSwiZXhwIjoxNzc2MTk4NTg5LCJzdWIiOiJhY2Nlc3MifQ.Bxw--aN4hcsI8J7MKvveLiArQrkELc3fErzdsMHpdQQ"
+    payload: >
+      {
+        "stimulus": {
+          "stimulusType": "vibe",
+          "stimulusValue": 50
+        }
+      }
+
+  pavlok_shock:
+    url: "https://api.pavlok.com/api/v5/stimulus/send"
+    method: POST
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRydXN0b2N0b3B1cyIsImlkIjoxMDI3MTgsImVtYWlsIjoianJnaWJ6QGdtYWlsLmNvbSIsImlzX2FwcGxpY2F0aW9uIjpmYWxzZSwiZXhwIjoxNzc2MTk4NTg5LCJzdWIiOiJhY2Nlc3MifQ.Bxw--aN4hcsI8J7MKvveLiArQrkELc3fErzdsMHpdQQ"
+    payload: >
+      {
+        "stimulus": {
+          "stimulusType": "zap",
+          "stimulusValue": 50
+        }
+      }
+
+  pavlok_couch:
+    url: "https://api.pavlok.com/api/v5/stimulus/send"
+    method: POST
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRydXN0b2N0b3B1cyIsImlkIjoxMDI3MTgsImVtYWlsIjoianJnaWJ6QGdtYWlsLmNvbSIsImlzX2FwcGxpY2F0aW9uIjpmYWxzZSwiZXhwIjoxNzc2MTk4NTg5LCJzdWIiOiJhY2Nlc3MifQ.Bxw--aN4hcsI8J7MKvveLiArQrkELc3fErzdsMHpdQQ"
+    payload: >
+      {
+        "stimulus": {
+          "stimulusType": "zap",
+          "stimulusValue": 75,
+          "reason": "Still on the couch, pup?"
+        }
+      }
+
+  pavlok_bed:
+    url: "https://api.pavlok.com/api/v5/stimulus/send"
+    method: POST
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRydXN0b2N0b3B1cyIsImlkIjoxMDI3MTgsImVtYWlsIjoianJnaWJ6QGdtYWlsLmNvbSIsImlzX2FwcGxpY2F0aW9uIjpmYWxzZSwiZXhwIjoxNzc2MTk4NTg5LCJzdWIiOiJhY2Nlc3MifQ.Bxw--aN4hcsI8J7MKvveLiArQrkELc3fErzdsMHpdQQ"
+    payload: >
+      {
+        "stimulus": {
+          "stimulusType": "zap",
+          "stimulusValue": 75,
+          "reason": "Still in the bed, pup?"
+        }
+      }

@@ -1,0 +1,7 @@
+# Input Booleans
+# Toggle helpers for automation control
+
+input_boolean:
+  projector_on:
+    name: Projector On
+    initial: false

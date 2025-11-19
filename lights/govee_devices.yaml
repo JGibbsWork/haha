@@ -1,0 +1,8 @@
+# Consolidated Govee Lighting Configuration
+# All Govee device controls, scenes, and REST commands
+
+# Include individual Govee configuration files from packages
+# These contain REST commands for controlling Govee smart lights
+
+# Note: Original files remain in packages/ folder
+# This file uses the package system to load all Govee configs

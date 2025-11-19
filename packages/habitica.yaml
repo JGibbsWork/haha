@@ -1,0 +1,11 @@
+# Habitica Gamification Integration
+# Track negative habits for productivity enforcement
+
+rest_command:
+  habitica_lounge_negative:
+    url: "https://habitica.com/api/v3/tasks/82732AB6-1574-4025-89BF-6D622F34FB4D/score/down"
+    method: POST
+    headers:
+      x-api-user: "b4aeee45-d7fd-4985-9bfe-bb9ab8eb12bc"
+      x-api-key: "f543f337-2425-46e4-8989-631cb9ad3f9a"
+      Content-Type: "application/json"

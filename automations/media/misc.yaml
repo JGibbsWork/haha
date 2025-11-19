@@ -1,0 +1,27 @@
+# Miscellaneous Automations
+
+- id: '1758755459668'
+  alias: Check in Tag — Morning Briefing
+  description: Scan tag → generate briefing
+  triggers:
+  - trigger: tag
+    tag_id: 0f8580b4-fdeb-4e25-beb4-b14c2e858093
+  actions:
+  - action: script.good_morning_briefing
+  mode: single
+
+- id: '1761221436021'
+  alias: whats the weather
+  description: ''
+  triggers:
+  - trigger: conversation
+    command: What's the weather
+  conditions: []
+  actions:
+  - action: weather.get_forecasts
+    metadata: {}
+    data:
+      type: daily
+    target:
+      entity_id: weather.kmdw
+  mode: single
