@@ -14,11 +14,6 @@ morning_shock_loop:
       - condition: numeric_state
         entity_id: counter.morning_shock_counter
         below: 8
-      - condition: and
-        conditions:
-        - condition: state
-          entity_id: input_boolean.left_home_today
-          state: 'off'
       sequence:
       - variables:
           shock_intensity: '{% set level = states(''counter.morning_shock_counter'') | int %} {% set base = 50 %} {% set increment = 10 %} {{ [base + (level * increment), 80] | min }}

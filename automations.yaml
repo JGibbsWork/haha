@@ -3,7 +3,7 @@
   description: Shock if person is detected in the 'couch' zone and enforcement is
     enabled
   triggers:
-  - topic: frigate/couch/person/active
+  - topic: frigate/living_room/couch/person
     payload: '1'
     trigger: mqtt
   conditions:
@@ -95,8 +95,8 @@
   alias: Bed Shock (Zone Enforcement - Toggle)
   description: Shock if person detected in 'bed' zone and enforcement is enabled
   triggers:
-  - topic: frigate/bed/person/active
-    payload: '1'
+  - topic: frigate/bed_room/bed
+    payload: 'ON'
     trigger: mqtt
   conditions:
   - condition: state
@@ -193,44 +193,6 @@
     - sun
   actions:
   - action: rest_command.playlister
-  mode: single
-- id: '1758667743254'
-  alias: New automation
-  description: ''
-  triggers:
-  - trigger: zone
-    entity_id: device_tracker.jamess_iphone
-    zone: zone.home
-    event: leave
-  - trigger: conversation
-    command: Good night
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    data: {}
-    target:
-      area_id:
-      - bedroom
-      - kitchen
-      - living_room
-      - office
-      - track
-  - action: script.tv_blind_up
-    metadata: {}
-    data: {}
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.away
-  - action: script.govee_all_lights_off
-    metadata: {}
-    data: {}
-  - type: turn_off
-    device_id: 7d5fcd316152f4fca9a268615d7329a9
-    entity_id: 0589d63ff48533409f7079333291644c
-    domain: remote
   mode: single
 - id: '1758667825052'
   alias: Arrive Home

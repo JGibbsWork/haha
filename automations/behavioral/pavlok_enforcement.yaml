@@ -5,7 +5,7 @@
   alias: Couch Zone Shock - Live
   description: Shock if person is detected in the 'couch' zone and enforcement is enabled
   triggers:
-  - topic: frigate/couch/person/active
+  - topic: frigate/living_room/couch/person
     payload: '1'
     trigger: mqtt
   conditions:
@@ -39,8 +39,8 @@
   alias: Bed Shock (Zone Enforcement - Toggle)
   description: Shock if person detected in 'bed' zone and enforcement is enabled
   triggers:
-  - topic: frigate/bed/person/active
-    payload: '1'
+  - topic: frigate/bed_room/bed
+    payload: 'ON'
     trigger: mqtt
   conditions:
   - condition: state
