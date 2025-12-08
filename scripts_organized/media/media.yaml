@@ -87,7 +87,7 @@ tv_open_kiosk_browser:
   variables:
     tv_entity: media_player.googletv
     kiosk_package: de.ozerov.fully
-    kiosk_url: http://jamess-mac-mini.local:3000/tv/
+    kiosk_url: http://jamess-mac-mini:3000/tv/
   sequence:
   - choose:
     - conditions:
