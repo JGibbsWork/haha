@@ -465,3 +465,22 @@
       metadata: {}
       data: {}
   mode: single
+- id: '1765172397828'
+  alias: Good NIght
+  description: ''
+  triggers:
+  - trigger: conversation
+    command:
+    - Good Night
+  conditions: []
+  actions:
+  - action: script.close_shades
+    metadata: {}
+    data: {}
+  - action: script.close_shades
+    metadata: {}
+    data: {}
+  - action: script.lights_off
+    metadata: {}
+    data: {}
+  mode: single
