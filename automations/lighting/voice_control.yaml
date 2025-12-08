@@ -1,0 +1,47 @@
+# Voice-Activated Lighting Control
+# Conversation-based light commands
+
+- id: '1751666407923'
+  alias: Turn off all lights
+  description: ''
+  triggers:
+  - trigger: conversation
+    command:
+    - Turn off all lights
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 6fb902227b74101e4af5536f96186399
+    entity_id: e04ebd5eec14f3878290b1b44632a2e2
+    domain: light
+  - type: turn_off
+    device_id: 96038e8d9a047a590f1e1f1124025501
+    entity_id: 8fb2eac3e1093dec128ee800845e5c10
+    domain: light
+  - type: turn_off
+    device_id: 2581b53e814160a40687ffd86ece1177
+    entity_id: c45cfc79905a497483b7a94096774880
+    domain: light
+  - type: turn_off
+    device_id: 33f35eabf1514c7128057474cd7af6e9
+    entity_id: cdcc446a146bc107e100d3afb165a268
+    domain: light
+  - type: turn_off
+    device_id: 3eb16c84994a1c44abaf06a41c403ede
+    entity_id: 0e86f0e61ffdda3668ca1bea89f4b0e7
+    domain: light
+  mode: single
+
+- id: '1751666470340'
+  alias: Turn on all lights
+  description: ''
+  triggers:
+  - trigger: conversation
+    command:
+    - Turn on all lights
+  conditions: []
+  actions:
+  - action: script.lighting_route_by_time_now
+    metadata: {}
+    data: {}
+  mode: single

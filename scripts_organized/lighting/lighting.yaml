@@ -1,0 +1,303 @@
+movie_mode_dim_couch_off_fronts:
+  sequence:
+  - data:
+      zone: kitchen
+    action: script.govee_zone_off
+  - data:
+      zone: dining
+    action: script.govee_zone_off
+  - data:
+      zone: entry_dj
+    action: script.govee_zone_off
+  - data:
+      zone: living_front
+    action: script.govee_zone_off
+  - data:
+      zone: couch_living
+      pct: 20
+      r: 255
+      g: 160
+      b: 120
+    action: script.govee_zone_on
+  - data:
+      zone: couch_dj
+      pct: 15
+      r: 255
+      g: 160
+      b: 120
+    action: script.govee_zone_on
+  alias: Movie mode (dim couch, off fronts)
+  description: ''
+govee_all_lights_25:
+  sequence:
+  - action: rest_command.govee_dj_brightness_25
+  - action: rest_command.govee_dining_strip_brightness_25
+    data: {}
+  - action: rest_command.govee_living_brightness_25
+  alias: Govee — All lights 25%
+  mode: parallel
+  description: ''
+govee_all_lights_50:
+  sequence:
+  - action: rest_command.govee_dj_brightness_50
+  - action: rest_command.govee_dining_strip_brightness_50
+    data: {}
+  - action: rest_command.govee_living_brightness_50
+  alias: Govee — All lights 50%
+  mode: parallel
+  description: ''
+govee_all_lights_75:
+  sequence:
+  - action: rest_command.govee_dj_brightness_75
+  - action: rest_command.govee_dining_strip_brightness_75
+    data: {}
+  - action: rest_command.govee_living_brightness_75
+  alias: Govee — All lights 75%
+  mode: parallel
+  description: ''
+govee_all_lights_100:
+  sequence:
+  - action: rest_command.govee_dj_brightness_100
+  - action: rest_command.govee_dining_strip_brightness_100
+    data: {}
+  - action: rest_command.govee_living_brightness_100
+  alias: Govee — All lights 100%
+  mode: parallel
+  description: ''
+govee_all_lights_off:
+  sequence:
+  - action: rest_command.govee_dj_brightness_0
+  - action: rest_command.govee_dining_strip_brightness_0
+    data: {}
+  - action: rest_command.govee_living_brightness_0
+  alias: Govee — All lights OFF
+  mode: parallel
+  description: ''
+govee_all_lights_white_neutral:
+  sequence:
+  - action: rest_command.govee_dj_white_neutral
+  - action: rest_command.govee_dining_strip_white_neutral
+    data: {}
+  - action: rest_command.govee_living_white_neutral
+  alias: Govee — All lights WHITE (neutral)
+  mode: parallel
+  description: ''
+govee_all_lights_white_warm:
+  sequence:
+  - action: rest_command.govee_dj_white_warm
+  - action: rest_command.govee_dining_strip_white_warm
+    data: {}
+  - action: rest_command.govee_living_white_warm
+  alias: Govee — All lights WHITE (warm)
+  mode: parallel
+  description: ''
+govee_all_lights_white_cool:
+  sequence:
+  - action: rest_command.govee_dj_white_cool
+  - action: rest_command.govee_dining_strip_white_cool
+  - action: rest_command.govee_living_white_cool
+  alias: Govee — All lights WHITE (cool)
+  mode: parallel
+  description: ''
+govee_party:
+  sequence:
+  - action: rest_command.govee_living_party
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_party
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_party
+    metadata: {}
+    data: {}
+  alias: Govee - Party
+  description: ''
+govee_dance_party:
+  sequence:
+  - action: rest_command.govee_living_dance_party
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_dance_party
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_dance_party
+    metadata: {}
+    data: {}
+  alias: Govee - Dance Party
+  description: ''
+govee_maillard:
+  sequence:
+  - action: rest_command.govee_living_maillard
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_maillard
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_maillard
+    metadata: {}
+    data: {}
+  alias: Govee - Maillard
+  description: ''
+govee_passion:
+  sequence:
+  - action: rest_command.govee_living_passion
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_passion
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_passion
+    metadata: {}
+    data: {}
+  alias: Govee - Passion
+  description: ''
+govee_radiance:
+  sequence:
+  - action: rest_command.govee_living_radiance
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_radiance
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_radiance
+    metadata: {}
+    data: {}
+  alias: Govee - Radiance
+  description: ''
+govee_rococo:
+  sequence:
+  - action: rest_command.govee_living_rococo
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dining_strip_rococo
+    metadata: {}
+    data: {}
+  - action: rest_command.govee_dj_rococo
+    metadata: {}
+    data: {}
+  alias: Govee - Rococo
+  description: ''
+morning_lights:
+  sequence:
+  - action: script.govee_all_lights_white_cool
+    metadata: {}
+    data: {}
+  - action: script.govee_all_lights_100
+    metadata: {}
+    data: {}
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.morning
+  alias: Morning Lights
+  description: ''
+daytime_lights:
+  sequence:
+  - action: script.govee_all_lights_75
+    metadata: {}
+    data: {}
+  - action: script.govee_all_lights_white_neutral
+    metadata: {}
+    data: {}
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.daytime_2
+  alias: Daytime Lights
+  description: ''
+evening_lights:
+  sequence:
+  - action: script.govee_all_lights_75
+    metadata: {}
+    data: {}
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.evening
+  - action: script.govee_all_lights_white_warm
+    metadata: {}
+    data: {}
+  alias: Evening Lights
+  description: ''
+chill_lights:
+  sequence:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.night_chill
+  - action: script.govee_maillard
+    metadata: {}
+    data: {}
+  alias: Chill Lights
+  description: ''
+lighting_route_by_time_now:
+  alias: Lighting - Route By Time (Now)
+  mode: restart
+  variables:
+    morning_script: script.morning_lights
+    day_script: script.daytime_lights
+    evening_script: script.evening_lights
+    chill_script: script.chill_lights
+    morning_start: 05:00:00
+    day_start: 08:00:00
+    night_start: '22:00:00'
+  sequence:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ now() >= today_at(morning_start) and\n   now() <  today_at(day_start) }}\n"
+      sequence:
+      - target:
+          entity_id: '{{ morning_script }}'
+        action: script.turn_on
+    - conditions:
+      - condition: template
+        value_template: "{{ now() >= today_at(day_start) and\n   is_state('sun.sun','above_horizon') }}\n"
+      sequence:
+      - target:
+          entity_id: '{{ day_script }}'
+        action: script.turn_on
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('sun.sun','below_horizon') and\n   now() < today_at(night_start) }}\n"
+      sequence:
+      - target:
+          entity_id: '{{ evening_script }}'
+        action: script.turn_on
+    default:
+    - target:
+        entity_id: '{{ chill_script }}'
+      action: script.turn_on
+  description: ''
+lights_off:
+  sequence:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.away
+  - action: script.govee_all_lights_off
+    metadata: {}
+    data: {}
+  alias: Lights Off
+  description: ''
+toggle_lights:
+  sequence:
+  - if:
+    - condition: state
+      entity_id: light.office
+      state: 'on'
+    then:
+    - action: script.lights_off
+      metadata: {}
+      data: {}
+    else:
+    - action: script.lighting_route_by_time_now
+      metadata: {}
+      data: {}
+  alias: Toggle Lights
+  description: ''

@@ -1,0 +1,71 @@
+# Music Playback Control
+# Button-based media player control
+
+- id: '1759527316227'
+  alias: Button - Play/Stop/Next by Time of Day
+  triggers:
+  - device_id: eafc3d157ffa983a7b7fc41f8b2ddd06
+    domain: zha
+    type: remote_button_short_press
+    subtype: button
+    trigger: device
+    id: single
+  - device_id: eafc3d157ffa983a7b7fc41f8b2ddd06
+    domain: zha
+    type: remote_button_double_press
+    subtype: button
+    trigger: device
+    id: double
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: double
+      sequence:
+      - data:
+          entity_id: '{{ player }}'
+        action: media_player.media_next_track
+    - conditions:
+      - condition: trigger
+        id: single
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ states(player) in [''playing'',''paused''] }}'
+          sequence:
+          - data:
+              entity_id: '{{ player }}'
+            action: media_player.media_play_pause
+        default:
+        - choose:
+          - conditions:
+            - condition: time
+              after: 06:00:00
+              before: '14:00:00'
+            sequence:
+            - data: {}
+              action: script.play_bossa_nova_living_room_playlist_shuffle
+          - conditions:
+            - condition: time
+              after: '14:00:00'
+            sequence:
+            - data: {}
+              action: script.play_home_playlist_living_room_playlist_shuffle
+  mode: single
+  variables:
+    player: media_player.living_room
+
+- id: '1753737643702'
+  alias: Playlister Run
+  description: ''
+  triggers:
+  - at: '22:00:00'
+    trigger: time
+  conditions:
+  - condition: time
+    weekday:
+    - sun
+  actions:
+  - action: rest_command.playlister
+  mode: single

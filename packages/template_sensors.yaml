@@ -1,0 +1,23 @@
+# Template Sensors
+# Custom sensors derived from other entities
+
+template:
+  - sensor:
+      - name: "Pi-hole SID"
+        state: >
+          {% set tokens = states('sensor.file') | default('') | regex_findall('[^,]+') %}
+          {{ tokens[0] if tokens|length > 0 else '' }}
+
+      - name: "Pi-hole CSRF"
+        state: >
+          {% set tokens = states('sensor.file') | default('') | regex_findall('[^,]+') %}
+          {{ tokens[1] if tokens|length > 1 else '' }}
+
+      - name: "PS5 Daily Usage"
+        unique_id: ps5_daily_usage
+        state: >
+          {% set start = now().replace(hour=0, minute=0, second=0) %}
+          {% set end = now() %}
+          {{ states('switch.ps5') == 'on' and ((end - start).total_seconds() / 3600) | round(2) or 0 }}
+        unit_of_measurement: "h"
+        icon: mdi:timer-outline

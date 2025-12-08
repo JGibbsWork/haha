@@ -17,3 +17,18 @@ node_modules/
 *.db
 *.db-*
 __pycache__/
+
+# Custom components (installed via HACS)
+# These are dependencies, not your config - don't commit them!
+custom_components/
+
+# But DO track this file to remember what you installed
+!custom_components/.gitkeep
+
+# Additional files that shouldn't be in git
+pihole_tokens.txt
+home-assistant.log*
+.HA_VERSION
+.ha_run.lock
+.ssh/
+blueprints/  # Default blueprints - reinstallable

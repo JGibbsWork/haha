@@ -1,0 +1,16 @@
+# Projector Control Automations
+
+- id: '1751665927285'
+  alias: Voice Projector Toggle
+  description: ''
+  triggers:
+  - trigger: conversation
+    command:
+    - Turn off the projector
+    - Turn on the projector
+  conditions: []
+  actions:
+  - action: script.tv_blind_up
+    metadata: {}
+    data: {}
+  mode: single

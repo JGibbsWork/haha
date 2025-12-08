@@ -1,0 +1,95 @@
+good_morning_briefing:
+  alias: Good Morning Briefing (LLM)
+  mode: restart
+  fields:
+    speak:
+      description: true = speak to media player, false = notification only
+      example: true
+  variables:
+    media_player: media_player.living_room
+    weather_entity: weather.kmdw
+    calendar_entity: calendar.jrgibz_gmail_com
+    todo_entity: todo.personal
+    agent_id: conversation.morning
+    max_events: 5
+    max_todos: 6
+    do_speak: '{{ speak | default(true) }}'
+    tts_entity: tts.piper_2
+  sequence:
+  - variables:
+      w_state: '{{ states(weather_entity) }}'
+      w_temp: '{{ state_attr(weather_entity, ''temperature'') }}'
+      w_humidity: '{{ state_attr(weather_entity, ''humidity'') }}'
+      w_forecast_line: "{% set fc = state_attr(weather_entity, 'forecast') or [] %} {% if fc and fc[0] %}\n  High {{ fc[0].temperature }}°, Low {{ fc[0].templow if fc[0].templow is not none else '—' }}, {{ (fc[0].condition or '') | replace('_',' ') }}\n{% else %}No forecast available{% endif %}"
+  - target:
+      entity_id: '{{ calendar_entity }}'
+    data:
+      start_date_time: '{{ today_at(''00:00:00'').isoformat() }}'
+      end_date_time: '{{ (today_at(''00:00:00'') + timedelta(days=1, hours=3)).isoformat() }}'
+    response_variable: todays_events
+    action: calendar.get_events
+  - variables:
+      events_raw: "{% set d = todays_events %} {% set key = calendar_entity %} {% if d is mapping and key in d %}\n  {{ d[key]['events'] if d[key] is mapping and 'events' in d[key] else [] }}\n{% else %}\n  {{ d['events'] if d is mapping and 'events' in d else [] }}\n{% endif %}"
+      events_list: '{{ (events_raw | sort(attribute=''start''))[:max_events] }}'
+      events_md: "{% if (events_list | count) == 0 %}\n  (no events)\n{% else %}\n  {% for e in events_list %}\n    {% set start_val = e.get('start') %}\n    {% set end_val   = e.get('end') %}\n    {% set st = as_local(as_datetime(start_val)) if 'T' in start_val else as_local(as_datetime(start_val ~ 'T00:00:00')) %}\n    {% set et = as_local(as_datetime(end_val))   if 'T' in end_val   else as_local(as_datetime(end_val   ~ 'T23:59:59')) %}\n    - {{ st.strftime('%-I:%M %p') }}–{{ et.strftime('%-I:%M %p') }}: {{ e.summary }}{% if e.location %} @ {{ e.location }}{% endif %}{% if not loop.last %}\\n{% endif %}\n  {% endfor %}\n{% endif %}"
+  - target:
+      entity_id: '{{ todo_entity }}'
+    data:
+      status: needs_action
+    response_variable: todos_resp
+    action: todo.get_items
+  - variables:
+      todos_items_full: "{% set d = todos_resp %} {% set key = todo_entity %} {% if d is mapping and key in d %}\n  {{ d[key]['items'] if d[key] is mapping and 'items' in d[key] else [] }}\n{% else %}\n  {{ d['items'] if d is mapping and 'items' in d else [] }}\n{% endif %}"
+      todos_sorted: '{% set arr = todos_items_full | list %}
+
+        {{ arr | sort(attribute=''summary'') | sort(attribute=''due'', reverse=false) | list }}'
+      todos_items: '{{ todos_sorted[:max_todos] }}'
+      todos_md: "{% if (todos_items | count) == 0 %}\n  (no to-dos captured)\n{% else %}\n  {% for t in todos_items %}\n    - {{ t.summary }}{% if t.due %} (due {{ as_local(as_datetime(t.due)).strftime('%-m/%-d') }}){% endif %}{% if not loop.last %}\\n{% endif %}\n  {% endfor %}\n{% endif %}"
+  - variables:
+      llm_prompt: 'You are a strict but motivating morning coach. Write a concise spoken briefing (~250 words) for James in Chicago. Tone: confident, playful, a little bossy. No questions. Include: (1) weather + clothing/packing tip, (2) top events with timing and quick prep/commute notes, (3) from the to-dos below, pick 2–3 specific tasks by name and turn them into priorities, (4) short focus mantra. End with one actionable step.
+
+        Weather now: {{ (w_state or '''') | replace(''_'','' '') }}, {{ w_temp }}°F, humidity {{ w_humidity }}%. Forecast: {{ w_forecast_line }}
+
+        Events today: {{ events_md }}
+
+        To-dos: {{ todos_md }}
+
+        Output plain text for TTS (no bullets or markdown).'
+  - continue_on_error: true
+    data:
+      agent_id: '{{ agent_id }}'
+      text: '{{ llm_prompt }}'
+    response_variable: convo
+    action: conversation.process
+  - variables:
+      llm_text_raw: "{% set r = convo if convo is defined else none %} {% if r and r.response and r.response.speech and r.response.speech.plain and r.response.speech.plain.speech %}\n  {{ r.response.speech.plain.speech }}\n{% elif r and r.response and r.response.response_text %}\n  {{ r.response.response_text }}\n{% else %}\n  Morning briefing fallback.\n  Weather {{ w_state }}, {{ w_temp }} degrees.\n  Events: {{ events_list | count }}. To-dos: {{ todos_items | count }}.\n{% endif %}"
+      llm_text: '{{ (llm_text_raw | string).strip() if llm_text_raw is defined else ''Morning briefing fallback.'' }}'
+  - action: input_text.set_value
+    target:
+      entity_id: input_text.morning_briefing
+    data:
+      value: '{{ llm_text }}'
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ do_speak }}'
+      sequence:
+      - action: media_player.volume_set
+        target:
+          entity_id: '{{ media_player }}'
+        data:
+          volume_level: 0.35
+      - action: tts.speak
+        data:
+          entity_id: '{{ tts_entity }}'
+          media_player_entity_id: '{{ media_player }}'
+          message: '{{ llm_text }}'
+          cache: false
+    - conditions:
+      - condition: template
+        value_template: '{{ not do_speak }}'
+      sequence:
+      - action: persistent_notification.create
+        data:
+          title: Morning Briefing (dry run)
+          message: '{{ llm_text }}'

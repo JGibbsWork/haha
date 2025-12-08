@@ -1,0 +1,134 @@
+tv_blind_up:
+  alias: projector toggle
+  mode: restart
+  sequence:
+  - condition: template
+    value_template: '{{ states(''remote.broadlink'') not in [''unavailable'',''unknown''] }}
+
+      '
+  - action: remote.send_command
+    target:
+      entity_id: remote.broadlink
+    data:
+      device: wall
+      command: power
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 3
+  - action: input_boolean.toggle
+    target:
+      entity_id: input_boolean.projector_on
+projectorprofileflow:
+  sequence:
+  - if:
+    - condition: time
+      after: 05:00:00
+      before: 09:00:00
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    then:
+    - action: rest_command.projector_profile_morning
+      metadata: {}
+      data: {}
+    else:
+    - if:
+      - condition: time
+        after: 09:00:00
+        before: '17:00:00'
+      then:
+      - action: rest_command.projector_profile_work
+        metadata: {}
+        data: {}
+      else:
+      - action: rest_command.projector_profile_default
+        metadata: {}
+        data: {}
+  alias: ProjectorProfileFlow
+  description: ''
+play_bossa_nova_living_room_playlist_shuffle:
+  alias: Play Bossa Nova Living Room Playlist (Shuffle)
+  sequence:
+  - target:
+      entity_id: media_player.living_room
+    data:
+      shuffle: true
+    action: media_player.shuffle_set
+  - target:
+      entity_id: media_player.living_room
+    data:
+      media_content_id: spotify:playlist:4Dot9vPPk2J2rF4z7y5GyI
+      media_content_type: music
+    action: media_player.play_media
+  mode: single
+play_home_playlist_living_room_playlist_shuffle:
+  alias: Play Home Playlist Living Room Playlist (Shuffle)
+  sequence:
+  - target:
+      entity_id: media_player.living_room
+    data:
+      shuffle: true
+    action: media_player.shuffle_set
+  - target:
+      entity_id: media_player.living_room
+    data:
+      media_content_id: spotify:playlist:26y9840X5o1rAiO8CRhoPD
+      media_content_type: music
+    action: media_player.play_media
+  mode: single
+  description: ''
+tv_open_kiosk_browser:
+  alias: TV - Open Kiosk Browser
+  mode: restart
+  description: Power on the Google TV and launch Fully Kiosk Browser.
+  variables:
+    tv_entity: media_player.living_room_tv_2
+    kiosk_package: de.ozerov.fully
+    kiosk_url: http://jamess-mac-mini.local:3000/tv/
+  sequence:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ states(tv_entity) == ''off'' }}'
+      sequence:
+      - action: media_player.turn_on
+        target:
+          entity_id: '{{ tv_entity }}'
+      - wait_template: '{{ is_state(tv_entity, ''on'') }}'
+        timeout: 00:00:25
+        continue_on_timeout: true
+  - delay: 00:00:02
+  - action: media_player.play_media
+    target:
+      entity_id: '{{ tv_entity }}'
+    data:
+      media_content_type: app
+      media_content_id: '{{ kiosk_package }}'
+  - delay: 00:00:02
+kiosk_launch:
+  sequence:
+  - type: turn_on
+    device_id: 7d5fcd316152f4fca9a268615d7329a9
+    entity_id: 0589d63ff48533409f7079333291644c
+    domain: remote
+  - action: media_player.play_media
+    metadata: {}
+    data:
+      media:
+        media_content_id: de.ozerov.fully
+        media_content_type: app
+        metadata:
+          title: Fully Kiosk Browser
+          thumbnail: https://play-lh.googleusercontent.com/WoXt70HB47lypeBgA0KfVTCSz8ekMbHfM53HXT6CAbOyJQeH-nDAReeJ8C4-EhazTA=s96-rw
+          media_class: app
+          children_media_class:
+          navigateIds:
+          - {}
+          browse_entity_id: media_player.living_room_tv_2
+    target:
+      entity_id: media_player.living_room_tv_2
+  alias: kiosk launch
+  description: ''

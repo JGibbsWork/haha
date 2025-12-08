@@ -1,0 +1,66 @@
+# Physical Button Lighting Control
+# ZHA button press automations
+
+- id: '1745524278768'
+  alias: entry switch
+  description: ''
+  triggers:
+  - device_id: c91eb9c0edbfbf43cb3c741aa9be08c3
+    domain: zha
+    type: remote_button_short_press
+    subtype: button
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.tv_blind_up
+    metadata: {}
+    data: {}
+  - action: script.toggle_lights
+    metadata: {}
+    data: {}
+  mode: single
+
+- id: '1759809606458'
+  alias: bedbuttonthings
+  description: ''
+  triggers:
+  - device_id: e58d7882f45586de849429b440d9d651
+    domain: zha
+    type: remote_button_short_press
+    subtype: button
+    trigger: device
+    id: single
+  - device_id: e58d7882f45586de849429b440d9d651
+    domain: zha
+    type: remote_button_double_press
+    subtype: button
+    trigger: device
+    id: double
+  - device_id: e58d7882f45586de849429b440d9d651
+    domain: zha
+    type: remote_button_long_press
+    subtype: button
+    trigger: device
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: double
+      sequence:
+      - action: script.toggle_lights
+        metadata: {}
+        data: {}
+    - conditions:
+      - condition: trigger
+        id: single
+      sequence:
+      - action: script.lights_off
+        metadata: {}
+        data: {}
+      - action: script.close_blinds
+        metadata: {}
+        data: {}
+  mode: single
+  variables:
+    player: media_player.living_room

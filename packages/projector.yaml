@@ -1,0 +1,33 @@
+# Projector Profile Management
+# REST commands to control projector profiles via Mac Mini API
+
+rest_command:
+  projector_profile_default:
+    url: "http://jamess-mac-mini.local:3001/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: >
+      {
+        "profile": "default"
+      }
+
+  projector_profile_work:
+    url: "http://jamess-mac-mini.local:3001/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: >
+      {
+        "profile": "work"
+      }
+
+  projector_profile_morning:
+    url: "http://jamess-mac-mini.local:3001/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: >
+      {
+        "profile": "morning"
+      }

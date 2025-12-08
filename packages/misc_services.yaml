@@ -1,0 +1,16 @@
+# Miscellaneous Service Integrations
+
+rest_command:
+  coach_call:
+    url: "http://jamess-mac-mini.local:3002/start-call"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: >
+      {
+        "to": "+18583866200"
+      }
+
+  playlister:
+    url: "http://jamess-mac-mini.local:8888/api/update-playlists"
+    method: POST
