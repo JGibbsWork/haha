@@ -22,10 +22,6 @@
       entity_id: input_boolean.shocked
     action: input_boolean.turn_on
     data: {}
-  - action: counter.increment
-    data: {}
-    target:
-      entity_id: counter.couch_shocks
   - action: rest_command.habitica_lounge_negative
     data: {}
   - delay: 00:01:00
@@ -56,10 +52,6 @@
       entity_id: input_boolean.shocked
     action: input_boolean.turn_on
     data: {}
-  - action: counter.increment
-    data: {}
-    target:
-      entity_id: counter.bed_shocks
   - action: rest_command.habitica_lounge_negative
     data: {}
   - delay: 00:01:00
