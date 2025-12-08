@@ -85,7 +85,7 @@ tv_open_kiosk_browser:
   mode: restart
   description: Power on the Google TV and launch Fully Kiosk Browser.
   variables:
-    tv_entity: media_player.living_room_tv_2
+    tv_entity: media_player.googletv
     kiosk_package: de.ozerov.fully
     kiosk_url: http://jamess-mac-mini.local:3000/tv/
   sequence:

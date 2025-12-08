@@ -12,10 +12,6 @@ Your configuration is now:
 
 ## 🎯 Short-Term Goals (Next Steps)
 
-### 1. **Security Cleanup** ⚠️ URGENT
-- [ ] Rotate Pavlok API token (exposed in git history)
-- [ ] Rotate Habitica API key (exposed in git history)
-- [ ] Delete local SSH keys after confirming they're not in use
 
 ### 2. **Projector Status Tracking**
 - [ ] Buy smart plug with power monitoring (Zigbee/WiFi)
