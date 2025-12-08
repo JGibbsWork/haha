@@ -1,7 +1,28 @@
 # Input Booleans
 # Toggle helpers for automation control
 
-input_boolean:
-  projector_on:
-    name: Projector On
-    initial: false
+projector_on:
+  name: Projector On
+  initial: false
+
+# Behavioral enforcement controls
+shocked:
+  name: Shock Cooldown
+  initial: false
+  icon: mdi:timer-sand
+
+couch_restricted:
+  name: Couch Restriction Enabled
+  initial: false
+  icon: mdi:sofa
+
+bed_restricted:
+  name: Bed Restriction Enabled
+  initial: false
+  icon: mdi:bed
+
+# Zone occupancy tracking
+bed_occupied:
+  name: Bed Occupied
+  initial: false
+  icon: mdi:bed

@@ -1,17 +1,17 @@
-# Git Repository Guide for Home Assistant
+# Git Repository Guide
 
 ## ✅ What SHOULD Be in Git
 
 Your **configuration** - the things you created:
-- `configuration.yaml` (or `configuration_new.yaml`)
-- `automations/` - All your automation files
-- `scripts_organized/` - All your script files
-- `packages/` - Your integration configs (Pavlok, Pi-hole, Govee, etc.)
-- `entities/` - Input booleans, counters, helpers
-- `scenes.yaml` - Your lighting scenes
-- `shell_scripts/` - Your bash scripts
-- `.gitignore` - This file itself
-- Documentation files (`.md`)
+- `configuration.yaml` - Main config
+- `automations/` - All automation files
+- `scripts_organized/` - All script files
+- `packages/` - Integration configs (Pavlok, Pi-hole, Govee, etc.)
+- `entities/` - Input booleans, helpers
+- `scenes.yaml` - Lighting scenes
+- `shell_scripts/` - Bash scripts
+- `.gitignore` - This file
+- Documentation (`.md` files)
 
 ## ❌ What Should NOT Be in Git
 
@@ -47,45 +47,13 @@ Your **configuration** - the things you created:
 
 **Total saved**: 50-100MB+ not in your repo!
 
-## 🔄 How to Restore on New System
+## 🔄 Restore on New System
 
-1. **Clone your repo**:
-   ```bash
-   git clone <your-repo-url> /config
-   ```
-
-2. **Install HACS**: https://hacs.xyz/docs/setup/download
-
-3. **Reinstall custom components via HACS**:
-   - See [CUSTOM_COMPONENTS.md](CUSTOM_COMPONENTS.md) for list
-
-4. **Create secrets.yaml**:
-   ```yaml
-   # Add your API keys here
-   govee_api_key: "..."
-   pavlok_bearer_token: "..."
-   habitica_user: "..."
-   habitica_api_key: "..."
-   ```
-
-5. **Restart Home Assistant**
-
-## 📝 Current Status
-
-After the reorganization cleanup:
-
-### Removed from Git (Now Ignored)
-- ✅ 2,339 custom component files removed
-- ✅ Log files ignored
-- ✅ Database files ignored
-- ✅ Secrets ignored
-
-### Still Tracked
-- ✅ All your automations (organized)
-- ✅ All your scripts (organized)
-- ✅ All your packages
-- ✅ Configuration files
-- ✅ Documentation
+1. Clone repo: `git clone <your-repo-url> /config`
+2. Install HACS: https://hacs.xyz/docs/setup/download
+3. Reinstall custom components (see [CUSTOM_COMPONENTS.md](CUSTOM_COMPONENTS.md))
+4. Create `secrets.yaml` with your API keys
+5. Restart Home Assistant
 
 ## 🎯 Quick Commands
 
@@ -132,19 +100,6 @@ Before pushing to GitHub:
 - [ ] No Bearer tokens in files
 - [ ] No hardcoded passwords
 
-## 📤 Pushing to GitHub
-
-If your repo is too large for GitHub (>100MB warning), you may need to clean history:
-
-```bash
-# Check repo size
-du -sh .git
-
-# If it's huge, you may need to rewrite history (DESTRUCTIVE!)
-# Only do this if absolutely necessary
-git filter-branch --tree-filter 'rm -rf custom_components' HEAD
-```
-
 ---
 
-**Bottom line**: Your git repo should be ~5-10MB of YAML configs, not 50MB+ of dependencies!
+**Current Status**: Clean repo at ~19MB (mostly git history), 42 tracked files
