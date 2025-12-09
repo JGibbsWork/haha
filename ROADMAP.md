@@ -22,7 +22,7 @@ Your configuration is now:
 **Status**: Config fixed, waiting on MQTT connection
 - [x] Fix MQTT topic mismatches (couch/bed sensors)
 - [x] Add missing input_booleans (shocked, bed_restricted, couch_restricted)
-- [ ] Debug MQTT timeout errors
+- [x] Debug MQTT timeout errors
 - [ ] Test Pavlok enforcement automations
 
 ### 4. **Voice Assistant Improvements**
@@ -59,8 +59,8 @@ Your configuration is now:
 ### **Priority 2: MQTT + Pavlok System** ⚡
 **Goal**: Reliable presence detection → behavioral enforcement
 
-- [ ] Fix MQTT broker connection (diagnose timeout)
-- [ ] Test Frigate zone detection (couch, bed)
+- [x] Fix MQTT broker connection (diagnose timeout)
+- [x] Test Frigate zone detection (couch, bed)
 - [ ] Verify Pavlok API calls work
 - [ ] Add safety limits (max shocks per hour)
 - [ ] Create dashboard controls (enable/disable enforcement)
@@ -109,19 +109,6 @@ Your configuration is now:
 - [ ] Create evening briefing script
 - [ ] Add proactive notifications (time-based suggestions)
 - [ ] Build context memory (last command, time patterns)
-
----
-
-### **Priority 5: TV/Dashboard Flow** 📺
-**Goal**: Seamless dashboard display on TV (ditch Android box)
-
-**Current**: Android TV box → Fully Kiosk Browser → Dashboard
-**Proposed**: Built-in TV → Fully Kiosk or Cast → Dashboard
-
-- [ ] Research: Does your TV support Fully Kiosk or casting?
-- [ ] Test: Cast Home Assistant dashboard to TV
-- [ ] Migrate kiosk scripts from Android box to TV
-- [ ] Optimize dashboard for TV (large text, simple controls)
 
 ---
 

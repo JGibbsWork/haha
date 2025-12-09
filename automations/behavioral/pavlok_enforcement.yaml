@@ -10,7 +10,15 @@
     to: 'on'
     for:
       seconds: 5
+    id: person_sat_down
+  - platform: state
+    entity_id: input_boolean.couch_restricted
+    to: 'on'
+    id: restriction_enabled
   conditions:
+  - condition: state
+    entity_id: input_boolean.couch_occupied
+    state: 'on'
   - condition: state
     entity_id: input_boolean.couch_restricted
     state: 'on'
@@ -42,7 +50,15 @@
     to: 'on'
     for:
       seconds: 5
+    id: person_in_bed
+  - platform: state
+    entity_id: input_boolean.bed_restricted
+    to: 'on'
+    id: restriction_enabled
   conditions:
+  - condition: state
+    entity_id: input_boolean.bed_occupied
+    state: 'on'
   - condition: state
     entity_id: input_boolean.bed_restricted
     state: 'on'
