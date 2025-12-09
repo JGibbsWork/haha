@@ -26,19 +26,28 @@
     entity_id: input_boolean.shocked
     state: 'off'
   actions:
-  - action: rest_command.pavlok_couch
-    data: {}
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_on
-    data: {}
-  - action: rest_command.habitica_lounge_negative
-    data: {}
-  - delay: 00:01:00
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_off
-    data: {}
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.couch_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.couch_restricted
+        state: 'on'
+      sequence:
+      - action: rest_command.pavlok_couch
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - action: rest_command.habitica_lounge_negative
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
   mode: single
 
 - id: '1748993940939'
@@ -66,17 +75,26 @@
     entity_id: input_boolean.shocked
     state: 'off'
   actions:
-  - action: rest_command.pavlok_bed
-    data: {}
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_on
-    data: {}
-  - action: rest_command.habitica_lounge_negative
-    data: {}
-  - delay: 00:01:00
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_off
-    data: {}
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.bed_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.bed_restricted
+        state: 'on'
+      sequence:
+      - action: rest_command.pavlok_bed
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - action: rest_command.habitica_lounge_negative
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
   mode: single
