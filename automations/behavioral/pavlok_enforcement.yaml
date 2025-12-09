@@ -1,13 +1,15 @@
 # Behavioral Enforcement Automations
-# Pavlok shock triggers based on zone detection
+# Pavlok shock triggers based on zone occupancy booleans
 
 - id: '1745371361598'
   alias: Couch Zone Shock - Live
-  description: Shock if person is detected in the 'couch' zone and enforcement is enabled
+  description: Shock if person is on couch and enforcement is enabled (with schedule support)
   triggers:
-  - topic: frigate/living_room/couch/person
-    payload: '1'
-    trigger: mqtt
+  - platform: state
+    entity_id: input_boolean.couch_occupied
+    to: 'on'
+    for:
+      seconds: 5
   conditions:
   - condition: state
     entity_id: input_boolean.couch_restricted
@@ -33,11 +35,13 @@
 
 - id: '1748993940939'
   alias: Bed Shock (Zone Enforcement - Toggle)
-  description: Shock if person detected in 'bed' zone and enforcement is enabled
+  description: Shock if person is in bed and enforcement is enabled (with schedule support)
   triggers:
-  - topic: frigate/bed_room/bed
-    payload: 'ON'
-    trigger: mqtt
+  - platform: state
+    entity_id: input_boolean.bed_occupied
+    to: 'on'
+    for:
+      seconds: 5
   conditions:
   - condition: state
     entity_id: input_boolean.bed_restricted
