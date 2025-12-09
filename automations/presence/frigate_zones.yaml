@@ -1,0 +1,98 @@
+# Frigate Zone Presence Detection
+# Maintains presence booleans based on Frigate MQTT events
+
+# Couch Zone - Person Enter
+- id: frigate_couch_person_enter
+  alias: "Frigate: Person Entered Couch Zone"
+  description: Turn on couch_occupied when Frigate detects person entering couch zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {{ payload is defined
+           and payload.type == 'new'
+           and payload.after is defined
+           and payload.after.label == 'person'
+           and payload.after.entered_zones is defined
+           and 'couch' in payload.after.entered_zones }}
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.couch_occupied
+
+# Couch Zone - Person Exit
+- id: frigate_couch_person_exit
+  alias: "Frigate: Person Left Couch Zone"
+  description: Turn off couch_occupied when Frigate detects person leaving couch zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {{ payload is defined
+           and payload.type == 'end'
+           and payload.before is defined
+           and payload.before.label == 'person'
+           and payload.before.current_zones is defined
+           and 'couch' in payload.before.current_zones }}
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.couch_occupied
+
+# Bed Zone - Person Enter
+- id: frigate_bed_person_enter
+  alias: "Frigate: Person Entered Bed Zone"
+  description: Turn on bed_occupied when Frigate detects person entering bed zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {{ payload is defined
+           and payload.type == 'new'
+           and payload.after is defined
+           and payload.after.label == 'person'
+           and payload.after.entered_zones is defined
+           and 'bed' in payload.after.entered_zones }}
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bed_occupied
+
+# Bed Zone - Person Exit
+- id: frigate_bed_person_exit
+  alias: "Frigate: Person Left Bed Zone"
+  description: Turn off bed_occupied when Frigate detects person leaving bed zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {{ payload is defined
+           and payload.type == 'end'
+           and payload.before is defined
+           and payload.before.label == 'person'
+           and payload.before.current_zones is defined
+           and 'bed' in payload.before.current_zones }}
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.bed_occupied

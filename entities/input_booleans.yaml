@@ -26,3 +26,8 @@ bed_occupied:
   name: Bed Occupied
   initial: false
   icon: mdi:bed
+
+couch_occupied:
+  name: Couch Occupied
+  initial: false
+  icon: mdi:sofa
