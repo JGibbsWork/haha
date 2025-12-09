@@ -1,6 +1,27 @@
 # Frigate Zone Presence Detection
 # Maintains presence booleans based on Frigate MQTT events
 
+# DEBUG - Log all Frigate events for troubleshooting
+- id: frigate_debug_all_events
+  alias: "DEBUG: Frigate All Events"
+  description: Log all Frigate events to see what's happening
+  mode: queued
+  max: 10
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions: []
+  actions:
+    - action: system_log.write
+      data:
+        message: >
+          Frigate Event - Type: {{ trigger.payload_json.type | default('N/A') }}
+          | Label: {{ trigger.payload_json.after.label | default('N/A') }}
+          | Camera: {{ trigger.payload_json.after.camera | default('N/A') }}
+          | Before Zones: {{ trigger.payload_json.before.current_zones | default([]) }}
+          | After Zones: {{ trigger.payload_json.after.current_zones | default([]) }}
+        level: warning
+
 # Couch Zone - Person Enter
 - id: frigate_couch_person_enter
   alias: "Frigate: Person Entered Couch Zone"
