@@ -14,12 +14,11 @@
     - condition: template
       value_template: >
         {% set payload = trigger.payload_json %}
-        {{ payload is defined
-           and payload.type == 'new'
-           and payload.after is defined
-           and payload.after.label == 'person'
-           and payload.after.entered_zones is defined
-           and 'couch' in payload.after.entered_zones }}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('after', {}).get('label') == 'person'
+           and 'couch' not in before_zones
+           and 'couch' in after_zones }}
   actions:
     - action: input_boolean.turn_on
       target:
@@ -38,12 +37,11 @@
     - condition: template
       value_template: >
         {% set payload = trigger.payload_json %}
-        {{ payload is defined
-           and payload.type == 'end'
-           and payload.before is defined
-           and payload.before.label == 'person'
-           and payload.before.current_zones is defined
-           and 'couch' in payload.before.current_zones }}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('before', {}).get('label') == 'person'
+           and 'couch' in before_zones
+           and 'couch' not in after_zones }}
   actions:
     - action: input_boolean.turn_off
       target:
@@ -62,12 +60,11 @@
     - condition: template
       value_template: >
         {% set payload = trigger.payload_json %}
-        {{ payload is defined
-           and payload.type == 'new'
-           and payload.after is defined
-           and payload.after.label == 'person'
-           and payload.after.entered_zones is defined
-           and 'bed' in payload.after.entered_zones }}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('after', {}).get('label') == 'person'
+           and 'bed' not in before_zones
+           and 'bed' in after_zones }}
   actions:
     - action: input_boolean.turn_on
       target:
@@ -86,12 +83,11 @@
     - condition: template
       value_template: >
         {% set payload = trigger.payload_json %}
-        {{ payload is defined
-           and payload.type == 'end'
-           and payload.before is defined
-           and payload.before.label == 'person'
-           and payload.before.current_zones is defined
-           and 'bed' in payload.before.current_zones }}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('before', {}).get('label') == 'person'
+           and 'bed' in before_zones
+           and 'bed' not in after_zones }}
   actions:
     - action: input_boolean.turn_off
       target:
