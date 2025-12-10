@@ -1,0 +1,159 @@
+# Local Weather API
+rest:
+  # Current Weather
+  - resource: http://jamess-mac-mini.local:3002/api/weather/current
+    scan_interval: 300  # Update every 5 minutes
+    sensor:
+      - name: "Weather Temperature"
+        value_template: "{{ value_json.data.temp }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+        icon: mdi:thermometer
+
+      - name: "Weather Condition"
+        value_template: "{{ value_json.data.condition }}"
+        icon: mdi:weather-partly-cloudy
+
+      - name: "Weather Feels Like"
+        value_template: "{{ value_json.data.feelsLike }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+        icon: mdi:thermometer
+
+      - name: "Weather Humidity"
+        value_template: "{{ value_json.data.humidity }}"
+        unit_of_measurement: "%"
+        device_class: humidity
+        icon: mdi:water-percent
+
+      - name: "Weather High"
+        value_template: "{{ value_json.data.high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+        icon: mdi:thermometer-chevron-up
+
+      - name: "Weather Low"
+        value_template: "{{ value_json.data.low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+        icon: mdi:thermometer-chevron-down
+
+      - name: "Weather Icon"
+        value_template: "{{ value_json.data.icon }}"
+
+      - name: "Weather Description"
+        value_template: "{{ value_json.data.description }}"
+
+      - name: "Weather Wind Speed"
+        value_template: "{{ value_json.data.windSpeed }}"
+        unit_of_measurement: "mph"
+        icon: mdi:weather-windy
+
+  # Weather Forecast
+  - resource: http://jamess-mac-mini.local:3002/api/weather/forecast
+    scan_interval: 1800  # Update every 30 minutes
+    sensor:
+      # Day 1 Forecast (Today)
+      - name: "Forecast Today Date"
+        value_template: "{{ value_json.data.forecast[0].date }}"
+        icon: mdi:calendar-today
+
+      - name: "Forecast Today High"
+        value_template: "{{ value_json.data.forecast[0].high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Today Low"
+        value_template: "{{ value_json.data.forecast[0].low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Today Condition"
+        value_template: "{{ value_json.data.forecast[0].condition }}"
+
+      - name: "Forecast Today Icon"
+        value_template: "{{ value_json.data.forecast[0].icon }}"
+
+      # Day 2 Forecast (Tomorrow)
+      - name: "Forecast Tomorrow Date"
+        value_template: "{{ value_json.data.forecast[1].date }}"
+        icon: mdi:calendar
+
+      - name: "Forecast Tomorrow High"
+        value_template: "{{ value_json.data.forecast[1].high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Tomorrow Low"
+        value_template: "{{ value_json.data.forecast[1].low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Tomorrow Condition"
+        value_template: "{{ value_json.data.forecast[1].condition }}"
+
+      - name: "Forecast Tomorrow Icon"
+        value_template: "{{ value_json.data.forecast[1].icon }}"
+
+      # Day 3 Forecast
+      - name: "Forecast Day3 Date"
+        value_template: "{{ value_json.data.forecast[2].date }}"
+        icon: mdi:calendar
+
+      - name: "Forecast Day3 High"
+        value_template: "{{ value_json.data.forecast[2].high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day3 Low"
+        value_template: "{{ value_json.data.forecast[2].low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day3 Condition"
+        value_template: "{{ value_json.data.forecast[2].condition }}"
+
+      - name: "Forecast Day3 Icon"
+        value_template: "{{ value_json.data.forecast[2].icon }}"
+
+      # Day 4 Forecast
+      - name: "Forecast Day4 Date"
+        value_template: "{{ value_json.data.forecast[3].date }}"
+        icon: mdi:calendar
+
+      - name: "Forecast Day4 High"
+        value_template: "{{ value_json.data.forecast[3].high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day4 Low"
+        value_template: "{{ value_json.data.forecast[3].low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day4 Condition"
+        value_template: "{{ value_json.data.forecast[3].condition }}"
+
+      - name: "Forecast Day4 Icon"
+        value_template: "{{ value_json.data.forecast[3].icon }}"
+
+      # Day 5 Forecast
+      - name: "Forecast Day5 Date"
+        value_template: "{{ value_json.data.forecast[4].date }}"
+        icon: mdi:calendar
+
+      - name: "Forecast Day5 High"
+        value_template: "{{ value_json.data.forecast[4].high }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day5 Low"
+        value_template: "{{ value_json.data.forecast[4].low }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Forecast Day5 Condition"
+        value_template: "{{ value_json.data.forecast[4].condition }}"
+
+      - name: "Forecast Day5 Icon"
+        value_template: "{{ value_json.data.forecast[4].icon }}"
