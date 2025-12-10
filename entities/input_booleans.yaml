@@ -31,3 +31,18 @@ couch_occupied:
   name: Couch Occupied
   initial: false
   icon: mdi:sofa
+
+couch_time_limit_enabled:
+  name: Couch Time Limit Enabled
+  initial: false
+  icon: mdi:timer
+
+couch_cooldown:
+  name: Couch Cooldown Active
+  initial: false
+  icon: mdi:timer-sand
+
+sleep_enforcement_enabled:
+  name: Sleep Enforcement Enabled
+  initial: false
+  icon: mdi:bed-clock
