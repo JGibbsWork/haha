@@ -32,3 +32,5 @@ home-assistant.log*
 .ha_run.lock
 .ssh/
 blueprints/  # Default blueprints - reinstallable
+
+dashboards/*

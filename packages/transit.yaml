@@ -1,0 +1,140 @@
+# Chicago Transit Tracker
+rest:
+  - resource: http://jamess-mac-mini.local:3002/api/transit/all
+    scan_interval: 60  # Update every 60 seconds
+    sensor:
+      # Bus 77 Eastbound - Next arrival
+      - name: "Bus 77 East Next"
+        value_template: >
+          {% if value_json.success and value_json.data.buses.east | length > 0 %}
+            {{ value_json.data.buses.east[0].minutesAway }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
+        json_attributes_path: "$.data.buses.east[0]"
+        json_attributes:
+          - route
+          - destination
+          - predictedTime
+          - vehicleId
+
+      # Bus 77 Westbound - Next arrival
+      - name: "Bus 77 West Next"
+        value_template: >
+          {% if value_json.success and value_json.data.buses.west | length > 0 %}
+            {{ value_json.data.buses.west[0].minutesAway }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
+        json_attributes_path: "$.data.buses.west[0]"
+        json_attributes:
+          - route
+          - destination
+          - predictedTime
+          - vehicleId
+
+      # Red Line Northbound - Next arrival
+      - name: "Red Line North Next"
+        value_template: >
+          {% if value_json.success and value_json.data.red.north | length > 0 %}
+            {% set northbound = value_json.data.red.north | selectattr('direction', 'equalto', 'Northbound') | list %}
+            {% if northbound | length > 0 %}
+              {{ northbound[0].minutesAway }}
+            {% else %}
+              unavailable
+            {% endif %}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:subway-variant
+        json_attributes_path: "$.data.red.north"
+        json_attributes:
+          - "0"
+
+      # Red Line Southbound - Next arrival
+      - name: "Red Line South Next"
+        value_template: >
+          {% if value_json.success and value_json.data.red.south | length > 0 %}
+            {% set southbound = value_json.data.red.south | selectattr('direction', 'equalto', 'Southbound') | list %}
+            {% if southbound | length > 0 %}
+              {{ southbound[0].minutesAway }}
+            {% else %}
+              unavailable
+            {% endif %}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:subway-variant
+        json_attributes_path: "$.data.red.south"
+        json_attributes:
+          - "0"
+
+      # Brown Line Northbound - Next arrival
+      - name: "Brown Line North Next"
+        value_template: >
+          {% if value_json.success and value_json.data.brown.north | length > 0 %}
+            {% set northbound = value_json.data.brown.north | selectattr('direction', 'equalto', 'Northbound') | list %}
+            {% if northbound | length > 0 %}
+              {{ northbound[0].minutesAway }}
+            {% else %}
+              unavailable
+            {% endif %}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:subway-variant
+        json_attributes_path: "$.data.brown.north"
+        json_attributes:
+          - "0"
+
+      # Brown Line Southbound - Next arrival
+      - name: "Brown Line South Next"
+        value_template: >
+          {% if value_json.success and value_json.data.brown.south | length > 0 %}
+            {% set southbound = value_json.data.brown.south | selectattr('direction', 'equalto', 'Southbound') | list %}
+            {% if southbound | length > 0 %}
+              {{ southbound[0].minutesAway }}
+            {% else %}
+              unavailable
+            {% endif %}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:subway-variant
+        json_attributes_path: "$.data.brown.south"
+        json_attributes:
+          - "0"
+
+template:
+  - sensor:
+      # Bus 77 East - Second arrival
+      - name: "Bus 77 East Second"
+        state: >
+          {% set api_data = states.sensor.bus_77_east_next.attributes %}
+          {% if api_data %}
+            {{ api_data.get('minutesAway', 'N/A') }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
+
+      # Bus 77 West - Second arrival
+      - name: "Bus 77 West Second"
+        state: >
+          {% set api_data = states.sensor.bus_77_west_next.attributes %}
+          {% if api_data %}
+            {{ api_data.get('minutesAway', 'N/A') }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
