@@ -127,8 +127,8 @@ kiosk_launch:
           children_media_class:
           navigateIds:
           - {}
-          browse_entity_id: media_player.living_room_tv_2
+          browse_entity_id: media_player.googletv
     target:
-      entity_id: media_player.living_room_tv_2
+      entity_id: media_player.googletv
   alias: kiosk launch
   description: ''

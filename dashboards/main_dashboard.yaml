@@ -1,0 +1,411 @@
+title: Main Control
+views:
+  - title: Home
+    path: home
+    type: sections
+    sections:
+      # LIGHTING SCENES SECTION
+      - type: grid
+        cards:
+          - type: custom:button-card
+            name: Lighting Scenes
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+              name:
+                - font-size: 20px
+                - font-weight: bold
+                - text-align: left
+                - padding-left: 10px
+            show_icon: false
+            tap_action:
+              action: none
+
+          - type: grid
+            columns: 5
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: scene.morning
+                name: Morning
+                icon: mdi:weather-sunset-up
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.morning
+                styles:
+                  card:
+                    - height: 80px
+                  icon:
+                    - color: var(--amber-color)
+                  name:
+                    - font-size: 14px
+
+              - type: custom:button-card
+                entity: scene.daytime
+                name: Daytime
+                icon: mdi:white-balance-sunny
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.daytime
+                styles:
+                  card:
+                    - height: 80px
+                  icon:
+                    - color: var(--yellow-color)
+                  name:
+                    - font-size: 14px
+
+              - type: custom:button-card
+                entity: scene.evening
+                name: Evening
+                icon: mdi:weather-sunset-down
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.evening
+                styles:
+                  card:
+                    - height: 80px
+                  icon:
+                    - color: var(--orange-color)
+                  name:
+                    - font-size: 14px
+
+              - type: custom:button-card
+                entity: scene.night_chill
+                name: Chill
+                icon: mdi:sofa
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_chill
+                styles:
+                  card:
+                    - height: 80px
+                  icon:
+                    - color: var(--purple-color)
+                  name:
+                    - font-size: 14px
+
+              - type: custom:button-card
+                name: Lights Off
+                icon: mdi:lightbulb-off
+                tap_action:
+                  action: call-service
+                  service: light.turn_off
+                  service_data:
+                    entity_id: all
+                styles:
+                  card:
+                    - height: 80px
+                    - background: var(--disabled-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                  name:
+                    - font-size: 14px
+
+      # MEDIA CONTROLS SECTION
+      - type: grid
+        cards:
+          - type: custom:button-card
+            name: Media Controls
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+              name:
+                - font-size: 20px
+                - font-weight: bold
+                - text-align: left
+                - padding-left: 10px
+            show_icon: false
+            tap_action:
+              action: none
+
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: media_player.googletv
+                name: TV
+                icon: mdi:television
+                show_state: true
+                tap_action:
+                  action: call-service
+                  service: media_player.toggle
+                  service_data:
+                    entity_id: media_player.googletv
+                state:
+                  - value: 'on'
+                    styles:
+                      card:
+                        - background: var(--primary-color)
+                      icon:
+                        - color: white
+                  - value: 'off'
+                    styles:
+                      card:
+                        - background: var(--disabled-color)
+                styles:
+                  card:
+                    - height: 100px
+                  name:
+                    - font-size: 16px
+
+              - type: custom:button-card
+                entity: input_boolean.projector_on
+                name: Projector
+                icon: mdi:projector
+                show_state: true
+                tap_action:
+                  action: call-service
+                  service: script.tv_blind_up
+                state:
+                  - value: 'on'
+                    styles:
+                      card:
+                        - background: var(--primary-color)
+                      icon:
+                        - color: white
+                  - value: 'off'
+                    styles:
+                      card:
+                        - background: var(--disabled-color)
+                styles:
+                  card:
+                    - height: 100px
+                  name:
+                    - font-size: 16px
+
+      # BLINDS & SHADES SECTION
+      - type: grid
+        cards:
+          - type: custom:button-card
+            name: Blinds & Shades
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+              name:
+                - font-size: 20px
+                - font-weight: bold
+                - text-align: left
+                - padding-left: 10px
+            show_icon: false
+            tap_action:
+              action: none
+
+          - type: grid
+            columns: 4
+            square: false
+            cards:
+              - type: custom:button-card
+                name: Blinds Up
+                icon: mdi:blinds-open
+                tap_action:
+                  action: call-service
+                  service: script.open_blinds
+                styles:
+                  card:
+                    - height: 80px
+                    - background: var(--success-color)
+                  icon:
+                    - color: white
+
+              - type: custom:button-card
+                name: Blinds Down
+                icon: mdi:blinds
+                tap_action:
+                  action: call-service
+                  service: script.close_blinds
+                styles:
+                  card:
+                    - height: 80px
+                    - background: var(--disabled-color)
+
+              - type: custom:button-card
+                name: Shades Up
+                icon: mdi:window-shutter-open
+                tap_action:
+                  action: call-service
+                  service: script.open_shades
+                styles:
+                  card:
+                    - height: 80px
+                    - background: var(--success-color)
+                  icon:
+                    - color: white
+
+              - type: custom:button-card
+                name: Shades Down
+                icon: mdi:window-shutter
+                tap_action:
+                  action: call-service
+                  service: script.close_shades
+                styles:
+                  card:
+                    - height: 80px
+                    - background: var(--disabled-color)
+
+      # TV REMOTE SECTION
+      - type: grid
+        cards:
+          - type: custom:button-card
+            name: TV Remote
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+              name:
+                - font-size: 20px
+                - font-weight: bold
+                - text-align: left
+                - padding-left: 10px
+            show_icon: false
+            tap_action:
+              action: none
+
+          - type: custom:universal-remote-card
+            entity: media_player.googletv
+            remote_id: googletv
+            colors:
+              buttons: var(--primary-color)
+            custom_icons: {}
+            buttons:
+              power:
+                icon: mdi:power
+                tap_action:
+                  action: call-service
+                  service: media_player.toggle
+                  service_data:
+                    entity_id: media_player.googletv
+              volume_up:
+                icon: mdi:volume-plus
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_up
+                  service_data:
+                    entity_id: media_player.googletv
+              volume_down:
+                icon: mdi:volume-minus
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_down
+                  service_data:
+                    entity_id: media_player.googletv
+              volume_mute:
+                icon: mdi:volume-mute
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_mute
+                  service_data:
+                    entity_id: media_player.googletv
+              dpad_up:
+                icon: mdi:chevron-up
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: DPAD_UP
+              dpad_down:
+                icon: mdi:chevron-down
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: DPAD_DOWN
+              dpad_left:
+                icon: mdi:chevron-left
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: DPAD_LEFT
+              dpad_right:
+                icon: mdi:chevron-right
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: DPAD_RIGHT
+              dpad_center:
+                icon: mdi:circle
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: DPAD_CENTER
+              back:
+                icon: mdi:arrow-left
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: BACK
+              home:
+                icon: mdi:home
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    entity_id: remote.googletv
+                    command: HOME
+
+      # MUSIC SECTION
+      - type: grid
+        cards:
+          - type: custom:button-card
+            name: Music Control
+            styles:
+              card:
+                - background: none
+                - box-shadow: none
+              name:
+                - font-size: 20px
+                - font-weight: bold
+                - text-align: left
+                - padding-left: 10px
+            show_icon: false
+            tap_action:
+              action: none
+
+          - type: custom:mini-media-player
+            entity: media_player.living_room
+            artwork: cover
+            source: icon
+            info: scroll
+            icon: mdi:spotify
+            max_volume: 100
+            controls:
+              - play_pause
+              - previous
+              - next
+              - volume
+            card_mod:
+              style: |
+                ha-card {
+                  height: 150px;
+                }
+
+          # Music Assistant media browser (if available)
+          - type: media-control
+            entity: media_player.living_room
+
+kiosk_mode:
+  hide_header: true
+  hide_sidebar: true
+  hide_menubutton: true
