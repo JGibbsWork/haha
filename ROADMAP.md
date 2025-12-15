@@ -5,103 +5,128 @@
 - ✅ **Clean config structure** - Organized into automations/, scripts_organized/, packages/
 - ✅ **Security basics** - API keys in secrets.yaml (gitignored)
 - ✅ **Dashboards** - iPad (restricted) and admin dashboards built
-- ✅ **MQTT + Frigate setup** - Config fixed, sensors created
-- ✅ **AdGuard installed** - Running on network
+- ✅ **MQTT + Frigate setup** - Zone tracking for couch, bed, kitchen working
+- ✅ **Pavlok System** - Enforcement automations operational
+- ✅ **Projector tracking** - Power-based state detection + smart scripts
+- ✅ **Kitchen zone detection** - Frigate tracking in place
 
 ---
 
-## 🎯 Current Focus
+## 🎯 Active Priorities
 
-### **1. MQTT + Pavlok System** ⚡
-**Status**: Foundation complete, needs testing & safety
-
-- [x] Fix MQTT broker connection
-- [x] Fix zone detection sensors (couch, bed)
-- [x] Add missing input_booleans
-- [ ] Add safety limits (max shocks per hour, cooldown periods)
-- [ ] Test enforcement automations end-to-end
-- [ ] Add dashboard toggle controls
-
-### **2. Projector Status Tracking**
-**Status**: ✅ Complete
-
-- [x] Buy smart plug with power monitoring (Sonoff - installed)
-- [x] Create template sensor based on power draw (`binary_sensor.projector_status`)
-- [x] Create turn on/off scripts that check state first
-- [x] Add leave home automation to turn off projector
-
-### **3. Kitchen Camera Automation**
-**Status**: Needs hardware integration
-
-- [ ] Add kitchen lights to Home Assistant
-- [ ] Configure kitchen zone in Frigate (camera already installed)
-- [ ] Create MQTT binary sensor for kitchen occupancy (similar to couch/bed)
-- [ ] Create automations:
-  - Person detected in kitchen → lights on
-  - Person leaves kitchen → lights off (with delay)
-- [ ] Test and adjust delay timing for natural feel
-
----
-
-## 🚀 Next Steps (Priority Order)
-
-### **Priority 1: Voice Assistant Improvements** 🎤
-**Goal**: Make voice control actually useful
+### **1. Voice Assistant Improvements** 🎤
+**Goal**: Make voice control feel natural and powerful
 
 **Tasks**:
-- [ ] Add `description:` fields to automations (makes them voice-discoverable)
-- [ ] Rename unclear automations ("bedbuttonthings" → "Bed Button Control")
+- [ ] Add `description:` fields to automations (enables voice discovery)
+- [ ] Rename unclear automations for better voice recognition
 - [ ] Create compound scripts:
-  - "Close everything" (blinds, lights, projector)
-  - "Good morning routine" (opens blinds, morning briefing)
-  - "Movie mode" (dims lights, closes blinds, projector on)
-  - "Work mode" (bright lights, projector to work profile)
-- [ ] Test voice commands work reliably
+  - [ ] "Close everything" - blinds, lights, projector off
+  - [ ] "Good morning routine" - opens blinds, morning briefing, lights
+  - [ ] "Movie mode" - dims lights, closes blinds, projector on
+  - [ ] "Work mode" - bright lights, projector to work profile
+  - [ ] "Sleep mode" - close everything, dim lights, bed routine
+- [ ] Test voice commands with natural phrasing
 
 ---
 
-### **Priority 2: LLM Assistant Expansion** 🤖
-**Goal**: Context-aware assistant for daily management
+### **2. LLM Assistant Expansion** 🤖
+**Goal**: Context-aware daily assistant
 
-**Current Foundation**:
-- ✅ `good_morning_briefing` script (LLM-powered)
-- ✅ Extended OpenAI integration
-- ✅ Calendar, todo, weather integrations
+**Current**:
+- ✅ Morning briefing (LLM-powered)
+- ✅ OpenAI integration
+- ✅ Calendar, todo, weather feeds
 
 **Next Steps**:
-- [ ] Create evening briefing script
-- [ ] Add proactive time-based suggestions ("It's 10pm, should I close blinds?")
-- [ ] Calendar integration (auto-adjust lights for meetings)
-- [ ] Habit tracking integration (Habitica + Pavlok)
+- [ ] Evening briefing script (day recap + tomorrow preview)
+- [ ] Proactive suggestions:
+  - "It's 10pm, want me to close blinds?"
+  - "Meeting in 15 minutes"
+  - "You've been on the couch for 2 hours, time to move?"
+- [ ] Calendar-aware automations (auto-adjust during meetings)
+- [ ] Habit tracking integration (Habitica stats)
 
 ---
 
-### **Priority 3: AdGuard Home Integration** 🛡️
-**Goal**: Control network filtering from HA
+## 💡 Fun Add-On Ideas
 
-- [x] AdGuard installed on network
-- [ ] Set up HA integration
-- [ ] Create toggle automations (day/night filtering)
-- [ ] Add dashboard controls
+### **Smart Arrival Experience** 🚗
+- Detect when you're 5 minutes from home (iOS location)
+- Pre-warm/cool the space
+- Queue up your preferred lighting scene
+- Start music playlist based on time of day
+- Show "welcome home" message on TV/projector
+
+### **Focus Mode** 🧠
+- Voice command: "Focus time" or "Deep work"
+- Closes blinds for fewer distractions
+- Sets bright task lighting
+- Enables stricter phone/app blocking (if you revisit AdGuard)
+- Mutes non-critical notifications
+- Auto-announces break time after 90 minutes
+
+### **Ambient Presence Lighting** 💡
+- Kitchen occupied → warm ambient lighting during evening
+- Long desk session → periodic color shifts to reduce eye strain
+- Movie detected on projector → bias lighting behind screen
+- Late night movement → gentle path lighting (avoid full brightness)
+
+### **Weather-Responsive Automations** ⛈️
+- Rainy day → cozy warm lighting automatically
+- Hot sunny day → close shades proactively, suggest AC
+- Storm incoming → close all blinds, secure outdoor items reminder
+- Beautiful weather → morning announcement to open windows
+
+### **Social Proofing / Accountability** 📊
+- Daily/weekly reports on habits:
+  - "You hit the gym 4/5 days this week!"
+  - Couch time tracked vs. goals
+  - Sleep schedule consistency
+- Share to Habitica automatically
+- Pavlok stats dashboard
+
+### **Guest Mode** 👥
+- Voice command: "Guest mode on"
+- Disables behavioral enforcement (Pavlok)
+- Unlocks restricted zones
+- Changes dashboard to guest-friendly view
+- Auto-expires after X hours
+
+### **Seasonal Automations** 🍂
+- Adjust wake-up routine based on sunrise (summer vs winter)
+- Holiday lighting scenes (auto-activate Dec 1-25)
+- Spring cleaning reminders (filters, windows, etc.)
+
+### **Music Context Awareness** 🎵
+- "Play focus music" → instrumental playlists
+- "Play workout music" → high-energy when gym mode active
+- Auto-pause music when voice commands detected
+- Room-based music routing (kitchen vs living room)
+
+### **Energy Monitoring** ⚡
+- Track projector usage hours
+- "Always-on" device detection
+- Monthly usage reports
+- Cost estimates (if utility API available)
 
 ---
 
 ## 📊 Overall Status
 
-| Area | Status | What's Left |
-|------|--------|-------------|
-| **Config Structure** | ✅ Complete | - |
-| **Dashboards** | ✅ Complete | - |
-| **MQTT/Frigate** | 🟡 90% | Safety limits, testing |
-| **Pavlok System** | 🟡 85% | Safety features, end-to-end testing |
-| **Voice Control** | 🔴 30% | Add descriptions, create compound scripts |
-| **LLM Assistant** | 🟡 40% | Expand beyond morning briefing |
-| **AdGuard Integration** | 🔴 10% | HA integration setup |
+| Area | Status |
+|------|--------|
+| **Core Infrastructure** | ✅ 100% |
+| **Zone Detection** | ✅ 100% |
+| **Projector Automation** | ✅ 100% |
+| **Pavlok System** | ✅ 100% |
+| **Voice Control** | 🔴 30% |
+| **LLM Assistant** | 🟡 50% |
 
-**You're at approximately 65% completion** on the core features you want.
+**Overall: ~75% complete** on foundational features
 
-**Next logical step**: Voice improvements (quick wins that make daily use better)
+**Recommended next**: Voice improvements (quick wins, daily impact)
 
 ---
 
-**Last Updated**: 2025-12-10
+**Last Updated**: 2025-12-15
