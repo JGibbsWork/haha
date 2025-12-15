@@ -18,6 +18,26 @@ tv_blind_up:
   - action: input_boolean.toggle
     target:
       entity_id: input_boolean.projector_on
+
+projector_turn_on:
+  alias: Turn Projector On
+  description: Turn on the projector if it's currently off
+  mode: single
+  sequence:
+  - condition: template
+    value_template: '{{ is_state(''binary_sensor.projector_status'', ''off'') }}'
+  - action: script.tv_blind_up
+    data: {}
+
+projector_turn_off:
+  alias: Turn Projector Off
+  description: Turn off the projector if it's currently on
+  mode: single
+  sequence:
+  - condition: template
+    value_template: '{{ is_state(''binary_sensor.projector_status'', ''on'') }}'
+  - action: script.tv_blind_up
+    data: {}
 projectorprofileflow:
   sequence:
   - if:
@@ -85,9 +105,9 @@ tv_open_kiosk_browser:
   mode: restart
   description: Power on the Google TV and launch Fully Kiosk Browser.
   variables:
-    tv_entity: media_player.living_room_tv_2
+    tv_entity: media_player.googletv
     kiosk_package: de.ozerov.fully
-    kiosk_url: http://jamess-mac-mini.local:3000/tv/
+    kiosk_url: http://jamess-mac-mini:3000/tv/
   sequence:
   - choose:
     - conditions:
@@ -127,8 +147,8 @@ kiosk_launch:
           children_media_class:
           navigateIds:
           - {}
-          browse_entity_id: media_player.living_room_tv_2
+          browse_entity_id: media_player.googletv
     target:
-      entity_id: media_player.living_room_tv_2
+      entity_id: media_player.googletv
   alias: kiosk launch
   description: ''

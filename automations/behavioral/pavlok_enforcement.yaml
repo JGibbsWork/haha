@@ -1,62 +1,333 @@
 # Behavioral Enforcement Automations
-# Pavlok shock triggers based on zone detection
+# Pavlok shock triggers based on zone occupancy booleans
 
 - id: '1745371361598'
-  alias: Couch Zone Shock - Live
-  description: Shock if person is detected in the 'couch' zone and enforcement is enabled
+  alias: Couch Zone Shock - Scheduled
+  description: Shock if person is on couch during restricted hours (11pm-11am weekdays)
   triggers:
-  - topic: frigate/living_room/couch/person
-    payload: '1'
-    trigger: mqtt
+  - platform: state
+    entity_id: input_boolean.couch_occupied
+    to: 'on'
+    for:
+      seconds: 5
+    id: person_sat_down
+  - platform: state
+    entity_id: input_boolean.couch_restricted
+    to: 'on'
+    id: restriction_enabled
   conditions:
+  - condition: state
+    entity_id: input_boolean.couch_occupied
+    state: 'on'
   - condition: state
     entity_id: input_boolean.couch_restricted
     state: 'on'
   - condition: state
     entity_id: input_boolean.shocked
     state: 'off'
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: time
+        after: '23:00:00'
+        before: '23:59:59'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: and
+      conditions:
+      - condition: time
+        after: '00:00:00'
+        before: '11:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
   actions:
-  - action: rest_command.pavlok_couch
-    data: {}
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_on
-    data: {}
-  - action: rest_command.habitica_lounge_negative
-    data: {}
-  - delay: 00:01:00
-  - target:
-      entity_id: input_boolean.shocked
-    action: input_boolean.turn_off
-    data: {}
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.couch_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.couch_restricted
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: and
+          conditions:
+          - condition: time
+            after: '22:45:00'
+            before: '23:59:59'
+            weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+        - condition: and
+          conditions:
+          - condition: time
+            after: '00:00:00'
+            before: '17:00:00'
+            weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+      sequence:
+      - action: rest_command.pavlok_couch
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - action: rest_command.habitica_lounge_negative
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
   mode: single
 
 - id: '1748993940939'
-  alias: Bed Shock (Zone Enforcement - Toggle)
-  description: Shock if person detected in 'bed' zone and enforcement is enabled
+  alias: Bed Shock - Scheduled (No Sleeping In)
+  description: Shock if person is in bed during restricted hours (6:30am-6pm weekdays)
   triggers:
-  - topic: frigate/bed_room/bed
-    payload: 'ON'
-    trigger: mqtt
+  - platform: state
+    entity_id: input_boolean.bed_occupied
+    to: 'on'
+    for:
+      seconds: 5
+    id: person_in_bed
+  - platform: state
+    entity_id: input_boolean.bed_restricted
+    to: 'on'
+    id: restriction_enabled
   conditions:
+  - condition: state
+    entity_id: input_boolean.bed_occupied
+    state: 'on'
   - condition: state
     entity_id: input_boolean.bed_restricted
     state: 'on'
   - condition: state
     entity_id: input_boolean.shocked
     state: 'off'
+  - condition: time
+    after: '06:30:00'
+    before: '18:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
   actions:
-  - action: rest_command.pavlok_bed
-    data: {}
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.bed_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.bed_restricted
+        state: 'on'
+      - condition: time
+        after: '06:30:00'
+        before: '18:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - action: rest_command.pavlok_bed
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - action: rest_command.habitica_lounge_negative
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
+  mode: single
+
+- id: sleep_enforcement_out_of_bed
+  alias: Sleep Enforcement - Out of Bed Too Long
+  description: Shock if out of bed >10min during sleep hours (11pm-5:45am)
+  triggers:
+  - platform: state
+    entity_id: input_boolean.bed_occupied
+    to: 'off'
+    for:
+      minutes: 10
+  conditions:
+  - condition: state
+    entity_id: input_boolean.sleep_enforcement_enabled
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.shocked
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: time
+      after: '23:00:00'
+      before: '23:59:59'
+    - condition: time
+      after: '00:00:00'
+      before: '05:45:00'
+  actions:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.bed_occupied
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.sleep_enforcement_enabled
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: time
+          after: '23:00:00'
+          before: '23:59:59'
+        - condition: time
+          after: '00:00:00'
+          before: '05:45:00'
+      sequence:
+      - action: rest_command.pavlok_shock
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
+  mode: single
+
+- id: couch_time_limit_enforcement
+  alias: Couch Time Limit - Force Leave After 30min
+  description: Shock after 30min on couch (except chill time 7:30-11pm), 10min cooldown
+  triggers:
+  - platform: state
+    entity_id: input_boolean.couch_occupied
+    to: 'on'
+    for:
+      minutes: 30
+  conditions:
+  - condition: state
+    entity_id: input_boolean.couch_time_limit_enabled
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.shocked
+    state: 'off'
+  - condition: not
+    conditions:
+    - condition: time
+      after: '19:30:00'
+      before: '23:00:00'
+  actions:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.couch_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.couch_time_limit_enabled
+        state: 'on'
+      - condition: not
+        conditions:
+        - condition: time
+          after: '19:30:00'
+          before: '23:00:00'
+      sequence:
+      - action: rest_command.pavlok_couch
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
+  mode: restart
+
+- id: couch_cooldown_start
+  alias: Couch Cooldown - Start After Leaving
+  description: Start 10min cooldown when leaving couch after time limit
+  triggers:
+  - platform: state
+    entity_id: input_boolean.couch_occupied
+    to: 'off'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.couch_time_limit_enabled
+    state: 'on'
+  actions:
   - target:
-      entity_id: input_boolean.shocked
+      entity_id: input_boolean.couch_cooldown
     action: input_boolean.turn_on
     data: {}
-  - action: rest_command.habitica_lounge_negative
-    data: {}
-  - delay: 00:01:00
+  - delay: 00:10:00
   - target:
-      entity_id: input_boolean.shocked
+      entity_id: input_boolean.couch_cooldown
     action: input_boolean.turn_off
     data: {}
-  mode: single
+  mode: restart
+
+- id: couch_cooldown_shock
+  alias: Couch Cooldown - Shock If Sit During Cooldown
+  description: Shock immediately if sitting on couch during cooldown period
+  triggers:
+  - platform: state
+    entity_id: input_boolean.couch_occupied
+    to: 'on'
+  conditions:
+  - condition: state
+    entity_id: input_boolean.couch_time_limit_enabled
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.couch_cooldown
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.shocked
+    state: 'off'
+  actions:
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.couch_occupied
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.couch_cooldown
+        state: 'on'
+      sequence:
+      - action: rest_command.pavlok_couch
+        data: {}
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_on
+        data: {}
+      - delay: 00:01:00
+      - target:
+          entity_id: input_boolean.shocked
+        action: input_boolean.turn_off
+        data: {}
+  mode: restart

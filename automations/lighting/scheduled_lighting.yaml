@@ -15,7 +15,7 @@
   - action: script.lighting_route_by_time_now
     metadata: {}
     data: {}
-  - action: script.tv_blind_up
+  - action: script.projector_turn_on
     metadata: {}
     data: {}
   - action: script.tv_open_kiosk_browser

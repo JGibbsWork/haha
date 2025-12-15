@@ -1,0 +1,115 @@
+# Frigate Zone Presence Detection
+# Maintains presence booleans based on Frigate MQTT events
+
+# DEBUG - Log all Frigate events for troubleshooting
+- id: frigate_debug_all_events
+  alias: "DEBUG: Frigate All Events"
+  description: Log all Frigate events to see what's happening
+  mode: queued
+  max: 10
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions: []
+  actions:
+    - action: system_log.write
+      data:
+        message: >
+          Frigate Event - Type: {{ trigger.payload_json.type | default('N/A') }}
+          | Label: {{ trigger.payload_json.after.label | default('N/A') }}
+          | Camera: {{ trigger.payload_json.after.camera | default('N/A') }}
+          | Before Zones: {{ trigger.payload_json.before.current_zones | default([]) }}
+          | After Zones: {{ trigger.payload_json.after.current_zones | default([]) }}
+        level: warning
+
+# Couch Zone - Person Enter
+- id: frigate_couch_person_enter
+  alias: "Frigate: Person Entered Couch Zone"
+  description: Turn on couch_occupied when Frigate detects person entering couch zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('after', {}).get('label') == 'person'
+           and 'couch' not in before_zones
+           and 'couch' in after_zones }}
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.couch_occupied
+
+# Couch Zone - Person Exit
+- id: frigate_couch_person_exit
+  alias: "Frigate: Person Left Couch Zone"
+  description: Turn off couch_occupied when Frigate detects person leaving couch zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('before', {}).get('label') == 'person'
+           and 'couch' in before_zones
+           and 'couch' not in after_zones }}
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.couch_occupied
+
+# Bed Zone - Person Enter
+- id: frigate_bed_person_enter
+  alias: "Frigate: Person Entered Bed Zone"
+  description: Turn on bed_occupied when Frigate detects person entering bed zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('after', {}).get('label') == 'person'
+           and 'bed' not in before_zones
+           and 'bed' in after_zones }}
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bed_occupied
+
+# Bed Zone - Person Exit
+- id: frigate_bed_person_exit
+  alias: "Frigate: Person Left Bed Zone"
+  description: Turn off bed_occupied when Frigate detects person leaving bed zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('before', {}).get('label') == 'person'
+           and 'bed' in before_zones
+           and 'bed' not in after_zones }}
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.bed_occupied

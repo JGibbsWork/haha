@@ -1,215 +1,107 @@
-# Home Assistant Roadmap & Goals
+# Home Assistant Roadmap
 
-## ✅ Current Status: CLEAN & ORGANIZED
+## ✅ Completed
 
-Your configuration is now:
-- 🗂️ **Modular** - Organized into logical folders (automations/, scripts_organized/, packages/)
-- 🔐 **Secure** - API keys in secrets.yaml (gitignored)
-- 📊 **Lean** - Removed 14 files, 13K+ lines of bloat
-- 🎯 **Maintainable** - Easy to find and modify specific features
+- ✅ **Clean config structure** - Organized into automations/, scripts_organized/, packages/
+- ✅ **Security basics** - API keys in secrets.yaml (gitignored)
+- ✅ **Dashboards** - iPad (restricted) and admin dashboards built
+- ✅ **MQTT + Frigate setup** - Config fixed, sensors created
+- ✅ **AdGuard installed** - Running on network
 
 ---
 
-## 🎯 Short-Term Goals (Next Steps)
+## 🎯 Current Focus
 
-### 1. **Security Cleanup** ⚠️ URGENT
-- [ ] Rotate Pavlok API token (exposed in git history)
-- [ ] Rotate Habitica API key (exposed in git history)
-- [ ] Delete local SSH keys after confirming they're not in use
+### **1. MQTT + Pavlok System** ⚡
+**Status**: Foundation complete, needs testing & safety
 
-### 2. **Projector Status Tracking**
-- [ ] Buy smart plug with power monitoring (Zigbee/WiFi)
-- [ ] Create template sensor: `input_boolean.projector_on` based on power draw
-- [ ] Test: Voice commands report accurate state
+- [x] Fix MQTT broker connection
+- [x] Fix zone detection sensors (couch, bed)
+- [x] Add missing input_booleans
+- [ ] Add safety limits (max shocks per hour, cooldown periods)
+- [ ] Test enforcement automations end-to-end
+- [ ] Add dashboard toggle controls
 
-### 3. **MQTT + Frigate Presence** 🔧 IN PROGRESS
-**Status**: Config fixed, waiting on MQTT connection
-- [x] Fix MQTT topic mismatches (couch/bed sensors)
-- [x] Add missing input_booleans (shocked, bed_restricted, couch_restricted)
-- [ ] Debug MQTT timeout errors
-- [ ] Test Pavlok enforcement automations
+### **2. Projector Status Tracking**
+**Status**: ✅ Complete
 
-### 4. **Voice Assistant Improvements**
-- [ ] Add `description:` fields to all automations (voice discoverability)
+- [x] Buy smart plug with power monitoring (Sonoff - installed)
+- [x] Create template sensor based on power draw (`binary_sensor.projector_status`)
+- [x] Create turn on/off scripts that check state first
+- [x] Add leave home automation to turn off projector
+
+### **3. Kitchen Camera Automation**
+**Status**: Needs hardware integration
+
+- [ ] Add kitchen lights to Home Assistant
+- [ ] Configure kitchen zone in Frigate (camera already installed)
+- [ ] Create MQTT binary sensor for kitchen occupancy (similar to couch/bed)
+- [ ] Create automations:
+  - Person detected in kitchen → lights on
+  - Person leaves kitchen → lights off (with delay)
+- [ ] Test and adjust delay timing for natural feel
+
+---
+
+## 🚀 Next Steps (Priority Order)
+
+### **Priority 1: Voice Assistant Improvements** 🎤
+**Goal**: Make voice control actually useful
+
+**Tasks**:
+- [ ] Add `description:` fields to automations (makes them voice-discoverable)
 - [ ] Rename unclear automations ("bedbuttonthings" → "Bed Button Control")
-- [ ] Test new commands: "close everything", "goodnight routine"
-- [ ] Add area tags for room-specific commands
+- [ ] Create compound scripts:
+  - "Close everything" (blinds, lights, projector)
+  - "Good morning routine" (opens blinds, morning briefing)
+  - "Movie mode" (dims lights, closes blinds, projector on)
+  - "Work mode" (bright lights, projector to work profile)
+- [ ] Test voice commands work reliably
 
 ---
 
-## 🚀 Long-Term Vision
-
-### **Priority 1: Beautiful Dashboards** 🎨
-**Goal**: Create custom, pretty dashboards for daily use
-
-**iPad Dashboard (Guest/Restricted User)**
-- [ ] Research custom dashboard frameworks (Mushroom cards, Grid layout)
-- [ ] Design layout: quick controls, status at-a-glance
-- [ ] Implement user restrictions (hide sensitive controls)
-- [ ] Test on iPad: touch-friendly, fast loading
-
-**Main Dashboard (Admin)**
-- [ ] Full control panel
-- [ ] Status monitors (MQTT, integrations, errors)
-- [ ] Quick scenes and automation toggles
-
-**Resources**:
-- [Mushroom Cards](https://github.com/piitaya/lovelace-mushroom)
-- [Button Card](https://github.com/custom-cards/button-card)
-- [Layout Card](https://github.com/thomasloven/lovelace-layout-card)
-
----
-
-### **Priority 2: MQTT + Pavlok System** ⚡
-**Goal**: Reliable presence detection → behavioral enforcement
-
-- [ ] Fix MQTT broker connection (diagnose timeout)
-- [ ] Test Frigate zone detection (couch, bed)
-- [ ] Verify Pavlok API calls work
-- [ ] Add safety limits (max shocks per hour)
-- [ ] Create dashboard controls (enable/disable enforcement)
-
----
-
-### **Priority 3: Enhanced Voice Control** 🎤
-**Goal**: "Alexa, but actually helpful"
-
-**Commands to Add**:
-- "Close everything for the night" (blinds, lights, projector)
-- "Good morning routine" (opens blinds, morning briefing, lights)
-- "Movie mode" (dims lights, closes blinds, projector on)
-- "Work mode" (bright lights, projector to work profile)
-
-**Implementation**:
-- [ ] Create compound scripts for each routine
-- [ ] Add conversation triggers to automations
-- [ ] Test with voice assistant
-
----
-
-### **Priority 4: LLM Assistant / AI Manager** 🤖
-**Goal**: Context-aware assistant that manages condo, calendar, and habits
-
-**Features**:
-- **Morning Briefing**: Weather, calendar, to-dos, commute time
-- **Proactive Suggestions**: "It's 10pm, should I close the blinds?"
-- **Calendar Integration**: Auto-adjust lights for meetings
-- **Habit Tracking**: Integration with Habitica + Pavlok
-- **Context Awareness**: Time of day, occupancy, recent activity
-
-**Tech Stack**:
-- Use existing `conversation.process` with extended_openai_conversation
-- Create custom prompts for different scenarios
-- Store context in input_text helpers
-- Schedule automations to trigger briefings
+### **Priority 2: LLM Assistant Expansion** 🤖
+**Goal**: Context-aware assistant for daily management
 
 **Current Foundation**:
-- ✅ You already have `good_morning_briefing` script (LLM-powered!)
-- ✅ Extended OpenAI integration installed
-- ✅ Calendar, todo, weather integrations ready
+- ✅ `good_morning_briefing` script (LLM-powered)
+- ✅ Extended OpenAI integration
+- ✅ Calendar, todo, weather integrations
 
 **Next Steps**:
-- [ ] Design prompt templates for different contexts
 - [ ] Create evening briefing script
-- [ ] Add proactive notifications (time-based suggestions)
-- [ ] Build context memory (last command, time patterns)
+- [ ] Add proactive time-based suggestions ("It's 10pm, should I close blinds?")
+- [ ] Calendar integration (auto-adjust lights for meetings)
+- [ ] Habit tracking integration (Habitica + Pavlok)
 
 ---
 
-### **Priority 5: TV/Dashboard Flow** 📺
-**Goal**: Seamless dashboard display on TV (ditch Android box)
+### **Priority 3: AdGuard Home Integration** 🛡️
+**Goal**: Control network filtering from HA
 
-**Current**: Android TV box → Fully Kiosk Browser → Dashboard
-**Proposed**: Built-in TV → Fully Kiosk or Cast → Dashboard
-
-- [ ] Research: Does your TV support Fully Kiosk or casting?
-- [ ] Test: Cast Home Assistant dashboard to TV
-- [ ] Migrate kiosk scripts from Android box to TV
-- [ ] Optimize dashboard for TV (large text, simple controls)
-
----
-
-### **Priority 6: AdGuard Home** 🛡️
-**Goal**: Network-wide ad blocking with HA control
-
-**Why AdGuard > Pi-hole**:
-- Better dashboard
-- Native HA integration
-- DNS-over-HTTPS support
-- Profile-based filtering
-
-**Implementation**:
-- [ ] Install AdGuard Home on network
+- [x] AdGuard installed on network
 - [ ] Set up HA integration
 - [ ] Create toggle automations (day/night filtering)
-- [ ] Migrate from Pi-hole shell scripts
 - [ ] Add dashboard controls
 
 ---
 
-### **Priority 7: Plex Server** 🎬
-**Goal**: Local media server integrated with HA
+## 📊 Overall Status
 
-**Use Cases**:
-- Auto-dim lights when movie starts
-- Voice: "Play [movie name]"
-- Dashboard: Recently added media
+| Area | Status | What's Left |
+|------|--------|-------------|
+| **Config Structure** | ✅ Complete | - |
+| **Dashboards** | ✅ Complete | - |
+| **MQTT/Frigate** | 🟡 90% | Safety limits, testing |
+| **Pavlok System** | 🟡 85% | Safety features, end-to-end testing |
+| **Voice Control** | 🔴 30% | Add descriptions, create compound scripts |
+| **LLM Assistant** | 🟡 40% | Expand beyond morning briefing |
+| **AdGuard Integration** | 🔴 10% | HA integration setup |
 
-**Setup**:
-- [ ] Decide on Plex server hardware (Mac Mini?)
-- [ ] Install Plex
-- [ ] Add Plex HA integration
-- [ ] Create media automations
-- [ ] Add Plex card to dashboard
+**You're at approximately 65% completion** on the core features you want.
 
----
-
-## 📋 Documentation Status
-
-### Keep These Docs:
-- ✅ **GIT_GUIDE.md** - Reference for git best practices
-- ✅ **CUSTOM_COMPONENTS.md** - Tracks installed integrations
-- ✅ **ROADMAP.md** (this file) - Goals and progress
-
-### Removed (Outdated):
-- ❌ REORGANIZATION_GUIDE.md - Migration complete
-- ❌ ADDITIONAL_RECOMMENDATIONS.md - Merged into ROADMAP
+**Next logical step**: Voice improvements (quick wins that make daily use better)
 
 ---
 
-## 🎓 Learning Resources
-
-**Home Assistant**:
-- [Dashboard Design Guide](https://www.home-assistant.io/dashboards/)
-- [Voice Assistant Setup](https://www.home-assistant.io/voice_control/)
-- [Advanced Templates](https://www.home-assistant.io/docs/configuration/templating/)
-
-**LLM Integration**:
-- [Extended OpenAI Conversation](https://github.com/jekalmin/extended_openai_conversation)
-- [Llama Conversation](https://github.com/acon96/home-llm)
-
-**Dashboards**:
-- [r/homeassistant](https://www.reddit.com/r/homeassistant/) - Dashboard inspiration
-- [HACS Frontend](https://hacs.xyz/docs/categories/frontend) - Custom cards
-
----
-
-## 📊 Progress Tracker
-
-| Feature | Status | Priority |
-|---------|--------|----------|
-| Clean config structure | ✅ Done | - |
-| Security (secrets.yaml) | 🟡 Partial | HIGH |
-| MQTT/Frigate | 🟡 Config done | HIGH |
-| Projector tracking | ⏳ Waiting on hardware | MEDIUM |
-| Voice improvements | ⏳ Planning | HIGH |
-| Pretty dashboards | ⏳ Not started | HIGH |
-| LLM assistant | 🟡 Foundation ready | MEDIUM |
-| TV/dashboard flow | ⏳ Research needed | LOW |
-| AdGuard setup | ⏳ Not started | LOW |
-| Plex server | ⏳ Not started | LOW |
-
----
-
-**Last Updated**: 2025-12-08
-**Next Review**: After security cleanup + MQTT fix
+**Last Updated**: 2025-12-10
