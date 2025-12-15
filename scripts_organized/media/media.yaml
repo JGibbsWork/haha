@@ -18,6 +18,26 @@ tv_blind_up:
   - action: input_boolean.toggle
     target:
       entity_id: input_boolean.projector_on
+
+projector_turn_on:
+  alias: Turn Projector On
+  description: Turn on the projector if it's currently off
+  mode: single
+  sequence:
+  - condition: template
+    value_template: '{{ is_state(''binary_sensor.projector_status'', ''off'') }}'
+  - action: script.tv_blind_up
+    data: {}
+
+projector_turn_off:
+  alias: Turn Projector Off
+  description: Turn off the projector if it's currently on
+  mode: single
+  sequence:
+  - condition: template
+    value_template: '{{ is_state(''binary_sensor.projector_status'', ''on'') }}'
+  - action: script.tv_blind_up
+    data: {}
 projectorprofileflow:
   sequence:
   - if:
