@@ -32,6 +32,11 @@ couch_occupied:
   initial: false
   icon: mdi:sofa
 
+kitchen_occupied:
+  name: Kitchen Occupied
+  initial: false
+  icon: mdi:chef-hat
+
 couch_time_limit_enabled:
   name: Couch Time Limit Enabled
   initial: false

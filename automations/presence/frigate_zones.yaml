@@ -113,3 +113,49 @@
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.bed_occupied
+
+# Kitchen Zone - Person Enter
+- id: frigate_kitchen_person_enter
+  alias: "Frigate: Person Entered Kitchen Zone"
+  description: Turn on kitchen_occupied when Frigate detects person entering kitchenspace zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('after', {}).get('label') == 'person'
+           and 'kitchenspace' not in before_zones
+           and 'kitchenspace' in after_zones }}
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.kitchen_occupied
+
+# Kitchen Zone - Person Exit
+- id: frigate_kitchen_person_exit
+  alias: "Frigate: Person Left Kitchen Zone"
+  description: Turn off kitchen_occupied when Frigate detects person leaving kitchenspace zone
+  mode: queued
+  max: 5
+  triggers:
+    - platform: mqtt
+      topic: frigate/events
+  conditions:
+    - condition: template
+      value_template: >
+        {% set payload = trigger.payload_json %}
+        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
+        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
+        {{ payload.get('before', {}).get('label') == 'person'
+           and 'kitchenspace' in before_zones
+           and 'kitchenspace' not in after_zones }}
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.kitchen_occupied

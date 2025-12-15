@@ -1,0 +1,38 @@
+# Presence-Based Lighting Automations
+# Automatic lights based on room occupancy
+
+- id: kitchen_lights_on_presence
+  alias: "Kitchen Lights: Turn On When Occupied"
+  description: Turn on kitchen track lights when person enters kitchen
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.kitchen_occupied
+      to: 'on'
+  conditions: []
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data: {}
+
+- id: kitchen_lights_off_presence
+  alias: "Kitchen Lights: Turn Off When Empty"
+  description: Turn off kitchen track lights when person leaves kitchen
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.kitchen_occupied
+      to: 'off'
+      for:
+        seconds: 30
+  conditions: []
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data: {}
