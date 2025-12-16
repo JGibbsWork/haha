@@ -1,0 +1,120 @@
+# Automated Restriction Schedules
+# Time-based toggling of behavioral enforcement controls
+
+# Couch Restrictions - Enable at night
+- id: couch_restriction_enable
+  alias: "Couch Restriction: Enable (11pm Sun-Thu)"
+  description: Enable couch restriction at 11pm on weeknights
+  mode: single
+  triggers:
+    - platform: time
+      at: "23:00:00"
+  conditions:
+    - condition: time
+      weekday:
+        - sun
+        - mon
+        - tue
+        - wed
+        - thu
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.couch_restricted
+      data: {}
+
+# Couch Restrictions - Disable in afternoon
+- id: couch_restriction_disable
+  alias: "Couch Restriction: Disable (3pm Mon-Fri)"
+  description: Disable couch restriction at 3pm on weekdays
+  mode: single
+  triggers:
+    - platform: time
+      at: "15:00:00"
+  conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.couch_restricted
+      data: {}
+
+# Bed Restrictions - Enable in morning
+- id: bed_restriction_enable
+  alias: "Bed Restriction: Enable (7am Mon-Fri)"
+  description: Enable bed restriction at 7am on weekdays
+  mode: single
+  triggers:
+    - platform: time
+      at: "07:00:00"
+  conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bed_restricted
+      data: {}
+
+# Bed Restrictions - Disable in evening
+- id: bed_restriction_disable
+  alias: "Bed Restriction: Disable (7pm Mon-Fri)"
+  description: Disable bed restriction at 7pm on weekdays
+  mode: single
+  triggers:
+    - platform: time
+      at: "19:00:00"
+  conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.bed_restricted
+      data: {}
+
+# Couch Time Limit - Enable in morning (baseline enforcement)
+- id: couch_time_limit_enable
+  alias: "Couch Time Limit: Enable (8am Daily)"
+  description: Enable 30-min couch time limit at 8am
+  mode: single
+  triggers:
+    - platform: time
+      at: "08:00:00"
+  conditions: []
+  actions:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.couch_time_limit_enabled
+      data: {}
+
+# Couch Time Limit - Disable for evening veg time
+- id: couch_time_limit_disable
+  alias: "Couch Time Limit: Disable (8pm Daily)"
+  description: Disable couch time limit at 8pm for relaxation time
+  mode: single
+  triggers:
+    - platform: time
+      at: "20:00:00"
+  conditions: []
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.couch_time_limit_enabled
+      data: {}

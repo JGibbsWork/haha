@@ -15,9 +15,6 @@ tv_blind_up:
       num_repeats: 1
       delay_secs: 0.4
       hold_secs: 3
-  - action: input_boolean.toggle
-    target:
-      entity_id: input_boolean.projector_on
 
 projector_turn_on:
   alias: Turn Projector On
@@ -25,7 +22,7 @@ projector_turn_on:
   mode: single
   sequence:
   - condition: template
-    value_template: '{{ is_state(''binary_sensor.projector_status'', ''off'') }}'
+    value_template: '{{ states(''sensor.sonoff_100267c292_power'') | float(0) < 50 }}'
   - action: script.tv_blind_up
     data: {}
 
@@ -35,7 +32,7 @@ projector_turn_off:
   mode: single
   sequence:
   - condition: template
-    value_template: '{{ is_state(''binary_sensor.projector_status'', ''on'') }}'
+    value_template: '{{ states(''sensor.sonoff_100267c292_power'') | float(0) > 50 }}'
   - action: script.tv_blind_up
     data: {}
 projectorprofileflow:
