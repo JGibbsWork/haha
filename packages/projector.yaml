@@ -1,19 +1,6 @@
 # Projector Profile Management
 # REST commands to control projector profiles via Mac Mini API
-
-# Template sensor to detect projector state based on power consumption
-template:
-  - binary_sensor:
-      - name: "Projector Status"
-        unique_id: projector_status_power_based
-        device_class: power
-        state: >
-          {{ states('sensor.sonoff_100267c292_power') | float(0) > 50 }}
-        availability: >
-          {{ states('sensor.sonoff_100267c292_power') not in ['unknown', 'unavailable'] }}
-        attributes:
-          friendly_name: "Projector"
-          power_draw: "{{ states('sensor.sonoff_100267c292_power') }} W"
+# Projector state tracked directly via sensor.sonoff_100267c292_power (>50W = on)
 
 rest_command:
   projector_profile_default:

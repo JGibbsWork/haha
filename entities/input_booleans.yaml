@@ -1,10 +1,6 @@
 # Input Booleans
 # Toggle helpers for automation control
 
-projector_on:
-  name: Projector On
-  initial: false
-
 # Behavioral enforcement controls
 shocked:
   name: Shock Cooldown
