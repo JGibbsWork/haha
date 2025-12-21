@@ -1,3 +1,26 @@
+goodnight:
+  alias: Goodnight
+  description: Turn off everything and close blinds/shades for bedtime
+  mode: single
+  sequence:
+  - action: script.close_blinds
+    metadata: {}
+    data: {}
+  - action: script.close_shades
+    metadata: {}
+    data: {}
+  - action: script.projector_turn_off
+    metadata: {}
+    data: {}
+  - action: media_player.turn_off
+    target:
+      entity_id: media_player.googletv
+    data: {}
+  - action: light.turn_off
+    target:
+      entity_id: all
+    data: {}
+
 good_morning_briefing:
   alias: Good Morning Briefing (LLM)
   mode: restart
