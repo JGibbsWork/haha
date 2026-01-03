@@ -4,142 +4,113 @@ open_blinds:
     domain: cover
     entity_id: e80f7de78e5ca17dfff1cc0d725e414c
     type: open
+  - delay:
+      seconds: 2
   - device_id: de64dceae59b28e117982717191dca37
     domain: cover
     entity_id: 8ea437962e557ba07542e9dff0456961
     type: open
+  - delay:
+      seconds: 2
   - device_id: 04eeedd90ececa5fad6b261555f8024a
     domain: cover
     entity_id: 0e390d6c5aca6476db51faf919eeabd4
     type: open
+  - delay:
+      seconds: 2
   - device_id: efa9b26832ac7e39a4d8cf528c21a026
     domain: cover
     entity_id: 198183b956106fc88984b9a33b0f2f0d
     type: open
+  - delay:
+      seconds: 2
   - device_id: 606436b1271fc3248ffac1f14b4a44b2
     domain: cover
     entity_id: 487e5a41ff5d95b0a916dd643279582c
     type: open
   alias: Open Blinds
-  description: ''
+  description: Opens all blinds with 2-second delays between each
 close_blinds:
   sequence:
   - device_id: 0927c6f398ab48e79514fcb132499e18
     domain: cover
     entity_id: e80f7de78e5ca17dfff1cc0d725e414c
     type: close
+  - delay:
+      seconds: 2
   - device_id: de64dceae59b28e117982717191dca37
     domain: cover
     entity_id: 8ea437962e557ba07542e9dff0456961
     type: close
+  - delay:
+      seconds: 2
   - device_id: 04eeedd90ececa5fad6b261555f8024a
     domain: cover
     entity_id: 0e390d6c5aca6476db51faf919eeabd4
     type: close
+  - delay:
+      seconds: 2
   - device_id: efa9b26832ac7e39a4d8cf528c21a026
     domain: cover
     entity_id: 198183b956106fc88984b9a33b0f2f0d
     type: close
+  - delay:
+      seconds: 2
   - device_id: 606436b1271fc3248ffac1f14b4a44b2
     domain: cover
     entity_id: 487e5a41ff5d95b0a916dd643279582c
     type: close
   alias: Close Blinds
-  description: ''
+  description: Closes all blinds with 2-second delays between each
 close_shades:
   sequence:
   - device_id: 5ba9ca5cc8c5019451d449254917efb9
     domain: cover
     entity_id: 46839409154dbeec24f2b919611a1716
     type: close
+  - delay:
+      seconds: 2
   - device_id: 411b53495742315afd9d68033abcb3d6
     domain: cover
     entity_id: 0a1ea51cc0f0d26611c316dd6fa55fba
     type: close
+  - delay:
+      seconds: 2
   - device_id: 78f9c69e89c0e075e678498e3ca4851e
     domain: cover
     entity_id: 40450dd49b1635cea177fe0ed036bcb7
     type: close
+  - delay:
+      seconds: 2
   - device_id: 7652fde55b2ae7ce88d139badeebc6a1
     domain: cover
     entity_id: 9c4eca97ced13f76b46caed85bb4ac52
     type: close
   alias: Close Shades
-  description: ''
+  description: Closes all shades with 2-second delays between each
 open_shades:
   sequence:
   - device_id: 5ba9ca5cc8c5019451d449254917efb9
     domain: cover
     entity_id: 46839409154dbeec24f2b919611a1716
     type: open
+  - delay:
+      seconds: 2
   - device_id: 411b53495742315afd9d68033abcb3d6
     domain: cover
     entity_id: 0a1ea51cc0f0d26611c316dd6fa55fba
     type: open
+  - delay:
+      seconds: 2
   - device_id: 78f9c69e89c0e075e678498e3ca4851e
     domain: cover
     entity_id: 40450dd49b1635cea177fe0ed036bcb7
     type: open
+  - delay:
+      seconds: 2
   - device_id: 7652fde55b2ae7ce88d139badeebc6a1
     domain: cover
     entity_id: 9c4eca97ced13f76b46caed85bb4ac52
     type: open
   alias: Open Shades
-  description: ''
-toggle_shades:
-  sequence:
-  - if:
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.closetshade_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.diningshade_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.djshade_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.tvshade_opening
-        state: 'on'
-    then:
-    - action: script.close_shades
-      metadata: {}
-      data: {}
-    else:
-    - action: script.open_shades
-      metadata: {}
-      data: {}
-  alias: toggle shades
-  description: ''
-toggle_blinds:
-  sequence:
-  - if:
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.bedblind_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.closetblind_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.diningblind_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.djblind_opening
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.tvblind_opening
-        state: 'on'
-    then:
-    - action: script.close_blinds
-      metadata: {}
-      data: {}
-    else:
-    - action: script.open_blinds
-      metadata: {}
-      data: {}
-  alias: toggle blinds
-  description: ''
+  description: Opens all shades with 2-second delays between each

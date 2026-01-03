@@ -21,13 +21,13 @@
 - id: kitchen_lights_off_presence
   alias: "Kitchen Lights: Turn Off When Empty"
   description: Turn off kitchen track lights when person leaves kitchen
-  mode: single
+  mode: restart
   triggers:
     - platform: state
       entity_id: input_boolean.kitchen_occupied
       to: 'off'
       for:
-        seconds: 30
+        seconds: 15
   conditions: []
   actions:
     - action: light.turn_off
@@ -36,3 +36,26 @@
           - light.kitchen_track_1
           - light.track_2
       data: {}
+
+# Failsafe: Force lights off after max time
+- id: kitchen_lights_failsafe_timeout
+  alias: "Kitchen Lights: Failsafe Timeout"
+  description: Turn off kitchen lights if occupied for more than 15 minutes (Frigate detection failsafe)
+  mode: restart
+  triggers:
+    - platform: state
+      entity_id: input_boolean.kitchen_occupied
+      to: 'on'
+      for:
+        minutes: 15
+  conditions: []
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data: {}
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.kitchen_occupied

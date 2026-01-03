@@ -49,8 +49,7 @@
 - id: frigate_couch_person_exit
   alias: "Frigate: Person Left Couch Zone"
   description: Turn off couch_occupied when Frigate detects person leaving couch zone
-  mode: queued
-  max: 5
+  mode: restart
   triggers:
     - platform: mqtt
       topic: frigate/events
@@ -64,6 +63,8 @@
            and 'couch' in before_zones
            and 'couch' not in after_zones }}
   actions:
+    - delay:
+        seconds: 10
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.couch_occupied
@@ -95,8 +96,7 @@
 - id: frigate_bed_person_exit
   alias: "Frigate: Person Left Bed Zone"
   description: Turn off bed_occupied when Frigate detects person leaving bed zone
-  mode: queued
-  max: 5
+  mode: restart
   triggers:
     - platform: mqtt
       topic: frigate/events
@@ -110,6 +110,8 @@
            and 'bed' in before_zones
            and 'bed' not in after_zones }}
   actions:
+    - delay:
+        seconds: 10
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.bed_occupied
@@ -141,8 +143,7 @@
 - id: frigate_kitchen_person_exit
   alias: "Frigate: Person Left Kitchen Zone"
   description: Turn off kitchen_occupied when Frigate detects person leaving kitchenspace zone
-  mode: queued
-  max: 5
+  mode: restart
   triggers:
     - platform: mqtt
       topic: frigate/events
@@ -156,6 +157,8 @@
            and 'kitchenspace' in before_zones
            and 'kitchenspace' not in after_zones }}
   actions:
+    - delay:
+        seconds: 3
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.kitchen_occupied
