@@ -149,3 +149,13 @@ kiosk_launch:
       entity_id: media_player.googletv
   alias: kiosk launch
   description: ''
+
+tv_power_toggle:
+  alias: TV Power Toggle
+  description: Toggle Google TV power for iOS widgets
+  icon: mdi:television
+  mode: single
+  sequence:
+  - action: media_player.toggle
+    target:
+      entity_id: media_player.googletv
