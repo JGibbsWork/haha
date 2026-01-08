@@ -158,7 +158,7 @@
            and 'kitchenspace' not in after_zones }}
   actions:
     - delay:
-        seconds: 3
+        seconds: 10
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.kitchen_occupied

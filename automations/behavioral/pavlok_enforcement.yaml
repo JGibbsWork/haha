@@ -58,6 +58,9 @@
       - condition: state
         entity_id: input_boolean.couch_restricted
         state: 'on'
+      - condition: template
+        value_template: >
+          {{ states('sensor.couch_person_count') | int(0) > 0 }}
       - condition: or
         conditions:
         - condition: and
@@ -140,6 +143,9 @@
       - condition: state
         entity_id: input_boolean.bed_restricted
         state: 'on'
+      - condition: template
+        value_template: >
+          {{ states('sensor.bed_person_count') | int(0) > 0 }}
       - condition: time
         after: '06:30:00'
         before: '18:00:00'
@@ -250,6 +256,9 @@
       - condition: state
         entity_id: input_boolean.couch_time_limit_enabled
         state: 'on'
+      - condition: template
+        value_template: >
+          {{ states('sensor.couch_person_count') | int(0) > 0 }}
       - condition: not
         conditions:
         - condition: time
@@ -318,6 +327,9 @@
       - condition: state
         entity_id: input_boolean.couch_cooldown
         state: 'on'
+      - condition: template
+        value_template: >
+          {{ states('sensor.couch_person_count') | int(0) > 0 }}
       sequence:
       - action: rest_command.pavlok_couch
         data: {}

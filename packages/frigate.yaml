@@ -1,3 +1,24 @@
 # Frigate Camera & Zone Detection
 # Zone occupancy is tracked via input_booleans (bed_occupied, couch_occupied)
 # and updated by automations in automations/presence/frigate_zones.yaml
+
+# MQTT Sensors for real-time zone person counts
+mqtt:
+  sensor:
+    - name: "Couch Person Count"
+      state_topic: "frigate/couch/person/active"
+      value_template: "{{ value | int(0) }}"
+      unit_of_measurement: "people"
+      icon: mdi:account
+
+    - name: "Bed Person Count"
+      state_topic: "frigate/bed/person/active"
+      value_template: "{{ value | int(0) }}"
+      unit_of_measurement: "people"
+      icon: mdi:account
+
+    - name: "Kitchen Person Count"
+      state_topic: "frigate/kitchenspace/person/active"
+      value_template: "{{ value | int(0) }}"
+      unit_of_measurement: "people"
+      icon: mdi:account
