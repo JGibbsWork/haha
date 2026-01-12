@@ -21,6 +21,25 @@ goodnight:
       entity_id: all
     data: {}
 
+open_playstation:
+  alias: Open PlayStation
+  description: Launch HDMI1 app and automatically open it
+  mode: single
+  sequence:
+  - action: media_player.play_media
+    target:
+      entity_id: media_player.googletv
+    data:
+      media_content_type: app
+      media_content_id: com.mpiero.android.tvhdmi1
+  - delay:
+      seconds: 2
+  - action: remote.send_command
+    target:
+      entity_id: remote.googletv
+    data:
+      command: DPAD_CENTER
+
 good_morning_briefing:
   alias: Good Morning Briefing (LLM)
   mode: restart
