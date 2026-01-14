@@ -25,6 +25,9 @@
   - condition: state
     entity_id: input_boolean.shocked
     state: 'off'
+  - condition: template
+    value_template: >
+      {{ 'couch' not in state_attr('calendar.jrgibz_gmail_com', 'message') | lower | default('') }}
   - condition: or
     conditions:
     - condition: and
@@ -242,6 +245,9 @@
   - condition: state
     entity_id: input_boolean.shocked
     state: 'off'
+  - condition: template
+    value_template: >
+      {{ 'couch' not in state_attr('calendar.jrgibz_gmail_com', 'message') | lower | default('') }}
   - condition: not
     conditions:
     - condition: time

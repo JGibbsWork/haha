@@ -23,26 +23,19 @@
         entity_id: input_boolean.couch_restricted
       data: {}
 
-# Couch Restrictions - Disable in afternoon
-- id: couch_restriction_disable
-  alias: "Couch Restriction: Disable (3pm Mon-Fri)"
-  description: Disable couch restriction at 3pm on weekdays
+# Shocked Boolean - Daily Reset
+- id: shocked_boolean_reset
+  alias: "Shocked Boolean: Daily Reset (7am)"
+  description: Reset shocked boolean at 7am daily to ensure system is ready
   mode: single
   triggers:
     - platform: time
-      at: "15:00:00"
-  conditions:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+      at: "07:00:00"
+  conditions: []
   actions:
     - action: input_boolean.turn_off
       target:
-        entity_id: input_boolean.couch_restricted
+        entity_id: input_boolean.shocked
       data: {}
 
 # Bed Restrictions - Enable in morning
