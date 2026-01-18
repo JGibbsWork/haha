@@ -64,3 +64,19 @@
   mode: single
   variables:
     player: media_player.living_room
+
+- id: kitchen_button_manual_override
+  alias: "Kitchen Button: Toggle Manual Override"
+  description: Single press toggles manual override for kitchen lights
+  triggers:
+  - device_id: f41b19586534c8b91f98a2fcfcbbf540
+    domain: zha
+    type: remote_button_short_press
+    subtype: button
+    trigger: device
+  conditions: []
+  actions:
+  - action: input_boolean.toggle
+    target:
+      entity_id: input_boolean.kitchen_manual_override
+  mode: single

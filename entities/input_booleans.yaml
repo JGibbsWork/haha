@@ -47,3 +47,8 @@ sleep_enforcement_enabled:
   name: Sleep Enforcement Enabled
   initial: false
   icon: mdi:bed-clock
+
+kitchen_manual_override:
+  name: Kitchen Manual Override
+  initial: false
+  icon: mdi:lightbulb

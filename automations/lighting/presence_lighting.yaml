@@ -9,7 +9,10 @@
     - platform: state
       entity_id: input_boolean.kitchen_occupied
       to: 'on'
-  conditions: []
+  conditions:
+    - condition: state
+      entity_id: input_boolean.kitchen_manual_override
+      state: 'off'
   actions:
     - action: light.turn_on
       target:
@@ -28,6 +31,43 @@
       to: 'off'
       for:
         seconds: 15
+  conditions:
+    - condition: state
+      entity_id: input_boolean.kitchen_manual_override
+      state: 'off'
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data: {}
+
+- id: kitchen_lights_manual_override_on
+  alias: "Kitchen Lights: Manual Override ON"
+  description: Turn on kitchen lights when manual override is enabled
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.kitchen_manual_override
+      to: 'on'
+  conditions: []
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data: {}
+
+- id: kitchen_lights_manual_override_off
+  alias: "Kitchen Lights: Manual Override OFF"
+  description: Turn off kitchen lights when manual override is disabled
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.kitchen_manual_override
+      to: 'off'
   conditions: []
   actions:
     - action: light.turn_off
@@ -48,7 +88,10 @@
       to: 'on'
       for:
         minutes: 15
-  conditions: []
+  conditions:
+    - condition: state
+      entity_id: input_boolean.kitchen_manual_override
+      state: 'off'
   actions:
     - action: light.turn_off
       target:
