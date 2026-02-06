@@ -4,7 +4,7 @@
 
 rest_command:
   projector_profile_default:
-    url: "http://jamess-mac-mini.local:3001/api/profile"
+    url: "http://sentinel.local:3001/api/profile"
     method: POST
     headers:
       Content-Type: application/json
@@ -14,7 +14,7 @@ rest_command:
       }
 
   projector_profile_work:
-    url: "http://jamess-mac-mini.local:3001/api/profile"
+    url: "http://sentinel.local:3001/api/profile"
     method: POST
     headers:
       Content-Type: application/json
@@ -24,7 +24,7 @@ rest_command:
       }
 
   projector_profile_morning:
-    url: "http://jamess-mac-mini.local:3001/api/profile"
+    url: "http://sentinel.local:3001/api/profile"
     method: POST
     headers:
       Content-Type: application/json

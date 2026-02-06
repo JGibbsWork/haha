@@ -1,6 +1,6 @@
 # Chicago Transit Tracker
 rest:
-  - resource: http://jamess-mac-mini.local:3002/api/transit/all
+  - resource: http://sentinel.local:3002/api/transit/all
     scan_interval: 60  # Update every 60 seconds
     sensor:
       # Bus 77 Eastbound - Next arrival

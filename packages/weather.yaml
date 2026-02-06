@@ -1,7 +1,7 @@
 # Local Weather API
 rest:
   # Current Weather
-  - resource: http://jamess-mac-mini.local:3002/api/weather/current
+  - resource: http://sentinel.local:3002/api/weather/current
     scan_interval: 300  # Update every 5 minutes
     sensor:
       - name: "Weather Temperature"
@@ -50,7 +50,7 @@ rest:
         icon: mdi:weather-windy
 
   # Weather Forecast
-  - resource: http://jamess-mac-mini.local:3002/api/weather/forecast
+  - resource: http://sentinel.local:3002/api/weather/forecast
     scan_interval: 1800  # Update every 30 minutes
     sensor:
       # Day 1 Forecast (Today)
