@@ -80,3 +80,18 @@
     target:
       entity_id: input_boolean.kitchen_manual_override
   mode: single
+
+- id: printer_button_briefing
+  alias: "Printer Button: Print Briefing"
+  description: Press button to trigger n8n briefing print
+  triggers:
+  - device_id: 8945df949b921f55dbba48be6dec9c2e
+    domain: zha
+    type: remote_button_short_press
+    subtype: button
+    trigger: device
+  conditions: []
+  actions:
+  - action: rest_command.print_briefing
+    data: {}
+  mode: single

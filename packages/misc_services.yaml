@@ -14,3 +14,7 @@ rest_command:
   playlister:
     url: "http://sentinel.local:8888/api/update-playlists"
     method: POST
+
+  print_briefing:
+    url: "http://sentinel.local:3003/api/n8n/briefing/print"
+    method: GET
