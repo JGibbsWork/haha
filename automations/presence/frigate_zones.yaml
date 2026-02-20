@@ -6,7 +6,7 @@
 - id: frigate_debug_all_events
   alias: "DEBUG: Frigate All Events"
   description: Log all Frigate events to see what's happening
-  enabled: false
+  initial_state: false
   mode: queued
   max: 10
   triggers:
