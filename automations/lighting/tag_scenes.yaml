@@ -15,21 +15,8 @@
   mode: single
 
 - id: '1759538955396'
-  alias: dj party reset
-  description: ''
-  triggers:
-  - trigger: tag
-    tag_id: c169c9df-ea94-48e8-b533-fd3a7d706a7d
-  conditions: []
-  actions:
-  - action: script.lighting_route_by_time_now
-    metadata: {}
-    data: {}
-  mode: single
-
-- id: '1759806238818'
-  alias: DJ Off
-  description: ''
+  alias: DJ Party Reset
+  description: 'Reset lights to time-based defaults when DJ tag is scanned'
   triggers:
   - trigger: tag
     tag_id: c169c9df-ea94-48e8-b533-fd3a7d706a7d

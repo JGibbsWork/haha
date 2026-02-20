@@ -1,0 +1,8 @@
+# Input Text Helpers
+# Text storage for various automations
+
+morning_briefing:
+  name: Morning Briefing
+  initial: ''
+  max: 2048
+  icon: mdi:text-box-outline

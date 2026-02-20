@@ -46,3 +46,4 @@ homeassistant:
 
 # Input booleans and other helpers
 input_boolean: !include entities/input_booleans.yaml
+input_text: !include entities/input_text.yaml

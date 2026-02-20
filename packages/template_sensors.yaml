@@ -13,11 +13,12 @@ template:
           {% set tokens = states('sensor.file') | default('') | regex_findall('[^,]+') %}
           {{ tokens[1] if tokens|length > 1 else '' }}
 
-      - name: "PS5 Daily Usage"
-        unique_id: ps5_daily_usage
-        state: >
-          {% set start = now().replace(hour=0, minute=0, second=0) %}
-          {% set end = now() %}
-          {{ states('switch.ps5') == 'on' and ((end - start).total_seconds() / 3600) | round(2) or 0 }}
-        unit_of_measurement: "h"
-        icon: mdi:timer-outline
+sensor:
+  - platform: history_stats
+    name: "PS5 Daily Usage"
+    unique_id: ps5_daily_usage
+    entity_id: switch.ps5
+    state: "on"
+    type: time
+    start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+    end: "{{ now() }}"

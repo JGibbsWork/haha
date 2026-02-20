@@ -8,13 +8,8 @@ rest_command:
     headers:
       Content-Type: application/json
       Authorization: !secret pavlok_token
-    payload: >
-      {
-        "stimulus": {
-          "stimulusType": "zap",
-          "stimulusValue": {{ shock_value }}
-        }
-      }
+    content_type: "application/json"
+    payload: '{ "stimulus": { "stimulusType": "zap", "stimulusValue": {{ shock_value | default(50) }} } }'
 
   pavlok_vibe:
     url: "https://api.pavlok.com/api/v5/stimulus/send"

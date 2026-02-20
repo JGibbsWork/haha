@@ -12,16 +12,31 @@
 
 - id: '1761221436021'
   alias: whats the weather
-  description: ''
+  description: 'Respond to weather queries with current conditions and forecast'
   triggers:
   - trigger: conversation
-    command: What's the weather
+    command:
+    - What's the weather
+    - What is the weather
+    - How's the weather
   conditions: []
   actions:
   - action: weather.get_forecasts
-    metadata: {}
     data:
       type: daily
     target:
       entity_id: weather.kmdw
+    response_variable: forecast
+  - action: tts.speak
+    target:
+      entity_id: tts.piper_2
+    data:
+      cache: true
+      media_player_entity_id: media_player.living_room
+      message: >
+        Currently it's {{ states('weather.kmdw') }} and {{ state_attr('weather.kmdw', 'temperature') }} degrees.
+        {% if forecast['weather.kmdw'].forecast | length > 0 %}
+        Today's high will be {{ forecast['weather.kmdw'].forecast[0].temperature }}
+        with {{ forecast['weather.kmdw'].forecast[0].condition }}.
+        {% endif %}
   mode: single

@@ -27,7 +27,7 @@
     state: 'off'
   - condition: template
     value_template: >
-      {{ 'couch' not in state_attr('calendar.jrgibz_gmail_com', 'message') | lower | default('') }}
+      {{ 'couch' not in (state_attr('calendar.jrgibz_gmail_com', 'message') | default('') | lower) }}
   - condition: or
     conditions:
     - condition: and
@@ -247,7 +247,7 @@
     state: 'off'
   - condition: template
     value_template: >
-      {{ 'couch' not in state_attr('calendar.jrgibz_gmail_com', 'message') | lower | default('') }}
+      {{ 'couch' not in (state_attr('calendar.jrgibz_gmail_com', 'message') | default('') | lower) }}
   - condition: not
     conditions:
     - condition: time

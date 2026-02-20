@@ -2,13 +2,15 @@
 # Maintains presence booleans based on Frigate MQTT events
 
 # DEBUG - Log all Frigate events for troubleshooting
+# NOTE: Disabled by default to prevent log flooding. Enable when debugging Frigate issues.
 - id: frigate_debug_all_events
   alias: "DEBUG: Frigate All Events"
   description: Log all Frigate events to see what's happening
+  enabled: false
   mode: queued
   max: 10
   triggers:
-    - platform: mqtt
+    - trigger: mqtt
       topic: frigate/events
   conditions: []
   actions:

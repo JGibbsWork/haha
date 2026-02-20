@@ -2,12 +2,15 @@
 # Time-based lighting control throughout the day
 
 - id: '1745496301073'
-  alias: 6am light
-  description: ''
+  alias: 6am Morning Routine
+  description: 'Open blinds, set lights, turn on projector/kiosk when home'
   triggers:
   - trigger: time
     at: 06:00:00
-  conditions: []
+  conditions:
+  - condition: zone
+    entity_id: device_tracker.jamess_iphone
+    zone: zone.home
   actions:
   - action: script.open_blinds
     metadata: {}

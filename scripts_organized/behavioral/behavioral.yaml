@@ -45,7 +45,7 @@ bed_shock_loop:
   - repeat:
       while:
       - condition: state
-        entity_id: binary_sensor.presence_bed
+        entity_id: input_boolean.bed_occupied
         state: 'on'
       sequence:
       - action: rest_command.pavlok_bed

@@ -204,7 +204,7 @@ daytime_lights:
     metadata: {}
     data: {}
     target:
-      entity_id: scene.daytime_2
+      entity_id: scene.daytime
   alias: Daytime Lights
   description: ''
 evening_lights:
