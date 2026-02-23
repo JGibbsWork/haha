@@ -16,5 +16,9 @@ rest_command:
     method: POST
 
   print_briefing:
-    url: "http://sentinel.local:3003/api/n8n/briefing/print"
+    url: "http://sentinel:3003/api/briefing/print"
+    method: GET
+
+  print_poem:
+    url: "http://sentinel:3003/api/poem/print"
     method: GET

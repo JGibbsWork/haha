@@ -52,3 +52,9 @@ kitchen_manual_override:
   name: Kitchen Manual Override
   initial: false
   icon: mdi:lightbulb
+
+# Printer briefing tracking
+briefing_printed_today:
+  name: Briefing Printed Today
+  initial: false
+  icon: mdi:printer-check

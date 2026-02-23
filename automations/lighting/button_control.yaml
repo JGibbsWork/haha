@@ -82,8 +82,8 @@
   mode: single
 
 - id: printer_button_briefing
-  alias: "Printer Button: Print Briefing"
-  description: Press button to trigger n8n briefing print
+  alias: "Printer Button: Print Briefing or Poem"
+  description: First press of day prints briefing, subsequent presses print poems (day resets at 4am)
   triggers:
   - device_id: 8945df949b921f55dbba48be6dec9c2e
     domain: zha
@@ -92,6 +92,31 @@
     trigger: device
   conditions: []
   actions:
-  - action: rest_command.print_briefing
-    data: {}
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.briefing_printed_today
+        state: "off"
+      sequence:
+      - action: rest_command.print_briefing
+        data: {}
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.briefing_printed_today
+    default:
+    - action: rest_command.print_poem
+      data: {}
+  mode: single
+
+- id: reset_briefing_printed_daily
+  alias: "Reset Briefing Printed Flag at 4am"
+  description: Resets the briefing tracker at 4am so the first button press prints a briefing
+  triggers:
+  - trigger: time
+    at: "04:00:00"
+  conditions: []
+  actions:
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.briefing_printed_today
   mode: single
