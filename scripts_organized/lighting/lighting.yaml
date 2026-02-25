@@ -178,62 +178,122 @@ govee_rococo:
   alias: Govee - Rococo
   description: ''
 morning_lights:
+  alias: Morning Lights
+  description: ''
+  mode: parallel
   sequence:
+  - action: light.turn_on
+    target:
+      entity_id:
+        - light.bed_lamp
+        - light.dresser
+        - light.bedroom_ceiling
+        - light.tv_left
+        - light.tv_right
+        - light.office
+    data:
+      brightness: 255
+      color_temp_kelvin: 6500
   - action: script.govee_all_lights_white_cool
     metadata: {}
     data: {}
   - action: script.govee_all_lights_100
     metadata: {}
     data: {}
+  - delay:
+      seconds: 1
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.morning
-  alias: Morning Lights
-  description: ''
 daytime_lights:
+  alias: Daytime Lights
+  description: ''
+  mode: parallel
   sequence:
+  - action: light.turn_on
+    target:
+      entity_id:
+        - light.bed_lamp
+        - light.dresser
+        - light.bedroom_ceiling
+        - light.tv_left
+        - light.tv_right
+        - light.office
+    data:
+      brightness: 220
+      color_temp_kelvin: 4000
   - action: script.govee_all_lights_75
     metadata: {}
     data: {}
   - action: script.govee_all_lights_white_neutral
     metadata: {}
     data: {}
+  - delay:
+      seconds: 1
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.daytime
-  alias: Daytime Lights
-  description: ''
 evening_lights:
+  alias: Evening Lights
+  description: ''
+  mode: parallel
   sequence:
+  - action: light.turn_on
+    target:
+      entity_id:
+        - light.bed_lamp
+        - light.dresser
+        - light.bedroom_ceiling
+        - light.tv_left
+        - light.tv_right
+        - light.office
+    data:
+      brightness: 180
+      color_temp_kelvin: 2700
   - action: script.govee_all_lights_75
     metadata: {}
     data: {}
+  - action: script.govee_all_lights_white_warm
+    metadata: {}
+    data: {}
+  - delay:
+      seconds: 1
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.evening
-  - action: script.govee_all_lights_white_warm
+chill_lights:
+  alias: Chill Lights
+  description: ''
+  mode: parallel
+  sequence:
+  - action: light.turn_on
+    target:
+      entity_id:
+        - light.bed_lamp
+        - light.dresser
+        - light.bedroom_ceiling
+        - light.tv_left
+        - light.tv_right
+        - light.office
+    data:
+      brightness: 80
+      color_temp_kelvin: 2000
+  - action: script.govee_maillard
     metadata: {}
     data: {}
-  alias: Evening Lights
-  description: ''
-chill_lights:
-  sequence:
+  - delay:
+      seconds: 1
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.night_chill
-  - action: script.govee_maillard
-    metadata: {}
-    data: {}
-  alias: Chill Lights
-  description: ''
 lighting_route_by_time_now:
   alias: Lighting - Route By Time (Now)
   mode: restart
