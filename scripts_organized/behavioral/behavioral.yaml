@@ -18,9 +18,6 @@ morning_shock_loop:
       - data:
           shock_value: '{{ shock_intensity }}'
         action: rest_command.pavlok_dynamic_shock
-      - action: rest_command.habitica_lounge_negative
-        metadata: {}
-        data: {}
       - delay:
           minutes: 5
 couch_shock_loop:

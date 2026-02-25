@@ -95,8 +95,6 @@
           entity_id: input_boolean.shocked
         action: input_boolean.turn_on
         data: {}
-      - action: rest_command.habitica_lounge_negative
-        data: {}
       - delay: 00:01:00
       - target:
           entity_id: input_boolean.shocked
@@ -164,8 +162,6 @@
       - target:
           entity_id: input_boolean.shocked
         action: input_boolean.turn_on
-        data: {}
-      - action: rest_command.habitica_lounge_negative
         data: {}
       - delay: 00:01:00
       - target:
