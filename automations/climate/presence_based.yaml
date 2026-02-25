@@ -14,9 +14,6 @@
   - action: script.lighting_route_by_time_now
     metadata: {}
     data: {}
-  - action: script.tv_blind_up
-    metadata: {}
-    data: {}
   - action: script.projector_turn_on
     metadata: {}
     data: {}
@@ -33,6 +30,14 @@
   conditions: []
   actions:
   - action: script.projector_turn_off
+    metadata: {}
+    data: {}
+  - delay:
+      seconds: 5
+  - action: script.govee_all_lights_off
+    metadata: {}
+    data: {}
+  - action: script.lights_off
     metadata: {}
     data: {}
   - action: light.turn_off
