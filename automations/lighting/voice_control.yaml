@@ -45,3 +45,18 @@
     metadata: {}
     data: {}
   mode: single
+
+- id: '1751666500001'
+  alias: Goodnight voice command
+  description: Turn off everything and close blinds/shades for bedtime
+  triggers:
+  - trigger: conversation
+    command:
+    - Goodnight
+    - Good night
+  conditions: []
+  actions:
+  - action: script.goodnight
+    metadata: {}
+    data: {}
+  mode: single

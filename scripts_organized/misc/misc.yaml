@@ -20,6 +20,9 @@ goodnight:
     target:
       entity_id: all
     data: {}
+  - action: script.govee_all_lights_off
+    metadata: {}
+    data: {}
 
 open_playstation:
   alias: Open PlayStation
