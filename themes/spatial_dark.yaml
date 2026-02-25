@@ -1,0 +1,158 @@
+# Spatial Dark Theme for Home Assistant
+# A dark glass / spatial UI aesthetic with subtle glow effects
+#
+# HACS Theme Packages:
+# Consider installing "Catppuccin for Home Assistant" via HACS for additional
+# color palette variables. The Mocha variant complements this theme well and
+# provides consistent color tokens (--ctp-mocha-*) you can reference in
+# card-mod styles. However, this theme is fully self-contained and works
+# without any additional packages.
+
+Spatial Dark:
+  # ============================================
+  # CORE COLORS
+  # ============================================
+
+  # Primary background
+  primary-background-color: "#0a0a12"
+  lovelace-background: "#0a0a12"
+
+  # Card backgrounds with transparency for glass effect
+  card-background-color: "rgba(15, 15, 25, 0.85)"
+  ha-card-background: "rgba(15, 15, 25, 0.85)"
+  paper-card-background-color: "rgba(15, 15, 25, 0.85)"
+
+  # ============================================
+  # TEXT COLORS
+  # ============================================
+
+  # Primary text
+  primary-text-color: "rgba(255, 255, 255, 0.92)"
+
+  # Secondary text
+  secondary-text-color: "rgba(255, 255, 255, 0.45)"
+
+  # Disabled text
+  disabled-text-color: "rgba(255, 255, 255, 0.2)"
+  text-primary-color: "rgba(255, 255, 255, 0.92)"
+
+  # ============================================
+  # ACCENT / STATE COLORS
+  # ============================================
+
+  # Primary accent color
+  primary-color: "#7c9fff"
+  accent-color: "#7c9fff"
+
+  # State colors
+  state-icon-color: "#7c9fff"
+  state-icon-active-color: "#7c9fff"
+
+  # Success / Warning / Error
+  success-color: "#a6e3a1"
+  warning-color: "#f9e2af"
+  error-color: "#f38ba8"
+
+  # ============================================
+  # CARD STYLING
+  # ============================================
+
+  # Border radius
+  ha-card-border-radius: "16px"
+
+  # Box shadow with subtle white glow
+  ha-card-box-shadow: "0 2px 16px 0 rgba(255, 255, 255, 0.04)"
+
+  # Card border
+  ha-card-border-color: "rgba(255, 255, 255, 0.06)"
+  ha-card-border-width: "1px"
+
+  # ============================================
+  # SIDEBAR & HEADER
+  # ============================================
+
+  sidebar-background-color: "#0a0a12"
+  sidebar-text-color: "rgba(255, 255, 255, 0.92)"
+  sidebar-selected-background-color: "rgba(124, 159, 255, 0.15)"
+  sidebar-selected-icon-color: "#7c9fff"
+
+  app-header-background-color: "rgba(15, 15, 25, 0.95)"
+  app-header-text-color: "rgba(255, 255, 255, 0.92)"
+
+  # ============================================
+  # DIVIDERS & BORDERS
+  # ============================================
+
+  divider-color: "rgba(255, 255, 255, 0.08)"
+
+  # ============================================
+  # INPUTS & SWITCHES
+  # ============================================
+
+  input-fill-color: "rgba(255, 255, 255, 0.05)"
+  input-ink-color: "rgba(255, 255, 255, 0.92)"
+  input-label-ink-color: "rgba(255, 255, 255, 0.45)"
+
+  switch-checked-color: "#7c9fff"
+  switch-unchecked-button-color: "rgba(255, 255, 255, 0.3)"
+  switch-unchecked-track-color: "rgba(255, 255, 255, 0.1)"
+
+  # ============================================
+  # SLIDERS
+  # ============================================
+
+  paper-slider-knob-color: "#7c9fff"
+  paper-slider-knob-start-color: "#7c9fff"
+  paper-slider-pin-color: "#7c9fff"
+  paper-slider-active-color: "#7c9fff"
+  paper-slider-container-color: "rgba(255, 255, 255, 0.15)"
+
+  # ============================================
+  # BUTTONS
+  # ============================================
+
+  mdc-button-outline-color: "rgba(255, 255, 255, 0.15)"
+
+  # ============================================
+  # MUSHROOM CARD VARIABLES
+  # ============================================
+
+  # Mushroom card background (RGB values for rgba() usage)
+  mush-rgb-card-background-color: "15, 15, 25"
+
+  # Mushroom text colors
+  mush-card-primary-color: "rgba(255, 255, 255, 0.92)"
+  mush-card-secondary-color: "rgba(255, 255, 255, 0.45)"
+
+  # Mushroom state colors
+  mush-rgb-state-default-color: "255, 255, 255"
+  mush-rgb-state-light-color: "251, 245, 183"
+  mush-rgb-state-switch-color: "124, 159, 255"
+  mush-rgb-state-climate-cool-color: "116, 192, 252"
+  mush-rgb-state-climate-heat-color: "243, 139, 168"
+
+  # Mushroom icon styling
+  mush-icon-border-radius: "12px"
+  mush-icon-size: "42px"
+
+  # Mushroom chip styling
+  mush-chip-background-color: "rgba(255, 255, 255, 0.06)"
+  mush-chip-border-radius: "10px"
+
+  # ============================================
+  # CODE EDITOR
+  # ============================================
+
+  code-editor-background-color: "#0a0a12"
+  codemirror-keyword: "#cba6f7"
+  codemirror-operator: "#f38ba8"
+  codemirror-variable: "#f5c2e7"
+  codemirror-variable-2: "#cba6f7"
+  codemirror-def: "#f38ba8"
+  codemirror-tag: "#f38ba8"
+  codemirror-string: "#a6e3a1"
+  codemirror-string-2: "#a6e3a1"
+  codemirror-comment: "rgba(255, 255, 255, 0.35)"
+  codemirror-number: "#fab387"
+  codemirror-atom: "#fab387"
+  codemirror-meta: "#f5e0dc"
