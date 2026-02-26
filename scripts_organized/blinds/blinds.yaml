@@ -1,173 +1,116 @@
 open_blinds:
+  sequence:
+  - device_id: 0927c6f398ab48e79514fcb132499e18
+    domain: cover
+    entity_id: e80f7de78e5ca17dfff1cc0d725e414c
+    type: open
+  - delay:
+      seconds: 2
+  - device_id: de64dceae59b28e117982717191dca37
+    domain: cover
+    entity_id: 8ea437962e557ba07542e9dff0456961
+    type: open
+  - delay:
+      seconds: 2
+  - device_id: 04eeedd90ececa5fad6b261555f8024a
+    domain: cover
+    entity_id: 0e390d6c5aca6476db51faf919eeabd4
+    type: open
+  - delay:
+      seconds: 2
+  - device_id: efa9b26832ac7e39a4d8cf528c21a026
+    domain: cover
+    entity_id: 198183b956106fc88984b9a33b0f2f0d
+    type: open
+  - delay:
+      seconds: 2
+  - device_id: 606436b1271fc3248ffac1f14b4a44b2
+    domain: cover
+    entity_id: 487e5a41ff5d95b0a916dd643279582c
+    type: open
   alias: Open Blinds
   description: Opens all blinds with 2-second delays between each
-  sequence:
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.bed_blind
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.closet_blind
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dining_blind
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dj_blind
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.tv_blind
-    data:
-      position: 100
-
 close_blinds:
+  sequence:
+  - device_id: 0927c6f398ab48e79514fcb132499e18
+    domain: cover
+    entity_id: e80f7de78e5ca17dfff1cc0d725e414c
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: de64dceae59b28e117982717191dca37
+    domain: cover
+    entity_id: 8ea437962e557ba07542e9dff0456961
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: 04eeedd90ececa5fad6b261555f8024a
+    domain: cover
+    entity_id: 0e390d6c5aca6476db51faf919eeabd4
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: efa9b26832ac7e39a4d8cf528c21a026
+    domain: cover
+    entity_id: 198183b956106fc88984b9a33b0f2f0d
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: 606436b1271fc3248ffac1f14b4a44b2
+    domain: cover
+    entity_id: 487e5a41ff5d95b0a916dd643279582c
+    type: close
   alias: Close Blinds
   description: Closes all blinds with 2-second delays between each
-  sequence:
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.bed_blind
-    data:
-      position: 0
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.closet_blind
-    data:
-      position: 0
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dining_blind
-    data:
-      position: 0
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dj_blind
-    data:
-      position: 0
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.tv_blind
-    data:
-      position: 0
-
-open_shades:
-  alias: Open Shades
-  description: Opens all shades with 2-second delays between each
-  sequence:
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.bed_shade
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.closet_shade
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dining_shade
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dj_shade
-    data:
-      position: 100
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.tv_shade
-    data:
-      position: 100
-
 close_shades:
+  sequence:
+  - device_id: 5ba9ca5cc8c5019451d449254917efb9
+    domain: cover
+    entity_id: 46839409154dbeec24f2b919611a1716
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: 411b53495742315afd9d68033abcb3d6
+    domain: cover
+    entity_id: 0a1ea51cc0f0d26611c316dd6fa55fba
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: 78f9c69e89c0e075e678498e3ca4851e
+    domain: cover
+    entity_id: 40450dd49b1635cea177fe0ed036bcb7
+    type: close
+  - delay:
+      seconds: 2
+  - device_id: 7652fde55b2ae7ce88d139badeebc6a1
+    domain: cover
+    entity_id: 9c4eca97ced13f76b46caed85bb4ac52
+    type: close
   alias: Close Shades
   description: Closes all shades with 2-second delays between each
+open_shades:
   sequence:
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.bed_shade
-    data:
-      position: 0
+  - device_id: 5ba9ca5cc8c5019451d449254917efb9
+    domain: cover
+    entity_id: 46839409154dbeec24f2b919611a1716
+    type: open
   - delay:
       seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.closet_shade
-    data:
-      position: 0
+  - device_id: 411b53495742315afd9d68033abcb3d6
+    domain: cover
+    entity_id: 0a1ea51cc0f0d26611c316dd6fa55fba
+    type: open
   - delay:
       seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dining_shade
-    data:
-      position: 0
+  - device_id: 78f9c69e89c0e075e678498e3ca4851e
+    domain: cover
+    entity_id: 40450dd49b1635cea177fe0ed036bcb7
+    type: open
   - delay:
       seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.dj_shade
-    data:
-      position: 0
-  - delay:
-      seconds: 2
-  - action: cover.set_cover_position
-    target:
-      entity_id: cover.tv_shade
-    data:
-      position: 0
-
-shade_position_report:
-  alias: Shade/Blind Position Report
-  description: Shows current position of all shades and blinds for diagnostics
-  sequence:
-  - action: persistent_notification.create
-    data:
-      title: "Shade & Blind Positions"
-      message: >-
-        **BLINDS:**
-        - Bed Blind: {{ state_attr('cover.bed_blind', 'current_position') }}%
-        - Closet Blind: {{ state_attr('cover.closet_blind', 'current_position') }}%
-        - Dining Blind: {{ state_attr('cover.dining_blind', 'current_position') }}%
-        - DJ Blind: {{ state_attr('cover.dj_blind', 'current_position') }}%
-        - TV Blind: {{ state_attr('cover.tv_blind', 'current_position') }}%
-
-        **SHADES:**
-        - Bed Shade: {{ state_attr('cover.bed_shade', 'current_position') }}%
-        - Closet Shade: {{ state_attr('cover.closet_shade', 'current_position') }}%
-        - Dining Shade: {{ state_attr('cover.dining_shade', 'current_position') }}%
-        - DJ Shade: {{ state_attr('cover.dj_shade', 'current_position') }}%
-        - TV Shade: {{ state_attr('cover.tv_shade', 'current_position') }}%
+  - device_id: 7652fde55b2ae7ce88d139badeebc6a1
+    domain: cover
+    entity_id: 9c4eca97ced13f76b46caed85bb4ac52
+    type: open
+  alias: Open Shades
+  description: Opens all shades with 2-second delays between each
