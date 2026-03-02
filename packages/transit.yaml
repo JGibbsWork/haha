@@ -52,7 +52,7 @@ rest:
           {% endif %}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
-        json_attributes_path: "$.data.red.north"
+        json_attributes_path: "$.data.red.north[0]"
         json_attributes:
           - "0"
 
@@ -71,7 +71,7 @@ rest:
           {% endif %}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
-        json_attributes_path: "$.data.red.south"
+        json_attributes_path: "$.data.red.south[0]"
         json_attributes:
           - "0"
 
@@ -90,7 +90,7 @@ rest:
           {% endif %}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
-        json_attributes_path: "$.data.brown.north"
+        json_attributes_path: "$.data.brown.north[0]"
         json_attributes:
           - "0"
 
@@ -109,7 +109,7 @@ rest:
           {% endif %}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
-        json_attributes_path: "$.data.brown.south"
+        json_attributes_path: "$.data.brown.south[0]"
         json_attributes:
           - "0"
 
