@@ -8,20 +8,20 @@ mqtt:
     - name: "Couch Person Count"
       state_topic: "frigate/couch/person/active"
       value_template: "{{ value | int(0) }}"
-      unit_of_measurement: "people"
+      unit_of_measurement: "objects"
       state_class: measurement
       icon: mdi:account
 
     - name: "Bed Person Count"
       state_topic: "frigate/bed/person/active"
       value_template: "{{ value | int(0) }}"
-      unit_of_measurement: "people"
+      unit_of_measurement: "objects"
       state_class: measurement
       icon: mdi:account
 
     - name: "Kitchen Person Count"
       state_topic: "frigate/kitchenspace/person/active"
       value_template: "{{ value | int(0) }}"
-      unit_of_measurement: "people"
+      unit_of_measurement: "objects"
       state_class: measurement
       icon: mdi:account

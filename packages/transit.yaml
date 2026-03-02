@@ -37,6 +37,40 @@ rest:
           - predictedTime
           - vehicleId
 
+      # Bus 77 Eastbound - Second arrival
+      - name: "Bus 77 East Second"
+        value_template: >
+          {% if value_json.success and value_json.data.buses.east | length > 1 %}
+            {{ value_json.data.buses.east[1].minutesAway }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
+        json_attributes_path: "$.data.buses.east[1]"
+        json_attributes:
+          - route
+          - destination
+          - predictedTime
+          - vehicleId
+
+      # Bus 77 Westbound - Second arrival
+      - name: "Bus 77 West Second"
+        value_template: >
+          {% if value_json.success and value_json.data.buses.west | length > 1 %}
+            {{ value_json.data.buses.west[1].minutesAway }}
+          {% else %}
+            unavailable
+          {% endif %}
+        unit_of_measurement: "min"
+        icon: mdi:bus
+        json_attributes_path: "$.data.buses.west[1]"
+        json_attributes:
+          - route
+          - destination
+          - predictedTime
+          - vehicleId
+
       # Red Line Northbound - Next arrival
       - name: "Red Line North Next"
         value_template: >
@@ -112,29 +146,3 @@ rest:
         json_attributes_path: "$.data.brown.south[0]"
         json_attributes:
           - "0"
-
-template:
-  - sensor:
-      # Bus 77 East - Second arrival
-      - name: "Bus 77 East Second"
-        state: >
-          {% set api_data = states.sensor.bus_77_east_next.attributes %}
-          {% if api_data %}
-            {{ api_data.get('minutesAway', 'N/A') }}
-          {% else %}
-            unavailable
-          {% endif %}
-        unit_of_measurement: "min"
-        icon: mdi:bus
-
-      # Bus 77 West - Second arrival
-      - name: "Bus 77 West Second"
-        state: >
-          {% set api_data = states.sensor.bus_77_west_next.attributes %}
-          {% if api_data %}
-            {{ api_data.get('minutesAway', 'N/A') }}
-          {% else %}
-            unavailable
-          {% endif %}
-        unit_of_measurement: "min"
-        icon: mdi:bus

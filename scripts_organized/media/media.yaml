@@ -127,10 +127,9 @@ tv_open_kiosk_browser:
   - delay: 00:00:02
 kiosk_launch:
   sequence:
-  - type: turn_on
-    device_id: 7d5fcd316152f4fca9a268615d7329a9
-    entity_id: 0589d63ff48533409f7079333291644c
-    domain: remote
+  - action: remote.turn_on
+    target:
+      entity_id: remote.googletv
   - action: media_player.play_media
     metadata: {}
     data:
