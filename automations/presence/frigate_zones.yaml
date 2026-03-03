@@ -1,5 +1,6 @@
 # Frigate Zone Presence Detection
-# Maintains presence booleans based on Frigate MQTT events
+# Maintains presence booleans based on Frigate MQTT person count topics
+# Topics publish a number: 0 = no one, 1+ = someone present
 
 # DEBUG - Log all Frigate events for troubleshooting
 # NOTE: Disabled by default to prevent log flooding. Enable when debugging Frigate issues.
@@ -27,21 +28,14 @@
 # Couch Zone - Person Enter
 - id: frigate_couch_person_enter
   alias: "Frigate: Person Entered Couch Zone"
-  description: Turn on couch_occupied when Frigate detects person entering couch zone
-  mode: queued
-  max: 5
+  description: Turn on couch_occupied when person count > 0
+  mode: single
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/couch/person/active
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('after', {}).get('label') == 'person'
-           and 'couch' not in before_zones
-           and 'couch' in after_zones }}
+      value_template: "{{ trigger.payload | int > 0 }}"
   actions:
     - action: input_boolean.turn_on
       target:
@@ -50,20 +44,14 @@
 # Couch Zone - Person Exit
 - id: frigate_couch_person_exit
   alias: "Frigate: Person Left Couch Zone"
-  description: Turn off couch_occupied when Frigate detects person leaving couch zone
+  description: Turn off couch_occupied when person count = 0
   mode: restart
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/couch/person/active
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('before', {}).get('label') == 'person'
-           and 'couch' in before_zones
-           and 'couch' not in after_zones }}
+      value_template: "{{ trigger.payload | int == 0 }}"
   actions:
     - delay:
         seconds: 10
@@ -74,21 +62,14 @@
 # Bed Zone - Person Enter
 - id: frigate_bed_person_enter
   alias: "Frigate: Person Entered Bed Zone"
-  description: Turn on bed_occupied when Frigate detects person entering bed zone
-  mode: queued
-  max: 5
+  description: Turn on bed_occupied when person count > 0
+  mode: single
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/bed/person/active
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('after', {}).get('label') == 'person'
-           and 'bed' not in before_zones
-           and 'bed' in after_zones }}
+      value_template: "{{ trigger.payload | int > 0 }}"
   actions:
     - action: input_boolean.turn_on
       target:
@@ -97,20 +78,14 @@
 # Bed Zone - Person Exit
 - id: frigate_bed_person_exit
   alias: "Frigate: Person Left Bed Zone"
-  description: Turn off bed_occupied when Frigate detects person leaving bed zone
+  description: Turn off bed_occupied when person count = 0
   mode: restart
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/bed/person/active
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('before', {}).get('label') == 'person'
-           and 'bed' in before_zones
-           and 'bed' not in after_zones }}
+      value_template: "{{ trigger.payload | int == 0 }}"
   actions:
     - delay:
         seconds: 10
@@ -121,21 +96,14 @@
 # Kitchen Zone - Person Enter
 - id: frigate_kitchen_person_enter
   alias: "Frigate: Person Entered Kitchen Zone"
-  description: Turn on kitchen_occupied when Frigate detects person entering kitchen zone
-  mode: queued
-  max: 5
+  description: Turn on kitchen_occupied when person count > 0
+  mode: single
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/kitchenspace/person
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('after', {}).get('label') == 'person'
-           and 'kitchenspace' not in before_zones
-           and 'kitchenspace' in after_zones }}
+      value_template: "{{ trigger.payload | int > 0 }}"
   actions:
     - action: input_boolean.turn_on
       target:
@@ -144,20 +112,14 @@
 # Kitchen Zone - Person Exit
 - id: frigate_kitchen_person_exit
   alias: "Frigate: Person Left Kitchen Zone"
-  description: Turn off kitchen_occupied when Frigate detects person leaving kitchen zone
+  description: Turn off kitchen_occupied when person count = 0
   mode: restart
   triggers:
     - trigger: mqtt
-      topic: frigate/events
+      topic: frigate/kitchenspace/person
   conditions:
     - condition: template
-      value_template: >
-        {% set payload = trigger.payload_json %}
-        {% set before_zones = payload.get('before', {}).get('current_zones', []) %}
-        {% set after_zones = payload.get('after', {}).get('current_zones', []) %}
-        {{ payload.get('before', {}).get('label') == 'person'
-           and 'kitchenspace' in before_zones
-           and 'kitchenspace' not in after_zones }}
+      value_template: "{{ trigger.payload | int == 0 }}"
   actions:
     - delay:
         seconds: 10
