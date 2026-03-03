@@ -5,12 +5,8 @@ rest:
     sensor:
       # Bus 77 Eastbound - Next arrival
       - name: "Bus 77 East Next"
-        value_template: >
-          {% if value_json.success and value_json.data.buses.east | length > 0 %}
-            {{ value_json.data.buses.east[0].minutesAway }}
-          {% else %}
-            unavailable
-          {% endif %}
+        value_template: "{{ value_json.data.buses.east[0].minutesAway }}"
+        availability: "{{ value_json.success and value_json.data.buses.east | length > 0 }}"
         unit_of_measurement: "min"
         icon: mdi:bus
         json_attributes_path: "$.data.buses.east[0]"
@@ -22,12 +18,8 @@ rest:
 
       # Bus 77 Westbound - Next arrival
       - name: "Bus 77 West Next"
-        value_template: >
-          {% if value_json.success and value_json.data.buses.west | length > 0 %}
-            {{ value_json.data.buses.west[0].minutesAway }}
-          {% else %}
-            unavailable
-          {% endif %}
+        value_template: "{{ value_json.data.buses.west[0].minutesAway }}"
+        availability: "{{ value_json.success and value_json.data.buses.west | length > 0 }}"
         unit_of_measurement: "min"
         icon: mdi:bus
         json_attributes_path: "$.data.buses.west[0]"
@@ -39,12 +31,8 @@ rest:
 
       # Bus 77 Eastbound - Second arrival
       - name: "Bus 77 East Second"
-        value_template: >
-          {% if value_json.success and value_json.data.buses.east | length > 1 %}
-            {{ value_json.data.buses.east[1].minutesAway }}
-          {% else %}
-            unavailable
-          {% endif %}
+        value_template: "{{ value_json.data.buses.east[1].minutesAway }}"
+        availability: "{{ value_json.success and value_json.data.buses.east | length > 1 }}"
         unit_of_measurement: "min"
         icon: mdi:bus
         json_attributes_path: "$.data.buses.east[1]"
@@ -56,12 +44,8 @@ rest:
 
       # Bus 77 Westbound - Second arrival
       - name: "Bus 77 West Second"
-        value_template: >
-          {% if value_json.success and value_json.data.buses.west | length > 1 %}
-            {{ value_json.data.buses.west[1].minutesAway }}
-          {% else %}
-            unavailable
-          {% endif %}
+        value_template: "{{ value_json.data.buses.west[1].minutesAway }}"
+        availability: "{{ value_json.success and value_json.data.buses.west | length > 1 }}"
         unit_of_measurement: "min"
         icon: mdi:bus
         json_attributes_path: "$.data.buses.west[1]"
@@ -74,16 +58,9 @@ rest:
       # Red Line Northbound - Next arrival
       - name: "Red Line North Next"
         value_template: >
-          {% if value_json.success and value_json.data.red.north | length > 0 %}
-            {% set northbound = value_json.data.red.north | selectattr('direction', 'equalto', 'Northbound') | list %}
-            {% if northbound | length > 0 %}
-              {{ northbound[0].minutesAway }}
-            {% else %}
-              unavailable
-            {% endif %}
-          {% else %}
-            unavailable
-          {% endif %}
+          {{ (value_json.data.red.north | selectattr('direction', 'equalto', 'Northbound') | list)[0].minutesAway }}
+        availability: >
+          {{ value_json.success and (value_json.data.red.north | selectattr('direction', 'equalto', 'Northbound') | list) | length > 0 }}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
         json_attributes_path: "$.data.red.north[0]"
@@ -93,16 +70,9 @@ rest:
       # Red Line Southbound - Next arrival
       - name: "Red Line South Next"
         value_template: >
-          {% if value_json.success and value_json.data.red.south | length > 0 %}
-            {% set southbound = value_json.data.red.south | selectattr('direction', 'equalto', 'Southbound') | list %}
-            {% if southbound | length > 0 %}
-              {{ southbound[0].minutesAway }}
-            {% else %}
-              unavailable
-            {% endif %}
-          {% else %}
-            unavailable
-          {% endif %}
+          {{ (value_json.data.red.south | selectattr('direction', 'equalto', 'Southbound') | list)[0].minutesAway }}
+        availability: >
+          {{ value_json.success and (value_json.data.red.south | selectattr('direction', 'equalto', 'Southbound') | list) | length > 0 }}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
         json_attributes_path: "$.data.red.south[0]"
@@ -112,16 +82,9 @@ rest:
       # Brown Line Northbound - Next arrival
       - name: "Brown Line North Next"
         value_template: >
-          {% if value_json.success and value_json.data.brown.north | length > 0 %}
-            {% set northbound = value_json.data.brown.north | selectattr('direction', 'equalto', 'Northbound') | list %}
-            {% if northbound | length > 0 %}
-              {{ northbound[0].minutesAway }}
-            {% else %}
-              unavailable
-            {% endif %}
-          {% else %}
-            unavailable
-          {% endif %}
+          {{ (value_json.data.brown.north | selectattr('direction', 'equalto', 'Northbound') | list)[0].minutesAway }}
+        availability: >
+          {{ value_json.success and (value_json.data.brown.north | selectattr('direction', 'equalto', 'Northbound') | list) | length > 0 }}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
         json_attributes_path: "$.data.brown.north[0]"
@@ -131,16 +94,9 @@ rest:
       # Brown Line Southbound - Next arrival
       - name: "Brown Line South Next"
         value_template: >
-          {% if value_json.success and value_json.data.brown.south | length > 0 %}
-            {% set southbound = value_json.data.brown.south | selectattr('direction', 'equalto', 'Southbound') | list %}
-            {% if southbound | length > 0 %}
-              {{ southbound[0].minutesAway }}
-            {% else %}
-              unavailable
-            {% endif %}
-          {% else %}
-            unavailable
-          {% endif %}
+          {{ (value_json.data.brown.south | selectattr('direction', 'equalto', 'Southbound') | list)[0].minutesAway }}
+        availability: >
+          {{ value_json.success and (value_json.data.brown.south | selectattr('direction', 'equalto', 'Southbound') | list) | length > 0 }}
         unit_of_measurement: "min"
         icon: mdi:subway-variant
         json_attributes_path: "$.data.brown.south[0]"
