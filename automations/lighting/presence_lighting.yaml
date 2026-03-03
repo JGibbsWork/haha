@@ -18,8 +18,10 @@
       target:
         entity_id:
           - light.kitchen_track_1
-          # - light.kitchen_track_2  # REMOVED: Ghost entity from renamed device
-      data: {}
+          - light.track_2
+      data:
+        brightness_pct: 75
+        transition: 1
 
 - id: kitchen_lights_off_presence
   alias: "Kitchen Lights: Turn Off When Empty"
@@ -40,8 +42,9 @@
       target:
         entity_id:
           - light.kitchen_track_1
-          # - light.kitchen_track_2  # REMOVED: Ghost entity from renamed device
-      data: {}
+          - light.track_2
+      data:
+        transition: 1
 
 - id: kitchen_lights_manual_override_on
   alias: "Kitchen Lights: Manual Override ON"
@@ -57,8 +60,10 @@
       target:
         entity_id:
           - light.kitchen_track_1
-          # - light.kitchen_track_2  # REMOVED: Ghost entity from renamed device
-      data: {}
+          - light.track_2
+      data:
+        brightness_pct: 75
+        transition: 1
 
 - id: kitchen_lights_manual_override_off
   alias: "Kitchen Lights: Manual Override OFF"
@@ -74,8 +79,9 @@
       target:
         entity_id:
           - light.kitchen_track_1
-          # - light.kitchen_track_2  # REMOVED: Ghost entity from renamed device
-      data: {}
+          - light.track_2
+      data:
+        transition: 1
 
 # Failsafe: Force lights off after max time
 - id: kitchen_lights_failsafe_timeout
@@ -97,8 +103,9 @@
       target:
         entity_id:
           - light.kitchen_track_1
-          # - light.kitchen_track_2  # REMOVED: Ghost entity from renamed device
-      data: {}
+          - light.track_2
+      data:
+        transition: 1
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.kitchen_occupied
