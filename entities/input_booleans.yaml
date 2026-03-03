@@ -58,3 +58,9 @@ briefing_printed_today:
   name: Briefing Printed Today
   initial: false
   icon: mdi:printer-check
+
+# Occupancy routine tracking
+bedtime_nudge_done:
+  name: Bedtime Nudge Done Tonight
+  initial: false
+  icon: mdi:bed-clock

@@ -1,0 +1,338 @@
+# Occupancy-Based Routine Automations
+# Comfort and routine automations triggered by bed/couch occupancy
+
+# =============================================================================
+# AUTOMATION 1: Wind Down (Bed + After 9:30pm)
+# =============================================================================
+# Triggers when getting into bed after 9:30pm
+# Dims lights, stops music, closes all blinds/shades
+
+- id: wind_down_bed_evening
+  alias: "Wind Down: Bed Occupied After 9:30pm"
+  description: Dim lights, close blinds, stop music when getting into bed at night
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.bed_occupied
+      to: 'on'
+  conditions:
+    - condition: state
+      entity_id: person.james
+      state: home
+    - condition: time
+      after: "21:30:00"
+      before: "06:00:00"
+  actions:
+    # Dim bedroom lights to 20% warm
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.bed_lamp
+          - light.dresser
+          - light.bedroom_ceiling
+      data:
+        brightness_pct: 20
+        color_temp_kelvin: 2200
+        transition: 3
+    # Dim living room lights to 20% warm
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.tv_left
+          - light.tv_right
+      data:
+        brightness_pct: 20
+        color_temp_kelvin: 2200
+        transition: 3
+    # Turn off kitchen lights
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.kitchen_track_1
+          - light.track_2
+      data:
+        transition: 2
+    # Stop music on speakers
+    - action: media_player.media_stop
+      target:
+        entity_id:
+          - media_player.bedroom_speaker
+          - media_player.living_room_speaker
+      continue_on_error: true
+    # Close all blinds (with delays to prevent overload)
+    - action: script.close_blinds
+      data: {}
+    - delay:
+        seconds: 15
+    - action: script.close_shades
+      data: {}
+
+# =============================================================================
+# AUTOMATION 2: Bedtime Nudge (Couch + After 10pm)
+# =============================================================================
+# Gentle reminder when still on couch after 10pm (once per night)
+
+- id: bedtime_nudge_couch_late
+  alias: "Bedtime Nudge: Couch After 10pm"
+  description: Send notification when on couch after 10pm (once per night)
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.couch_occupied
+      to: 'on'
+  conditions:
+    - condition: state
+      entity_id: person.james
+      state: home
+    - condition: time
+      after: "22:00:00"
+      before: "02:00:00"
+    # Only trigger once per night
+    - condition: state
+      entity_id: input_boolean.bedtime_nudge_done
+      state: 'off'
+  actions:
+    # Mark as done for tonight
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.bedtime_nudge_done
+    # Send notification
+    - action: notify.mobile_app_jamess_iphone
+      data:
+        title: "Time Check"
+        message: "Getting late — time to wind down?"
+        data:
+          push:
+            sound: default
+
+# Reset bedtime nudge at midnight
+- id: bedtime_nudge_reset_midnight
+  alias: "Bedtime Nudge: Reset at Midnight"
+  description: Reset bedtime nudge helper at midnight
+  mode: single
+  triggers:
+    - platform: time
+      at: "00:00:00"
+  conditions: []
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.bedtime_nudge_done
+
+# =============================================================================
+# AUTOMATION 3: Good Morning Briefing (Bed Unoccupied + Morning)
+# =============================================================================
+# Trigger morning briefing when getting out of bed (once per day)
+
+- id: morning_briefing_bed_exit
+  alias: "Morning Briefing: Bed Exit Trigger"
+  description: Trigger morning briefing when getting out of bed in the morning
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.bed_occupied
+      to: 'off'
+  conditions:
+    - condition: state
+      entity_id: person.james
+      state: home
+    - condition: time
+      after: "06:00:00"
+      before: "11:00:00"
+    # Only trigger once per day (reuse existing helper)
+    - condition: state
+      entity_id: input_boolean.briefing_printed_today
+      state: 'off'
+  actions:
+    # Mark as done for today
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.briefing_printed_today
+    # Small delay to let you get settled
+    - delay:
+        seconds: 30
+    # Trigger morning briefing script
+    - action: script.good_morning_briefing
+      data:
+        speak: true
+
+# Reset morning briefing helper at midnight
+- id: morning_briefing_reset_midnight
+  alias: "Morning Briefing: Reset at Midnight"
+  description: Reset morning briefing helper at midnight
+  mode: single
+  triggers:
+    - platform: time
+      at: "00:00:00"
+  conditions: []
+  actions:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.briefing_printed_today
+
+# =============================================================================
+# AUTOMATION 4: Ghost Light Hunter (DISABLED)
+# =============================================================================
+# Detect lights/TV left on in empty rooms and send actionable notification
+# Uncomment when ready to enable
+
+# - id: ghost_light_hunter
+#   alias: "Ghost Light Hunter: Detect Forgotten Lights"
+#   description: Check for lights left on in unoccupied rooms every 5 minutes
+#   mode: single
+#   triggers:
+#     - platform: time_pattern
+#       minutes: "/5"
+#   conditions:
+#     - condition: state
+#       entity_id: person.james
+#       state: home
+#   actions:
+#     - variables:
+#         bedroom_lights_on: >
+#           {{ is_state('light.bedroom_ceiling', 'on') or
+#              is_state('light.bed_lamp', 'on') or
+#              is_state('light.dresser', 'on') }}
+#         bedroom_empty: "{{ is_state('input_boolean.bed_occupied', 'off') }}"
+#         living_lights_on: >
+#           {{ is_state('light.tv_left', 'on') or
+#              is_state('light.tv_right', 'on') }}
+#         living_empty: "{{ is_state('input_boolean.couch_occupied', 'off') }}"
+#         tv_playing: >
+#           {{ is_state('media_player.googletv', 'playing') or
+#              is_state('media_player.googletv', 'paused') or
+#              is_state('media_player.googletv', 'idle') }}
+#         # Check if lights have been on for 30+ minutes using last_changed
+#         bedroom_lights_stale: >
+#           {% set entities = ['light.bedroom_ceiling', 'light.bed_lamp', 'light.dresser'] %}
+#           {% set ns = namespace(stale=false) %}
+#           {% for e in entities %}
+#             {% if is_state(e, 'on') %}
+#               {% set changed = as_timestamp(states[e].last_changed) %}
+#               {% if (as_timestamp(now()) - changed) > 1800 %}
+#                 {% set ns.stale = true %}
+#               {% endif %}
+#             {% endif %}
+#           {% endfor %}
+#           {{ ns.stale }}
+#         living_lights_stale: >
+#           {% set entities = ['light.tv_left', 'light.tv_right'] %}
+#           {% set ns = namespace(stale=false) %}
+#           {% for e in entities %}
+#             {% if is_state(e, 'on') %}
+#               {% set changed = as_timestamp(states[e].last_changed) %}
+#               {% if (as_timestamp(now()) - changed) > 1800 %}
+#                 {% set ns.stale = true %}
+#               {% endif %}
+#             {% endif %}
+#           {% endfor %}
+#           {{ ns.stale }}
+#         tv_stale: >
+#           {% if is_state('media_player.googletv', 'playing') or is_state('media_player.googletv', 'paused') or is_state('media_player.googletv', 'idle') %}
+#             {% set changed = as_timestamp(states['media_player.googletv'].last_changed) %}
+#             {{ (as_timestamp(now()) - changed) > 1800 }}
+#           {% else %}
+#             false
+#           {% endif %}
+#     # Check bedroom ghost lights
+#     - if:
+#         - condition: template
+#           value_template: "{{ bedroom_lights_on and bedroom_empty and bedroom_lights_stale }}"
+#       then:
+#         - action: notify.mobile_app_jamess_iphone
+#           data:
+#             title: "Ghost Light: Bedroom"
+#             message: "Bedroom lights are on but nobody's there"
+#             data:
+#               actions:
+#                 - action: "TURN_OFF_BEDROOM"
+#                   title: "Turn Off"
+#                 - action: "DISMISS_GHOST_BEDROOM"
+#                   title: "Dismiss"
+#               push:
+#                 sound: default
+#     # Check living room ghost lights
+#     - if:
+#         - condition: template
+#           value_template: "{{ living_lights_on and living_empty and living_lights_stale }}"
+#       then:
+#         - action: notify.mobile_app_jamess_iphone
+#           data:
+#             title: "Ghost Light: Living Room"
+#             message: "Living room lights are on but nobody's there"
+#             data:
+#               actions:
+#                 - action: "TURN_OFF_LIVING"
+#                   title: "Turn Off"
+#                 - action: "DISMISS_GHOST_LIVING"
+#                   title: "Dismiss"
+#               push:
+#                 sound: default
+#     # Check TV ghost
+#     - if:
+#         - condition: template
+#           value_template: "{{ tv_playing and living_empty and tv_stale }}"
+#       then:
+#         - action: notify.mobile_app_jamess_iphone
+#           data:
+#             title: "Ghost TV"
+#             message: "TV is on but nobody's watching"
+#             data:
+#               actions:
+#                 - action: "TURN_OFF_TV"
+#                   title: "Turn Off"
+#                 - action: "DISMISS_GHOST_TV"
+#                   title: "Dismiss"
+#               push:
+#                 sound: default
+
+# Handle actionable notification responses
+# - id: ghost_light_action_handler
+#   alias: "Ghost Light Hunter: Action Handler"
+#   description: Handle Turn Off actions from ghost light notifications
+#   mode: parallel
+#   triggers:
+#     - platform: event
+#       event_type: mobile_app_notification_action
+#       event_data:
+#         action: "TURN_OFF_BEDROOM"
+#       id: bedroom_off
+#     - platform: event
+#       event_type: mobile_app_notification_action
+#       event_data:
+#         action: "TURN_OFF_LIVING"
+#       id: living_off
+#     - platform: event
+#       event_type: mobile_app_notification_action
+#       event_data:
+#         action: "TURN_OFF_TV"
+#       id: tv_off
+#   conditions: []
+#   actions:
+#     - choose:
+#         - conditions:
+#             - condition: trigger
+#               id: bedroom_off
+#           sequence:
+#             - action: light.turn_off
+#               target:
+#                 entity_id:
+#                   - light.bedroom_ceiling
+#                   - light.bed_lamp
+#                   - light.dresser
+#         - conditions:
+#             - condition: trigger
+#               id: living_off
+#           sequence:
+#             - action: light.turn_off
+#               target:
+#                 entity_id:
+#                   - light.tv_left
+#                   - light.tv_right
+#         - conditions:
+#             - condition: trigger
+#               id: tv_off
+#           sequence:
+#             - action: media_player.turn_off
+#               target:
+#                 entity_id: media_player.googletv
