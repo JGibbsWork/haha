@@ -9,7 +9,7 @@
 
 - id: wind_down_bed_evening
   alias: "Wind Down: Bed Occupied After 9:30pm"
-  description: Dim lights, close blinds, stop music when getting into bed at night
+  description: Dim lights, close blinds, stop music when getting into bed at night (once per night)
   mode: single
   triggers:
     - platform: state
@@ -22,6 +22,10 @@
     - condition: time
       after: "21:30:00"
       before: "06:00:00"
+    # Only run once per night
+    - condition: state
+      entity_id: input_boolean.wind_down_complete
+      state: 'off'
   actions:
     # Dim bedroom lights to 20% warm
     - action: light.turn_on
@@ -66,6 +70,10 @@
         seconds: 15
     - action: script.close_shades
       data: {}
+    # Mark wind down as complete for tonight
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.wind_down_complete
 
 # =============================================================================
 # AUTOMATION 2: Bedtime Nudge (Couch + After 10pm)
@@ -105,20 +113,6 @@
           push:
             sound: default
 
-# Reset bedtime nudge at midnight
-- id: bedtime_nudge_reset_midnight
-  alias: "Bedtime Nudge: Reset at Midnight"
-  description: Reset bedtime nudge helper at midnight
-  mode: single
-  triggers:
-    - platform: time
-      at: "00:00:00"
-  conditions: []
-  actions:
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.bedtime_nudge_done
-
 # =============================================================================
 # AUTOMATION 3: Good Morning Briefing (Bed Unoccupied + Morning)
 # =============================================================================
@@ -156,10 +150,12 @@
       data:
         speak: true
 
-# Reset morning briefing helper at midnight
-- id: morning_briefing_reset_midnight
-  alias: "Morning Briefing: Reset at Midnight"
-  description: Reset morning briefing helper at midnight
+# =============================================================================
+# MIDNIGHT RESET: All daily/nightly helpers
+# =============================================================================
+- id: occupancy_routines_reset_midnight
+  alias: "Occupancy Routines: Reset at Midnight"
+  description: Reset all once-per-day/night helpers at midnight
   mode: single
   triggers:
     - platform: time
@@ -168,7 +164,10 @@
   actions:
     - action: input_boolean.turn_off
       target:
-        entity_id: input_boolean.briefing_printed_today
+        entity_id:
+          - input_boolean.bedtime_nudge_done
+          - input_boolean.briefing_printed_today
+          - input_boolean.wind_down_complete
 
 # =============================================================================
 # AUTOMATION 4: Ghost Light Hunter (DISABLED)

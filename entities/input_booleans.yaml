@@ -64,3 +64,8 @@ bedtime_nudge_done:
   name: Bedtime Nudge Done Tonight
   initial: false
   icon: mdi:bed-clock
+
+wind_down_complete:
+  name: Wind Down Complete Tonight
+  initial: false
+  icon: mdi:weather-night
