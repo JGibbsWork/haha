@@ -179,7 +179,7 @@ govee_rococo:
   description: ''
 morning_lights:
   alias: Morning Lights
-  description: ''
+  description: 'Sets all Hue lights to 6500K (cool white) and Govee to cool white'
   mode: parallel
   sequence:
   - action: light.turn_on
@@ -190,7 +190,11 @@ morning_lights:
         - light.bedroom_ceiling
         - light.tv_left
         - light.tv_right
+        - light.screen_left
+        - light.screen_right
+        - light.living_room
         - light.office
+        - light.closet
     data:
       brightness: 255
       color_temp_kelvin: 6500
@@ -209,7 +213,7 @@ morning_lights:
       entity_id: scene.morning
 daytime_lights:
   alias: Daytime Lights
-  description: ''
+  description: 'Sets all Hue lights to 4000K and Govee to neutral white (~3800K)'
   mode: parallel
   sequence:
   - action: light.turn_on
@@ -220,7 +224,11 @@ daytime_lights:
         - light.bedroom_ceiling
         - light.tv_left
         - light.tv_right
+        - light.screen_left
+        - light.screen_right
+        - light.living_room
         - light.office
+        - light.closet
     data:
       brightness: 220
       color_temp_kelvin: 4000
@@ -239,7 +247,7 @@ daytime_lights:
       entity_id: scene.daytime
 evening_lights:
   alias: Evening Lights
-  description: ''
+  description: 'Sets all Hue lights to 2700K and Govee to warm white (2700K)'
   mode: parallel
   sequence:
   - action: light.turn_on
@@ -250,7 +258,11 @@ evening_lights:
         - light.bedroom_ceiling
         - light.tv_left
         - light.tv_right
+        - light.screen_left
+        - light.screen_right
+        - light.living_room
         - light.office
+        - light.closet
     data:
       brightness: 180
       color_temp_kelvin: 2700
@@ -269,7 +281,7 @@ evening_lights:
       entity_id: scene.evening
 chill_lights:
   alias: Chill Lights
-  description: ''
+  description: 'Sets all Hue lights to 2000K (deep warm) and Govee to Maillard scene'
   mode: parallel
   sequence:
   - action: light.turn_on
@@ -280,7 +292,11 @@ chill_lights:
         - light.bedroom_ceiling
         - light.tv_left
         - light.tv_right
+        - light.screen_left
+        - light.screen_right
+        - light.living_room
         - light.office
+        - light.closet
     data:
       brightness: 80
       color_temp_kelvin: 2000
