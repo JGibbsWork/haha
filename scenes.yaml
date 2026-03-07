@@ -2146,3 +2146,103 @@
       state: 'off'
   metadata: {}
   icon: mdi:blinds-horizontal-closed
+- id: '1772915945955'
+  name: Blinds Open
+  entities:
+    cover.bedblind_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: bedBlind Cover
+      supported_features: 15
+      state: open
+    switch.bedblind_switch:
+      friendly_name: bedBlind Switch
+      state: 'off'
+    cover.closetblind_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: closetBlind Cover
+      supported_features: 15
+      state: open
+    switch.closetblind_switch:
+      friendly_name: closetBlind Switch
+      state: 'on'
+    cover.diningblind_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: diningBlind Cover
+      supported_features: 15
+      state: open
+    switch.diningblind_switch:
+      friendly_name: diningBlind Switch
+      state: 'on'
+    cover.djblind_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: djBlind Cover
+      supported_features: 15
+      state: open
+    switch.djblind_switch:
+      friendly_name: djBlind Switch
+      state: 'off'
+    cover.tvblind_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: tvBlind Cover
+      supported_features: 15
+      state: open
+    switch.tvblind_switch:
+      friendly_name: tvBlind Switch
+      state: 'off'
+  metadata: {}
+  icon: mdi:blinds-open
+- id: '1772916068119'
+  name: Blinds closed
+  entities:
+    cover.bedblind_cover:
+      current_position: 0
+      device_class: shade
+      friendly_name: bedBlind Cover
+      supported_features: 15
+      state: closed
+    switch.bedblind_switch:
+      friendly_name: bedBlind Switch
+      state: 'off'
+    cover.closetblind_cover:
+      current_position: 3
+      device_class: shade
+      friendly_name: closetBlind Cover
+      supported_features: 15
+      state: open
+    switch.closetblind_switch:
+      friendly_name: closetBlind Switch
+      state: 'on'
+    cover.diningblind_cover:
+      current_position: 0
+      device_class: shade
+      friendly_name: diningBlind Cover
+      supported_features: 15
+      state: closed
+    switch.diningblind_switch:
+      friendly_name: diningBlind Switch
+      state: 'on'
+    cover.djblind_cover:
+      current_position: 3
+      device_class: shade
+      friendly_name: djBlind Cover
+      supported_features: 15
+      state: open
+    switch.djblind_switch:
+      friendly_name: djBlind Switch
+      state: 'off'
+    cover.tvblind_cover:
+      current_position: 0
+      device_class: shade
+      friendly_name: tvBlind Cover
+      supported_features: 15
+      state: closed
+    switch.tvblind_switch:
+      friendly_name: tvBlind Switch
+      state: 'off'
+  metadata: {}
+  icon: mdi:roller-shade-closed
