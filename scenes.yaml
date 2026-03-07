@@ -2064,3 +2064,85 @@
       supported_features: 44
       state: 'on'
   metadata: {}
+- id: '1772902281336'
+  name: Shades Up
+  entities:
+    cover.closetshade_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: closetShade Cover
+      supported_features: 15
+      state: open
+    switch.closetshade_switch:
+      friendly_name: closetShade Switch
+      state: 'off'
+    cover.tvshade_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: tvShade Cover
+      supported_features: 15
+      state: open
+    switch.tvshade_switch:
+      friendly_name: tvShade Switch
+      state: 'off'
+    cover.djshade_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: djShade Cover
+      supported_features: 15
+      state: open
+    switch.djshade_switch:
+      friendly_name: djShade Switch
+      state: 'off'
+    cover.diningshade_cover:
+      current_position: 100
+      device_class: shade
+      friendly_name: diningShade Cover
+      supported_features: 15
+      state: open
+    switch.diningshade_switch:
+      friendly_name: diningShade Switch
+      state: 'off'
+  metadata: {}
+  icon: mdi:blinds-open
+- id: '1772902626415'
+  name: Shades Down
+  entities:
+    cover.closetshade_cover:
+      current_position: 0
+      device_class: shade
+      friendly_name: closetShade Cover
+      supported_features: 15
+      state: closed
+    switch.closetshade_switch:
+      friendly_name: closetShade Switch
+      state: 'off'
+    cover.tvshade_cover:
+      current_position: 59
+      device_class: shade
+      friendly_name: tvShade Cover
+      supported_features: 15
+      state: open
+    switch.tvshade_switch:
+      friendly_name: tvShade Switch
+      state: 'off'
+    cover.djshade_cover:
+      current_position: 4
+      device_class: shade
+      friendly_name: djShade Cover
+      supported_features: 15
+      state: open
+    switch.djshade_switch:
+      friendly_name: djShade Switch
+      state: 'off'
+    cover.diningshade_cover:
+      current_position: 0
+      device_class: shade
+      friendly_name: diningShade Cover
+      supported_features: 15
+      state: closed
+    switch.diningshade_switch:
+      friendly_name: diningShade Switch
+      state: 'off'
+  metadata: {}
+  icon: mdi:blinds-horizontal-closed
