@@ -29,6 +29,11 @@
     event: leave
   conditions: []
   actions:
+  # Notify that HA detected departure
+  - action: notify.mobile_app_jamess_iphone
+    data:
+      title: "Left Home"
+      message: "Home Assistant detected you left - running away routine"
   - action: script.projector_turn_off
     metadata: {}
     data: {}

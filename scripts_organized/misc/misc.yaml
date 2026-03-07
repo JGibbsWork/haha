@@ -3,12 +3,12 @@ goodnight:
   description: Turn off everything and close blinds/shades for bedtime
   mode: single
   sequence:
-  - action: script.close_blinds
-    metadata: {}
-    data: {}
-  - action: script.close_shades
-    metadata: {}
-    data: {}
+  - action: scene.turn_on
+    target:
+      entity_id: scene.blinds_closed
+  - action: scene.turn_on
+    target:
+      entity_id: scene.shades_down
   - action: script.projector_turn_off
     metadata: {}
     data: {}

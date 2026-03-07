@@ -12,9 +12,9 @@
     entity_id: device_tracker.jamess_iphone
     zone: zone.home
   actions:
-  - action: script.open_blinds
-    metadata: {}
-    data: {}
+  - action: scene.turn_on
+    target:
+      entity_id: scene.blinds_open
   - action: script.lighting_route_by_time_now
     metadata: {}
     data: {}
@@ -42,9 +42,9 @@
     - action: script.lighting_route_by_time_now
       metadata: {}
       data: {}
-  - action: script.open_shades
-    metadata: {}
-    data: {}
+  - action: scene.turn_on
+    target:
+      entity_id: scene.shades_up
   mode: single
 
 - id: '1763522537243'
