@@ -130,14 +130,18 @@ govee_maillard:
   - action: rest_command.govee_living_maillard
     metadata: {}
     data: {}
+  - delay:
+      seconds: 1
   - action: rest_command.govee_dining_strip_maillard
     metadata: {}
     data: {}
+  - delay:
+      seconds: 1
   - action: rest_command.govee_dj_maillard
     metadata: {}
     data: {}
   alias: Govee - Maillard
-  description: ''
+  description: 'Cascading Maillard scene across all Govee strips'
 govee_passion:
   sequence:
   - action: rest_command.govee_living_passion
@@ -204,13 +208,6 @@ morning_lights:
   - action: script.govee_all_lights_100
     metadata: {}
     data: {}
-  - delay:
-      seconds: 1
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.morning
 daytime_lights:
   alias: Daytime Lights
   description: 'Sets all Hue lights to 4000K and Govee to neutral white (~3800K)'
@@ -238,13 +235,6 @@ daytime_lights:
   - action: script.govee_all_lights_white_neutral
     metadata: {}
     data: {}
-  - delay:
-      seconds: 1
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.daytime
 evening_lights:
   alias: Evening Lights
   description: 'Sets all Hue lights to 2700K and Govee to warm white (2700K)'
@@ -272,13 +262,6 @@ evening_lights:
   - action: script.govee_all_lights_white_warm
     metadata: {}
     data: {}
-  - delay:
-      seconds: 1
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.evening
 chill_lights:
   alias: Chill Lights
   description: 'Sets all Hue lights to 2000K (deep warm) and Govee to Maillard scene'
@@ -303,13 +286,6 @@ chill_lights:
   - action: script.govee_maillard
     metadata: {}
     data: {}
-  - delay:
-      seconds: 1
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.night_chill
 lighting_route_by_time_now:
   alias: Lighting - Route By Time (Now)
   mode: restart
