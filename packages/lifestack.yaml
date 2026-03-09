@@ -1,66 +1,66 @@
 # Lifestack Display Profile Management
 # REST commands to control TV and Projector display profiles via Lifestack API
-# API runs at sentinel.local:3002
+# API runs at sentinel.local:3003
 
 rest_command:
   lifestack_profile_default:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "default"}'
 
   lifestack_profile_relax:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "relax"}'
 
   lifestack_profile_gallery:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "gallery"}'
 
   lifestack_profile_ambient:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "ambient"}'
 
   lifestack_profile_commute:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "commute"}'
 
   lifestack_profile_artshow:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "artshow"}'
 
   lifestack_profile_minimal:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "minimal"}'
 
   lifestack_profile_flow:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
     payload: '{"profile": "flow"}'
 
   lifestack_profile_orbital:
-    url: "http://sentinel.local:3002/api/profile"
+    url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
