@@ -10,13 +10,6 @@ rest_command:
       Content-Type: application/json
     payload: '{"profile": "default"}'
 
-  lifestack_profile_relax:
-    url: "http://sentinel.local:3003/api/profile"
-    method: POST
-    headers:
-      Content-Type: application/json
-    payload: '{"profile": "relax"}'
-
   lifestack_profile_gallery:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
@@ -24,44 +17,51 @@ rest_command:
       Content-Type: application/json
     payload: '{"profile": "gallery"}'
 
-  lifestack_profile_ambient:
+  lifestack_profile_morning:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "ambient"}'
+    payload: '{"profile": "morning"}'
 
-  lifestack_profile_commute:
+  lifestack_profile_focus:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "commute"}'
+    payload: '{"profile": "focus"}'
 
-  lifestack_profile_artshow:
+  lifestack_profile_work:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "artshow"}'
+    payload: '{"profile": "work"}'
 
-  lifestack_profile_minimal:
+  lifestack_profile_relax:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "minimal"}'
+    payload: '{"profile": "relax"}'
 
-  lifestack_profile_flow:
+  lifestack_profile_personal:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "flow"}'
+    payload: '{"profile": "personal"}'
 
-  lifestack_profile_orbital:
+  lifestack_profile_guest:
     url: "http://sentinel.local:3003/api/profile"
     method: POST
     headers:
       Content-Type: application/json
-    payload: '{"profile": "orbital"}'
+    payload: '{"profile": "guest"}'
+
+  lifestack_profile_transit:
+    url: "http://sentinel.local:3003/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"profile": "transit"}'
