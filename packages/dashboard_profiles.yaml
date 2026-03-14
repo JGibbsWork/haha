@@ -1,0 +1,69 @@
+# Dashboard Profile Management
+# REST commands to control digital display profiles via sentinel API
+# Profiles: morning (5am), default (10am), evening (sunset), experimental (manual only)
+
+rest_command:
+  dashboard_profile_morning:
+    url: "http://sentinel:3003/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"profile": "morning"}'
+
+  dashboard_profile_default:
+    url: "http://sentinel:3003/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"profile": "default"}'
+
+  dashboard_profile_evening:
+    url: "http://sentinel:3003/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"profile": "evening"}'
+
+  dashboard_profile_experimental:
+    url: "http://sentinel:3003/api/profile"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"profile": "experimental"}'
+
+script:
+  dashboard_morning:
+    alias: Dashboard - Morning Profile
+    description: 'Transit + next event + weather on projector, briefing on TV'
+    sequence:
+    - action: rest_command.dashboard_profile_morning
+      metadata: {}
+      data: {}
+    mode: single
+
+  dashboard_default:
+    alias: Dashboard - Default Profile
+    description: 'Art canvases + transit'
+    sequence:
+    - action: rest_command.dashboard_profile_default
+      metadata: {}
+      data: {}
+    mode: single
+
+  dashboard_evening:
+    alias: Dashboard - Evening Profile
+    description: 'Geometric animations on projector, flow art on TV'
+    sequence:
+    - action: rest_command.dashboard_profile_evening
+      metadata: {}
+      data: {}
+    mode: single
+
+  dashboard_experimental:
+    alias: Dashboard - Experimental Profile
+    description: 'Transit + next event + weather - for testing new features'
+    sequence:
+    - action: rest_command.dashboard_profile_experimental
+      metadata: {}
+      data: {}
+    mode: single

@@ -235,6 +235,33 @@ daytime_lights:
   - action: script.govee_all_lights_white_neutral
     metadata: {}
     data: {}
+afternoon_lights:
+  alias: Afternoon Lights
+  description: 'Sets all Hue lights to 3200K (warm neutral) for late afternoon'
+  mode: parallel
+  sequence:
+  - action: light.turn_on
+    target:
+      entity_id:
+        - light.bed_lamp
+        - light.dresser
+        - light.bedroom_ceiling
+        - light.tv_left
+        - light.tv_right
+        - light.screen_left
+        - light.screen_right
+        - light.living_room
+        - light.office
+        - light.closet
+    data:
+      brightness: 200
+      color_temp_kelvin: 3200
+  - action: script.govee_all_lights_75
+    metadata: {}
+    data: {}
+  - action: script.govee_all_lights_white_warm
+    metadata: {}
+    data: {}
 evening_lights:
   alias: Evening Lights
   description: 'Sets all Hue lights to 2700K and Govee to warm white (2700K)'
@@ -292,30 +319,39 @@ lighting_route_by_time_now:
   variables:
     morning_script: script.morning_lights
     day_script: script.daytime_lights
+    afternoon_script: script.afternoon_lights
     evening_script: script.evening_lights
     chill_script: script.chill_lights
     morning_start: 05:00:00
     day_start: 08:00:00
+    afternoon_start: '15:00:00'
     night_start: '22:00:00'
   sequence:
   - choose:
     - conditions:
       - condition: template
-        value_template: "{{ now() >= today_at(morning_start) and\n   now() <  today_at(day_start) }}\n"
+        value_template: "{{ now() >= today_at(morning_start) and now() < today_at(day_start) }}"
       sequence:
       - target:
           entity_id: '{{ morning_script }}'
         action: script.turn_on
     - conditions:
       - condition: template
-        value_template: "{{ now() >= today_at(day_start) and\n   is_state('sun.sun','above_horizon') }}\n"
+        value_template: "{{ now() >= today_at(day_start) and now() < today_at(afternoon_start) }}"
       sequence:
       - target:
           entity_id: '{{ day_script }}'
         action: script.turn_on
     - conditions:
       - condition: template
-        value_template: "{{ is_state('sun.sun','below_horizon') and\n   now() < today_at(night_start) }}\n"
+        value_template: "{{ now() >= today_at(afternoon_start) and is_state('sun.sun','above_horizon') }}"
+      sequence:
+      - target:
+          entity_id: '{{ afternoon_script }}'
+        action: script.turn_on
+    - conditions:
+      - condition: template
+        value_template: "{{ is_state('sun.sun','below_horizon') and now() < today_at(night_start) }}"
       sequence:
       - target:
           entity_id: '{{ evening_script }}'

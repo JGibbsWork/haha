@@ -65,13 +65,30 @@
       data: {}
   mode: single
 
+- id: '1758776873356'
+  alias: Afternoon Warmth
+  description: 'Transition to warmer afternoon lighting at 3pm'
+  triggers:
+  - trigger: time
+    at: '15:00:00'
+  conditions:
+  - condition: device
+    device_id: 5410341dd5c869866f1ea308a80d251d
+    domain: device_tracker
+    entity_id: 0d70eb782aa83094f5f5761a0a20a13a
+    type: is_home
+  actions:
+  - action: script.lighting_route_by_time_now
+    metadata: {}
+    data: {}
+  mode: single
+
 - id: '1758776873357'
   alias: Sunsetty
-  description: ''
+  description: 'Transition to evening lighting at sunset'
   triggers:
   - trigger: sun
     event: sunset
-    offset: '1:00:00'
   conditions:
   - condition: device
     device_id: 5410341dd5c869866f1ea308a80d251d
@@ -104,6 +121,61 @@
     type: is_home
   actions:
   - action: script.lighting_route_by_time_now
+    metadata: {}
+    data: {}
+  mode: single
+
+# Dashboard Profile Automations
+- id: '1741776873001'
+  alias: Dashboard Morning Profile
+  description: 'Switch dashboard to morning profile at 5am'
+  triggers:
+  - trigger: time
+    at: '05:00:00'
+  conditions:
+  - condition: device
+    device_id: 5410341dd5c869866f1ea308a80d251d
+    domain: device_tracker
+    entity_id: 0d70eb782aa83094f5f5761a0a20a13a
+    type: is_home
+  actions:
+  - action: script.dashboard_morning
+    metadata: {}
+    data: {}
+  mode: single
+
+- id: '1741776873002'
+  alias: Dashboard Default Profile
+  description: 'Switch dashboard to default profile at 10am'
+  triggers:
+  - trigger: time
+    at: '10:00:00'
+  conditions:
+  - condition: device
+    device_id: 5410341dd5c869866f1ea308a80d251d
+    domain: device_tracker
+    entity_id: 0d70eb782aa83094f5f5761a0a20a13a
+    type: is_home
+  actions:
+  - action: script.dashboard_default
+    metadata: {}
+    data: {}
+  mode: single
+
+- id: '1741776873003'
+  alias: Dashboard Evening Profile
+  description: 'Switch dashboard to evening profile at sunset'
+  triggers:
+  - trigger: sun
+    event: sunset
+  conditions:
+  - condition: device
+    device_id: 5410341dd5c869866f1ea308a80d251d
+    domain: device_tracker
+    entity_id: 0d70eb782aa83094f5f5761a0a20a13a
+    type: is_home
+  actions:
+  - action: script.dashboard_evening
     metadata: {}
     data: {}
   mode: single

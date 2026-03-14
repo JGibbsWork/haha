@@ -1184,25 +1184,25 @@ views:
               rows: auto
             player:
               layout:
-                hide_labels: true
+                hide_labels: false
                 icons:
                   power:
                     label: false
                   shuffle:
-                    label: false
+                    label: true
                   repeat:
-                    label: false
+                    label: true
                   favorite:
                     label: false
-                artwork_size: small
+                artwork_size: medium
               enabled: true
               hide:
                 power: true
-                repeat: true
-                mute: true
+                repeat: false
+                mute: false
                 favorite: true
-                shuffle: true
-                volume: true
+                shuffle: false
+                volume: false
                 player_selector: true
                 group_volume: true
             queue:
