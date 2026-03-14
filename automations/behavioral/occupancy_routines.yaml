@@ -38,24 +38,24 @@
         brightness_pct: 20
         color_temp_kelvin: 2200
         transition: 3
-    # Dim living room lights to 20% warm
-    - action: light.turn_on
+    # Turn OFF all non-bedroom lights
+    - action: light.turn_off
       target:
         entity_id:
           - light.tv_left
           - light.tv_right
-      data:
-        brightness_pct: 20
-        color_temp_kelvin: 2200
-        transition: 3
-    # Turn off kitchen lights
-    - action: light.turn_off
-      target:
-        entity_id:
+          - light.screen_left
+          - light.screen_right
+          - light.living_room
+          - light.office
+          - light.closet
           - light.kitchen_track_1
           - light.track_2
       data:
-        transition: 2
+        transition: 3
+    # Turn off Govee lights too
+    - action: script.govee_all_lights_off
+      data: {}
     # Stop music on speakers
     - action: media_player.media_stop
       target:
