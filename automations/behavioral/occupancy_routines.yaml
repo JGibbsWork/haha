@@ -67,6 +67,12 @@
     - action: script.projector_turn_off
       data: {}
     # Close all blinds and shades
+    # Send direct close command to bedBlind and diningBlind (position-based didn't work)
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.bedblind_cover
+          - cover.diningblind_cover
     - action: scene.turn_on
       target:
         entity_id: scene.blinds_closed

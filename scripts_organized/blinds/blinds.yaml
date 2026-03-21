@@ -12,9 +12,16 @@ open_blinds:
 
 close_blinds:
   alias: Close Blinds
-  description: Closes all blinds using the Blinds Closed scene
+  description: Closes all blinds - sends direct close command to bedBlind and diningBlind
   mode: single
   sequence:
+    # Send direct close command to problematic blinds
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.bedblind_cover
+          - cover.diningblind_cover
+    # Use scene for the rest
     - action: scene.turn_on
       target:
         entity_id: scene.blinds_closed
